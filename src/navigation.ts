@@ -28,11 +28,10 @@ export const headerData = {
     },
     {
       text: 'Community',
-      href: getPermalink('/community'),
-    },
-    {
-      text: 'Events',
-      href: getPermalink('/events'),
+      links: [
+        { text: 'Overview', href: getPermalink('/community') },
+        { text: 'Events', href: getPermalink('/events') },
+      ],
     },
     {
       text: 'Blog',
@@ -43,7 +42,7 @@ export const headerData = {
       href: getPermalink('/about'),
     },
   ],
-  actions: [{ text: 'Download', href: getPermalink('/get-started/quick-start'), icon: 'tabler:download' }],
+  actions: [],
 };
 
 export const footerData = {
@@ -97,7 +96,6 @@ export const footerData = {
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/mage_os' },
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/mage-os' },
     { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/nvZDVA2NdC' },
-    { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
     &copy; ${new Date().getFullYear()} Mage-OS Association. All rights reserved.
