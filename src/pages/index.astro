@@ -11,9 +11,11 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
 
 const metadata = {
-  title: 'AstroWind — Free template for creating websites with Astro + Tailwind CSS',
+  title: 'Mage-OS | Community-Driven Open Source Commerce Platform',
+  description: 'Mage-OS is a community-owned, open-source ecommerce platform built on Magento Open Source. Experience innovation, independence, and enterprise-grade performance.',
   ignoreTitleTemplate: true,
 };
 ---
@@ -25,78 +27,74 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
+        text: 'Download Mage-OS',
+        href: '/get-started/quick-start',
         icon: 'tabler:download',
       },
-      { text: 'Learn more', href: '#features' },
+      { text: 'Learn More', href: '/product/features' },
     ]}
-    image={{ src: '~/assets/images/hero-image.png', alt: 'AstroWind Hero Image' }}
   >
     <Fragment slot="title">
-      Free template for <span class="hidden xl:inline">creating websites with</span>
-      <span class="text-accent dark:text-white"> Astro 5.0</span> + Tailwind CSS
+      The <span class="text-accent dark:text-white">Community-Driven</span><br />
+      Open Source Commerce Platform
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="hidden sm:inline">
-        <span class="font-semibold">AstroWind</span> is a free, customizable and production-ready template for Astro 5.0
-        + Tailwind CSS.</span
-      >
-      <span class="block mb-1 sm:hidden font-bold text-blue-600">AstroWind: Production-ready.</span>
-      Suitable for Startups, Small Business, SaaS websites, Professional Portfolios, Marketing websites, Landing Pages &
-      Blogs.
+      <span class="font-semibold">Mage-OS</span> is a community-owned, open-source ecommerce platform built on Magento Open Source.
+      Experience innovation, independence, and enterprise-grade performance with seamless migration.
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
 
-  <Note title="Philosophy:" description="Simplicity, Best Practices and High Performance" />
+  <Note
+    title="100% Community-Owned"
+    description="Built by merchants, developers, and agencies worldwide. No shareholders, no investors—just the community."
+  />
 
   <!-- Features Widget *************** -->
 
   <Features
     id="features"
-    tagline="Features"
-    title="What you get with AstroWind"
-    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022, 2023 and 2024."
+    tagline="Why Choose Mage-OS"
+    title="Enterprise-Grade Capabilities, Community-Driven Innovation"
+    subtitle="Mage-OS Distribution delivers the performance, security, and flexibility enterprises demand with the transparency and agility only true open source provides."
     items={[
       {
-        title: 'Astro + Tailwind CSS Integration',
+        title: 'Innovation Without Compromise',
         description:
-          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
-        icon: 'tabler:brand-tailwind',
-      },
-      {
-        title: 'Ready-to-use Components',
-        description:
-          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
-        icon: 'tabler:components',
-      },
-      {
-        title: 'Best Practices',
-        description:
-          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
-        icon: 'tabler:list-check',
-      },
-      {
-        title: 'Excellent Page Speed',
-        description:
-          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+          'Mage-OS builds on Magento Open Source\'s proven foundation while introducing performance enhancements, security improvements, and cutting-edge features driven by real-world needs.',
         icon: 'tabler:rocket',
       },
       {
-        title: 'Search Engine Optimization (SEO)',
+        title: 'Seamless Migration',
         description:
-          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
-        icon: 'tabler:arrows-right-left',
+          'Migrate from Magento Open Source in minutes with full upstream compatibility. No vendor lock-in. No complexity. Just powerful commerce you control.',
+        icon: 'tabler:refresh',
       },
       {
-        title: 'Open to new ideas and contributions',
+        title: 'Enterprise Performance',
         description:
-          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
-        icon: 'tabler:bulb',
+          'Lightweight by design, optimized for speed, and ready to scale from SMB to enterprise without compromise.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Enhanced Security',
+        description:
+          'Built on the latest Magento security patches with proactive community-driven improvements and faster patch cycles.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Upstream Compatible',
+        description:
+          '100% compatible with existing Magento 2 extensions and integrations. Your ecosystem stays intact.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Transparent Governance',
+        description:
+          'Community-led development, transparent roadmaps, and democratic governance ensure Mage-OS evolves to meet your business needs.',
+        icon: 'tabler:users',
       },
     ]}
   />
@@ -105,109 +103,34 @@ const metadata = {
 
   <Content
     isReversed
-    tagline="Inside template"
-    title="AstroWind's Blueprint: Fun Meets Functionality!"
+    tagline="The Mage-OS Distribution"
+    title="Built on Magento, Enhanced by Community"
     items={[
       {
-        title: 'Built on top of Astro 5.0',
+        title: 'Based on Magento 2.4.8-p3',
         description:
-          'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+          'Built on the rock-solid Magento foundation with all the latest security fixes and platform improvements.',
       },
       {
-        title: 'Styled using Tailwind CSS',
+        title: 'Community-Driven Features',
         description:
-          'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+          'Innovations from the Mage-OS Lab including PCI DSS 4.0 compliance, AI-powered translation, and performance optimization.',
       },
       {
-        title: 'Cross-browser compatibility',
+        title: 'Developer-Friendly',
         description:
-          'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+          'Accessible contribution pathways, comprehensive documentation, and active community support empower developers at every level.',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Colorful Image',
+      alt: 'Mage-OS Development',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
-      Gain a competitive advantage by incorporating industry leading practices
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Open Source Commerce, Reimagined</h3>
+      The Mage-OS Distribution delivers everything you need to run a successful online store.
     </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isAfterContent
-    items={[
-      {
-        title: 'High level of customization',
-        description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
-      },
-      {
-        title: 'Multiple layout possibilities',
-        description:
-          'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
-      },
-      {
-        title: 'Fully responsive design',
-        description:
-          "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
-      },
-      {
-        title: 'Integration of media',
-        description:
-          'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
-      alt: 'Blueprint Image',
-    }}
-  >
-    <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Content Widget **************** -->
-
-  <Content
-    isReversed
-    isAfterContent
-    items={[
-      {
-        title: 'Enhanced user engagement',
-        description:
-          'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
-      },
-      {
-        title: 'Continuous improvement',
-        description:
-          'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
-      },
-      {
-        title: 'Time and resource efficiency',
-        description:
-          'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
-      },
-      {
-        title: 'Community support',
-        description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Astronauts Image',
-    }}
-  >
-    <Fragment slot="content">Designed to foster growth and success.</Fragment>
 
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
@@ -217,93 +140,73 @@ const metadata = {
   <!-- Steps Widget ****************** -->
 
   <Steps
-    title="Get your dream website up and running in no time with AstroWind."
+    title="Getting Started is Simple"
     items={[
       {
-        title: 'Step 1: <span class="font-medium">Download</span>',
+        title: 'Step 1: <span class="font-medium">Check Requirements</span>',
         description:
-          "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
-        icon: 'tabler:package',
+          'Review system requirements: PHP 8.3+, MySQL 8.0+, Composer 2.x, and OpenSearch. Most modern hosting environments are already compatible.',
+        icon: 'tabler:checklist',
       },
       {
-        title: 'Step 2: <span class="font-medium">Add content</span>',
+        title: 'Step 2: <span class="font-medium">Install via Composer</span>',
         description:
-          "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
-        icon: 'tabler:letter-case',
+          'Create a new project with a single command: <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition .</code>',
+        icon: 'tabler:terminal-2',
       },
       {
-        title: 'Step 3: <span class="font-medium">Customize styles</span>',
+        title: 'Step 3: <span class="font-medium">Configure & Launch</span>',
         description:
-          'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
-        icon: 'tabler:paint',
+          'Run the installer, compile assets, and launch your store. Full documentation guides you through every step.',
+        icon: 'tabler:settings',
       },
       {
-        title: 'Ready!',
+        title: 'You\'re Live!',
         icon: 'tabler:check',
       },
     ]}
     image={{
       src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Steps image',
+      alt: 'Getting Started with Mage-OS',
     }}
   />
 
   <!-- Features2 Widget ************** -->
 
   <Features2
-    title="Most used widgets"
-    subtitle="Provides frequently used components for building websites using Tailwind CSS"
-    tagline="Components"
+    title="Mage-OS 2.0 Highlights"
+    subtitle="Our latest release showcases the power of community-driven innovation"
+    tagline="New in 2.0"
     items={[
       {
-        title: 'Headers',
-        description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
-        icon: 'flat-color-icons:template',
+        title: 'PCI DSS 4.0 Compliance',
+        description: 'Enhanced security policies including automatic account deactivation, session security, and strengthened authentication.',
+        icon: 'tabler:shield-lock',
       },
       {
-        title: 'Heros',
-        description:
-          "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
-        icon: 'flat-color-icons:gallery',
+        title: 'AI-Powered Translation',
+        description: 'Automatic translation using DeepL, OpenAI, or Google Gemini for products, categories, and CMS content.',
+        icon: 'tabler:language',
       },
       {
-        title: 'Features',
-        description:
-          'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
-        icon: 'flat-color-icons:approval',
+        title: 'Theme Optimization',
+        description: 'Back/forward cache support, speculative preloading, and smooth page transitions for better Core Web Vitals.',
+        icon: 'tabler:gauge',
       },
       {
-        title: 'Content',
-        description:
-          "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
-        icon: 'flat-color-icons:document',
+        title: 'PageBuilder Widgets',
+        description: 'CMS Widget support directly in Page Builder with live previews and import/export capabilities.',
+        icon: 'tabler:layout',
       },
       {
-        title: 'Call-to-Action',
-        description:
-          'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
-        icon: 'flat-color-icons:advertising',
+        title: 'Inventory Reservations Grid',
+        description: 'Better visibility into stock reservations with direct management in the admin panel.',
+        icon: 'tabler:package',
       },
       {
-        title: 'Pricing',
-        description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
-        icon: 'flat-color-icons:currency-exchange',
-      },
-      {
-        title: 'Testimonial',
-        description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
-        icon: 'flat-color-icons:voice-presentation',
-      },
-      {
-        title: 'Contact',
-        description:
-          'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
-        icon: 'flat-color-icons:business-contact',
-      },
-      {
-        title: 'Footers',
-        description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
-        icon: 'flat-color-icons:database',
+        title: 'Meta Robots Control',
+        description: 'Fine-tune NOINDEX, NOFOLLOW, and NOARCHIVE tags page by page for better SEO control.',
+        icon: 'tabler:robot',
       },
     ]}
   >
@@ -312,53 +215,25 @@ const metadata = {
     </Fragment>
   </Features2>
 
-  <!-- HighlightedPosts Widget ******* -->
+  <!-- Testimonials Widget *********** -->
 
-  <BlogLatestPosts
-    title="Find out more content in our Blog"
-    information={`The blog is used to display AstroWind documentation.
-                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
-                        Astro is a very interesting technology. Thanks.
-                `}
-  />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
+  <Testimonials
+    title="Trusted by Leading Brands & Agencies"
+    testimonials={[
       {
-        title: 'Why AstroWind?',
-        description:
-          "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+        testimonial: `Collaborating closely with Mage-OS is not just about securing our clients' future; it's about actively shaping it, contributing to making Mage-OS even better.`,
+        name: 'Ignacio Riesco',
+        job: 'CEO, Interactiv4',
       },
       {
-        title: 'What do I need to start?',
-        description:
-          'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+        testimonial: `Making the decision to sponsor Mage-OS and become a gold partner was the easiest decision we've made. We are very excited for the future of the Magento platform.`,
+        name: 'Arron Moss',
+        job: 'Co-founder, MDOQ',
       },
       {
-        title: 'How to install the Astro + Tailwind CSS template?',
-        description:
-          "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
-      },
-      {
-        title: "What's something that you don't understand?",
-        description:
-          "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
-      },
-      {
-        title: 'What is something that you would like to try again?',
-        description:
-          "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
-      },
-      {
-        title: 'If you could only ask one question to each person you meet, what would that question be?',
-        description:
-          "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+        testimonial: `The Mage-OS community represents the best of what open source can be—collaborative, innovative, and focused on delivering real value to merchants and developers alike.`,
+        name: 'Community Member',
+        job: 'Mage-OS Contributor',
       },
     ]}
   />
@@ -367,11 +242,59 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: 'Downloads', amount: '132K' },
-      { title: 'Stars', amount: '24.8K' },
-      { title: 'Forks', amount: '10.3K' },
-      { title: 'Users', amount: '48.4K' },
+      { title: 'Financial Contributors', amount: '172+' },
+      { title: 'Total Contributions', amount: '€106K+' },
+      { title: 'Community Members', amount: '81+' },
+      { title: 'Professional Members', amount: '67+' },
     ]}
+  />
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Everything you need to know about Mage-OS and how it relates to Magento Open Source."
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
+    items={[
+      {
+        title: 'What is Mage-OS?',
+        description:
+          'Mage-OS is a community-driven ecommerce platform built on Magento Open Source. We maintain full compatibility with Magento while adding enhanced features, performance improvements, and faster security patches.',
+      },
+      {
+        title: 'Is Mage-OS compatible with my existing Magento extensions?',
+        description:
+          'Yes! Mage-OS maintains 100% compatibility with Magento Open Source extensions and themes. Your existing ecosystem stays intact when you migrate.',
+      },
+      {
+        title: 'How do I migrate from Magento to Mage-OS?',
+        description:
+          'Migration is straightforward—update your composer.json to use the Mage-OS repository and run composer update. The process typically takes 15-30 minutes. See our Migration Guide for detailed instructions.',
+      },
+      {
+        title: 'Is Mage-OS free to use?',
+        description:
+          'Yes, Mage-OS Distribution is completely free and open source. There are no license fees, no vendor lock-in, and no hidden costs. We\'re funded by community contributions and partnerships.',
+      },
+      {
+        title: 'How can I contribute to Mage-OS?',
+        description:
+          'There are many ways to contribute: submit code to our GitHub repository, join our weekly tech meetings on Discord, become a member or partner, or help with documentation and community support.',
+      },
+      {
+        title: 'What support is available?',
+        description:
+          'Community support is available through our Discord server, GitHub discussions, and forums. For enterprise needs, our partner network offers professional services and dedicated support.',
+      },
+    ]}
+  />
+
+  <!-- HighlightedPosts Widget ******* -->
+
+  <BlogLatestPosts
+    title="Latest News & Updates"
+    information={`Stay up to date with the latest Mage-OS releases, community events, and ecosystem news.`}
   />
 
   <!-- CallToAction Widget *********** -->
@@ -380,20 +303,22 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Get template',
-        href: 'https://github.com/arthelokyo/astrowind',
-        target: '_blank',
+        text: 'Get Started',
+        href: '/get-started/quick-start',
         icon: 'tabler:download',
+      },
+      {
+        text: 'Join the Community',
+        href: '/community',
       },
     ]}
   >
     <Fragment slot="title">
-      Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+      Ready to take control of your<br class="block sm:hidden" /><span class="sm:whitespace-nowrap"> commerce future?</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't
-      waste more time! :P
+      Download Mage-OS today and join thousands of merchants and developers building the future of open-source ecommerce.
     </Fragment>
   </CallToAction>
 </Layout>
