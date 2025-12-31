@@ -6,6 +6,8 @@ import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
   title: 'Contact',
+  description:
+    'Get in touch with the Mage-OS community. Connect via Discord, report issues on GitHub, or reach us by email for partnership inquiries.',
 };
 ---
 
@@ -17,21 +19,24 @@ const metadata = {
   <ContactUs
     id="form"
     title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    subtitle="For quicker answers, explore our <a href='/faq' class='text-primary hover:underline'>FAQ section</a>. You may find the solution you're looking for right there! If not, our support team is delighted to help you."
     inputs={[
       {
         type: 'text',
         name: 'name',
         label: 'Name',
+        required: true,
       },
       {
         type: 'email',
         name: 'email',
         label: 'Email',
+        required: true,
       },
     ]}
     textarea={{
       label: 'Message',
+      required: true,
     }}
     disclaimer={{
       label:
