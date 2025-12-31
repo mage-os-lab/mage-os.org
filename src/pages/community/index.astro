@@ -1,0 +1,257 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+
+const metadata = {
+  title: 'Community',
+  description: 'Join the Mage-OS community. Contribute code, attend events, and connect with developers and merchants worldwide.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Community"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Discord',
+        href: 'https://discord.com/invite/nvZDVA2NdC',
+        target: '_blank',
+        icon: 'tabler:brand-discord',
+      },
+      { text: 'View GitHub', href: 'https://github.com/mage-os', target: '_blank' },
+    ]}
+  >
+    <Fragment slot="title">
+      Built by the Community,<br />
+      <span class="text-accent dark:text-white">For the Community</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Mage-OS thrives because of contributions from people like you. Whether you're a developer, merchant, marketer, or enthusiast—there's a place for you here.
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    stats={[
+      { title: 'Financial Contributors', amount: '172+' },
+      { title: 'Community Members', amount: '81+' },
+      { title: 'Professional Members', amount: '67+' },
+      { title: 'Partner Companies', amount: '15+' },
+    ]}
+  />
+
+  <!-- Features Widget: Ways to Contribute *************** -->
+
+  <Features
+    tagline="Get Involved"
+    title="Ways to Contribute"
+    subtitle="Every contribution matters, from code to community support"
+    items={[
+      {
+        title: 'Contribute Code',
+        description:
+          'Submit pull requests, fix bugs, or develop new features. Our GitHub repositories are open to all contributors.',
+        icon: 'tabler:code',
+        callToAction: {
+          text: 'View GitHub',
+          href: 'https://github.com/mage-os',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Join Weekly Meetings',
+        description:
+          'Participate in our weekly tech meetings every Tuesday at 3 PM CET on Discord. Shape the future of Mage-OS.',
+        icon: 'tabler:calendar',
+        callToAction: {
+          text: 'Join Discord',
+          href: 'https://discord.com/invite/nvZDVA2NdC',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Become a Member',
+        description:
+          'Support the project financially and get voting rights in our democratic governance. Individual and professional memberships available.',
+        icon: 'tabler:users',
+        callToAction: {
+          text: 'Learn More',
+          href: '/about',
+        },
+      },
+      {
+        title: 'Help with Documentation',
+        description:
+          'Improve our developer documentation, write tutorials, or translate content for international users.',
+        icon: 'tabler:book',
+        callToAction: {
+          text: 'View Docs',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Test & Report',
+        description:
+          'Test new releases, report bugs, and help us maintain high quality standards across the platform.',
+        icon: 'tabler:bug',
+        callToAction: {
+          text: 'Report Issues',
+          href: 'https://github.com/mage-os/mageos-magento2/issues',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Spread the Word',
+        description:
+          'Share your experience with Mage-OS, write blog posts, speak at events, or recommend us to colleagues.',
+        icon: 'tabler:speakerphone',
+      },
+    ]}
+  />
+
+  <!-- Steps2 Widget: Membership Tiers ****************** -->
+
+  <Steps2
+    title="Membership Tiers"
+    subtitle="Support the project and get involved at the level that's right for you"
+    items={[
+      {
+        title: 'Community Member - €10/year',
+        description:
+          'Show your support and get voting rights in our association. Perfect for individual supporters who believe in open source.',
+        icon: 'tabler:user',
+      },
+      {
+        title: 'Professional Member - €100/year',
+        description:
+          'For developers and professionals making a living with the Magento ecosystem. Enhanced visibility and influence.',
+        icon: 'tabler:briefcase',
+      },
+      {
+        title: 'Partner Companies',
+        description:
+          'Bronze (€1,250), Silver (€4,000), Gold (€10,000), Platinum (€25,000). Logo placement, partnership benefits, and maximum impact.',
+        icon: 'tabler:building',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget: Connect ************** -->
+
+  <Features2
+    title="Connect With Us"
+    tagline="Stay in Touch"
+    items={[
+      {
+        title: 'Discord',
+        description: 'Real-time chat with community members and developers. Get help, share ideas, and collaborate.',
+        icon: 'tabler:brand-discord',
+        callToAction: {
+          text: 'Join Server',
+          href: 'https://discord.com/invite/nvZDVA2NdC',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'GitHub',
+        description: 'Browse source code, submit issues, and contribute pull requests to our repositories.',
+        icon: 'tabler:brand-github',
+        callToAction: {
+          text: 'View Repos',
+          href: 'https://github.com/mage-os',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Mage-OS Lab',
+        description: 'Our innovation space where new ideas are tested and developed before joining the core distribution.',
+        icon: 'tabler:flask',
+        callToAction: {
+          text: 'Explore Lab',
+          href: 'https://github.com/mage-os-lab',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Blog',
+        description: 'Stay updated with the latest news, releases, and community stories.',
+        icon: 'tabler:news',
+        callToAction: {
+          text: 'Read Blog',
+          href: '/blog',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget: Events ************** -->
+
+  <Features2
+    title="Community Events"
+    tagline="Meet Us"
+    items={[
+      {
+        title: 'Meet Magento Events',
+        description: 'Find Mage-OS contributors at Meet Magento events worldwide, from New York to Poland to Italy.',
+        icon: 'tabler:map-pin',
+      },
+      {
+        title: 'Weekly Tech Meetings',
+        description: 'Every Tuesday at 3 PM CET on Discord. Open to everyone interested in Mage-OS development.',
+        icon: 'tabler:video',
+      },
+      {
+        title: 'Local Chapters',
+        description: 'Regional communities meeting in person to share knowledge and build connections.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Hackathons',
+        description: 'Collaborative coding sessions where community members work together on improvements.',
+        icon: 'tabler:code',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Discord',
+        href: 'https://discord.com/invite/nvZDVA2NdC',
+        target: '_blank',
+        icon: 'tabler:brand-discord',
+      },
+      {
+        text: 'Become a Member',
+        href: '/about',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Get Involved?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Join thousands of developers and merchants building the future of open-source ecommerce together.
+    </Fragment>
+  </CallToAction>
+</Layout>

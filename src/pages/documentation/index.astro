@@ -1,0 +1,237 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Documentation',
+  description: 'Mage-OS documentation hub. Find developer guides, API references, user manuals, and extension documentation.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Documentation"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Developer Docs',
+        href: 'https://devdocs.mage-os.org',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      { text: 'Quick Start', href: '/get-started/quick-start' },
+    ]}
+  >
+    <Fragment slot="title">
+      Learn, Build, <span class="text-accent dark:text-white">Succeed</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Comprehensive documentation for merchants, developers, and agencies working with Mage-OS.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget: Documentation Categories *************** -->
+
+  <Features
+    tagline="Browse Documentation"
+    title="Find What You Need"
+    items={[
+      {
+        title: 'Getting Started',
+        description:
+          'Installation guides, migration instructions, and system requirements to get Mage-OS up and running.',
+        icon: 'tabler:rocket',
+        callToAction: {
+          text: 'Get Started',
+          href: '/get-started',
+        },
+      },
+      {
+        title: 'Developer Documentation',
+        description:
+          'Architecture overview, module development, theming, customization, and best practices for developers.',
+        icon: 'tabler:code',
+        callToAction: {
+          text: 'View DevDocs',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'User Guide',
+        description:
+          'Admin panel tutorials, product management, order processing, and store configuration for merchants.',
+        icon: 'tabler:book',
+        callToAction: {
+          text: 'User Guide',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'API Reference',
+        description:
+          'REST and GraphQL API documentation for integrations, headless commerce, and custom applications.',
+        icon: 'tabler:api',
+        callToAction: {
+          text: 'API Docs',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Extension Development',
+        description:
+          'Create custom modules, plugins, and extensions. Learn Magento architecture and dependency injection.',
+        icon: 'tabler:puzzle',
+        callToAction: {
+          text: 'Extension Guide',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Theme Development',
+        description:
+          'Build custom themes, work with layouts, templates, and CSS. Support for Luma, Blank, and Hyvä.',
+        icon: 'tabler:palette',
+        callToAction: {
+          text: 'Theme Guide',
+          href: 'https://devdocs.mage-os.org',
+          target: '_blank',
+        },
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget: Quick Links ************** -->
+
+  <Features2
+    title="Quick Links"
+    tagline="Popular Resources"
+    items={[
+      {
+        title: 'Quick Start Guide',
+        description: 'Get Mage-OS running in 30 minutes with our step-by-step installation guide.',
+        icon: 'tabler:bolt',
+        callToAction: {
+          text: 'Quick Start',
+          href: '/get-started/quick-start',
+        },
+      },
+      {
+        title: 'Migration Guide',
+        description: 'Migrate from Magento Open Source with full compatibility and zero downtime.',
+        icon: 'tabler:refresh',
+        callToAction: {
+          text: 'Migration',
+          href: '/get-started/migration-guide',
+        },
+      },
+      {
+        title: 'System Requirements',
+        description: 'PHP, database, search engine, and hosting requirements for Mage-OS.',
+        icon: 'tabler:checklist',
+        callToAction: {
+          text: 'Requirements',
+          href: '/get-started/system-requirements',
+        },
+      },
+      {
+        title: 'Release Notes',
+        description: 'What\'s new in each version, changelog, and upgrade instructions.',
+        icon: 'tabler:file-text',
+        callToAction: {
+          text: 'Releases',
+          href: '/product/releases',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Features2 Widget: Community Resources ************** -->
+
+  <Features2
+    title="Community Resources"
+    tagline="Get Help"
+    items={[
+      {
+        title: 'Discord Community',
+        description: 'Real-time support from community members and core developers.',
+        icon: 'tabler:brand-discord',
+        callToAction: {
+          text: 'Join Discord',
+          href: 'https://discord.com/invite/nvZDVA2NdC',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'GitHub Discussions',
+        description: 'Ask questions, share ideas, and discuss features with the community.',
+        icon: 'tabler:brand-github',
+        callToAction: {
+          text: 'Discussions',
+          href: 'https://github.com/mage-os/mageos-magento2/discussions',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Issue Tracker',
+        description: 'Report bugs, request features, and track development progress.',
+        icon: 'tabler:bug',
+        callToAction: {
+          text: 'Issues',
+          href: 'https://github.com/mage-os/mageos-magento2/issues',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Stack Exchange',
+        description: 'Find answers to technical questions on Magento Stack Exchange.',
+        icon: 'tabler:messages',
+        callToAction: {
+          text: 'Stack Exchange',
+          href: 'https://magento.stackexchange.com/',
+          target: '_blank',
+        },
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'View Developer Docs',
+        href: 'https://devdocs.mage-os.org',
+        target: '_blank',
+        icon: 'tabler:external-link',
+      },
+      {
+        text: 'Get Started',
+        href: '/get-started',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Build Something Great?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Explore our comprehensive documentation and start building with Mage-OS today.
+    </Fragment>
+  </CallToAction>
+</Layout>
