@@ -65,6 +65,22 @@ const postCollection = defineCollection({
   }),
 });
 
+const eventCollection = defineCollection({
+  loader: glob({ pattern: ['*.md', '*.mdx'], base: 'src/data/events' }),
+  schema: z.object({
+    title: z.string(),
+    date: z.coerce.date(),
+    endDate: z.coerce.date().optional(),
+    location: z.string().optional(),
+    venue: z.string().optional(),
+    url: z.string().url().optional(),
+    excerpt: z.string().optional(),
+    image: z.string().optional(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   post: postCollection,
+  event: eventCollection,
 };
