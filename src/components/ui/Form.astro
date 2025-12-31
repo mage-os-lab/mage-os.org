@@ -5,16 +5,18 @@ import Button from '~/components/ui/Button.astro';
 const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } = Astro.props;
 ---
 
-<form>
+<form aria-label="Contact form">
   {
     inputs &&
       inputs.map(
-        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '' }) =>
+        ({ type = 'text', name, label = '', autocomplete = 'on', placeholder = '', required = false }) =>
           name && (
             <div class="mb-6">
               {label && (
                 <label for={name} class="block text-sm font-medium">
                   {label}
+                  {required && <span class="text-red-500 ml-1" aria-hidden="true">*</span>}
+                  {required && <span class="sr-only">(required)</span>}
                 </label>
               )}
               <input
@@ -24,6 +26,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
                 autocomplete={autocomplete}
                 placeholder={placeholder}
                 class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+                aria-required={required ? 'true' : undefined}
               />
             </div>
           )
@@ -32,9 +35,11 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
 
   {
     textarea && (
-      <div>
+      <div class="mb-6">
         <label for="textarea" class="block text-sm font-medium">
           {textarea.label}
+          {textarea.required && <span class="text-red-500 ml-1" aria-hidden="true">*</span>}
+          {textarea.required && <span class="sr-only">(required)</span>}
         </label>
         <textarea
           id="textarea"
@@ -42,6 +47,7 @@ const { inputs, textarea, disclaimer, button = 'Contact us', description = '' } 
           rows={textarea.rows ? textarea.rows : 4}
           placeholder={textarea.placeholder}
           class="py-3 px-4 block w-full text-md rounded-lg border border-gray-200 dark:border-gray-700 bg-white dark:bg-slate-900"
+          aria-required={textarea.required ? 'true' : undefined}
         />
       </div>
     )

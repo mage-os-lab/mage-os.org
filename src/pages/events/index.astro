@@ -42,11 +42,11 @@ function formatDate(date: Date) {
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
     {
       upcomingEvents.length > 0 && (
-        <div class="mb-16">
-          <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Upcoming Events</h2>
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <section class="mb-16" aria-labelledby="upcoming-events-heading">
+          <h2 id="upcoming-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Upcoming Events</h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
             {upcomingEvents.map((event) => (
-              <div class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200 dark:border-slate-700">
+              <article class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200 dark:border-slate-700" role="listitem">
                 <div class="text-sm text-primary dark:text-blue-400 font-medium mb-2">
                   {formatDate(event.data.date)}
                 </div>
@@ -54,7 +54,8 @@ function formatDate(date: Date) {
                 {event.data.location && (
                   <p class="text-gray-600 dark:text-slate-400 text-sm mb-2">
                     <span class="inline-flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                        <title>Location</title>
                         <path
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -83,10 +84,10 @@ function formatDate(date: Date) {
                     Learn more &rarr;
                   </a>
                 )}
-              </div>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
       )
     }
 
@@ -103,11 +104,11 @@ function formatDate(date: Date) {
 
     {
       pastEvents.length > 0 && (
-        <div>
-          <h2 class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Past Events</h2>
-          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <section aria-labelledby="past-events-heading">
+          <h2 id="past-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Past Events</h2>
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list">
             {pastEvents.map((event) => (
-              <div class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-4 border border-gray-200 dark:border-slate-700">
+              <article class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-4 border border-gray-200 dark:border-slate-700" role="listitem">
                 <div class="text-xs text-gray-500 dark:text-slate-500 font-medium mb-1">
                   {formatDate(event.data.date)}
                 </div>
@@ -115,10 +116,10 @@ function formatDate(date: Date) {
                 {event.data.location && (
                   <p class="text-gray-500 dark:text-slate-500 text-sm mt-1">{event.data.location}</p>
                 )}
-              </div>
+              </article>
             ))}
           </div>
-        </div>
+        </section>
       )
     }
   </section>
