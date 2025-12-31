@@ -1,47 +1,48 @@
+# TODO: Download missing partner logos from their websites
 gold:
   - name: "MDOQ"
-    logo: ""
+    logo: "~/assets/images/partners/mdoq.png"
     url: "https://www.mdoq.io/"
   - name: "Interactiv4"
-    logo: ""
+    logo: "~/assets/images/partners/interactiv4.webp"
     url: "https://www.interactiv4.com/"
 
 silver:
   - name: "ParadoxLabs"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.paradoxlabs.com/"
   - name: "Hyvä Themes"
-    logo: ""
+    logo: "~/assets/images/partners/hyva.png"
     url: "https://www.hyva.io/"
   - name: "Vendic"
-    logo: ""
+    logo: "~/assets/images/partners/vendic.jpg"
     url: "https://www.vendic.nl/"
   - name: "Inchoo"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://inchoo.net/"
   - name: "Mollie"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.mollie.com/"
   - name: "WilMa Digital"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.wilmadigital.com/"
 
 bronze:
   - name: "JetRails"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.jetrails.com/"
   - name: "Develo"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://develo.cz/"
   - name: "FindCanary"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.findcanary.com/"
   - name: "JH"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://www.wearejh.com/"
   - name: "integer_net"
-    logo: ""
+    logo: "~/assets/images/partners/integer_net.png"
     url: "https://www.integer-net.de/"
   - name: "basecom"
-    logo: ""
+    logo: ""  # TODO: Add logo
     url: "https://basecom.de/"
