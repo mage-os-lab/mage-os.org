@@ -9,22 +9,22 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: Insert default title here
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Mage-OS | Community-Driven Open Source Commerce
+    template: '%s | Mage-OS'
+  description: "Mage-OS is a community-owned, open-source ecommerce platform built on Magento Open Source. Experience innovation, independence, and enterprise-grade performance."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Mage-OS
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@arthelokyo'
-    site: '@arthelokyo'
+    handle: '@mage_os'
+    site: '@mage_os'
     cardType: summary_large_image
 
 i18n:

@@ -7,24 +7,110 @@ media_folder: 'src/assets/images'
 public_folder: '/_astro'
 
 collections:
+  # Blog Posts
   - name: 'post'
-    label: 'Post'
-    folder: 'src/content/post'
+    label: 'Blog Posts'
+    label_singular: 'Post'
+    folder: 'src/data/post'
     create: true
+    slug: '{{year}}-{{month}}-{{day}}-{{slug}}'
+    sortable_fields: ['publishDate', 'title']
+    view_filters:
+      - label: Published
+        field: draft
+        pattern: false
+      - label: Drafts
+        field: draft
+        pattern: true
     fields:
-      - { label: 'Title', name: 'title', widget: 'string' }
-      - { label: 'Excerpt', name: 'excerpt', widget: 'string' }
-      - { label: 'Category', name: 'category', widget: 'string' }
+      - { label: 'Title', name: 'title', widget: 'string', required: true }
+      - { label: 'Excerpt', name: 'excerpt', widget: 'text', required: true }
+      - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: true }
+      - { label: 'Draft', name: 'draft', widget: 'boolean', default: false, required: false }
+      - {
+          label: 'Category',
+          name: 'category',
+          widget: 'select',
+          options: ['Releases', 'Updates', 'Community', 'Events', 'Technical'],
+          required: true
+        }
       - {
           label: 'Tags',
           name: 'tags',
           widget: 'list',
           allow_add: true,
-          allow_delete: true,
-          collapsed: false,
-          field: { label: 'Tag', name: 'tag', widget: 'string' },
+          required: false,
+          field: { label: 'Tag', name: 'tag', widget: 'string' }
         }
-      - { label: 'Image', name: 'image', widget: 'string' }
-      - { label: 'Publish Date', name: 'publishDate', widget: 'datetime', required: false }
-      - { label: 'Author', name: 'author', widget: 'string' }
+      - { label: 'Cover Image', name: 'image', widget: 'image', required: false }
+      - { label: 'Author', name: 'author', widget: 'string', default: 'Mage-OS', required: false }
       - { label: 'Content', name: 'body', widget: 'markdown' }
+
+  # Homepage Content
+  - name: 'homepage'
+    label: 'Homepage'
+    files:
+      - name: 'hero'
+        label: 'Hero Section'
+        file: 'src/data/homepage/hero.yaml'
+        fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Subtitle', name: 'subtitle', widget: 'text' }
+          - { label: 'Primary Button Text', name: 'primaryCTA', widget: 'string' }
+          - { label: 'Primary Button Link', name: 'primaryCTALink', widget: 'string' }
+          - { label: 'Secondary Button Text', name: 'secondaryCTA', widget: 'string' }
+          - { label: 'Secondary Button Link', name: 'secondaryCTALink', widget: 'string' }
+
+      - name: 'stats'
+        label: 'Statistics'
+        file: 'src/data/homepage/stats.yaml'
+        fields:
+          - name: 'items'
+            label: 'Stats'
+            widget: 'list'
+            fields:
+              - { label: 'Title', name: 'title', widget: 'string' }
+              - { label: 'Amount', name: 'amount', widget: 'string' }
+
+      - name: 'testimonials'
+        label: 'Testimonials'
+        file: 'src/data/homepage/testimonials.yaml'
+        fields:
+          - name: 'items'
+            label: 'Testimonials'
+            widget: 'list'
+            fields:
+              - { label: 'Quote', name: 'testimonial', widget: 'text' }
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Role/Title', name: 'job', widget: 'string' }
+              - { label: 'Photo', name: 'image', widget: 'image', required: false }
+
+  # Partners
+  - name: 'partners'
+    label: 'Partners'
+    files:
+      - name: 'partners'
+        label: 'Partner List'
+        file: 'src/data/partners.yaml'
+        fields:
+          - name: 'gold'
+            label: 'Gold Partners'
+            widget: 'list'
+            fields:
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Logo', name: 'logo', widget: 'image' }
+              - { label: 'Website', name: 'url', widget: 'string' }
+          - name: 'silver'
+            label: 'Silver Partners'
+            widget: 'list'
+            fields:
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Logo', name: 'logo', widget: 'image' }
+              - { label: 'Website', name: 'url', widget: 'string' }
+          - name: 'bronze'
+            label: 'Bronze Partners'
+            widget: 'list'
+            fields:
+              - { label: 'Name', name: 'name', widget: 'string' }
+              - { label: 'Logo', name: 'logo', widget: 'image' }
+              - { label: 'Website', name: 'url', widget: 'string' }

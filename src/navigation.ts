@@ -3,27 +3,43 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'About',
-      href: getPermalink('/about'),
+      text: 'Product',
+      links: [
+        { text: 'Overview', href: getPermalink('/product') },
+        { text: 'Features', href: getPermalink('/product/features') },
+        { text: 'Why Mage-OS', href: getPermalink('/product/why-mage-os') },
+        { text: 'Roadmap', href: getPermalink('/product/roadmap') },
+        { text: 'Releases', href: getPermalink('/product/releases') },
+      ],
     },
     {
-      text: 'Services',
-      href: getPermalink('/services'),
+      text: 'Get Started',
+      links: [
+        { text: 'Overview', href: getPermalink('/get-started') },
+        { text: 'Quick Start', href: getPermalink('/get-started/quick-start') },
+        { text: 'Installation', href: getPermalink('/get-started/installation') },
+        { text: 'Migration Guide', href: getPermalink('/get-started/migration-guide') },
+        { text: 'System Requirements', href: getPermalink('/get-started/system-requirements') },
+      ],
     },
     {
-      text: 'Pricing',
-      href: getPermalink('/pricing'),
+      text: 'Documentation',
+      href: getPermalink('/documentation'),
+    },
+    {
+      text: 'Community',
+      href: getPermalink('/community'),
     },
     {
       text: 'Blog',
       href: getBlogPermalink(),
     },
     {
-      text: 'Contact',
-      href: getPermalink('/contact'),
+      text: 'About',
+      href: getPermalink('/about'),
     },
   ],
-  actions: [{ text: 'Get Started', href: '#' }],
+  actions: [{ text: 'Download', href: getPermalink('/get-started/quick-start'), icon: 'tabler:download' }],
 };
 
 export const footerData = {
@@ -31,29 +47,35 @@ export const footerData = {
     {
       title: 'Product',
       links: [
-        { text: 'Features', href: '/#features' },
-        { text: 'Pricing', href: '/pricing' },
+        { text: 'Features', href: getPermalink('/product/features') },
+        { text: 'Why Mage-OS', href: getPermalink('/product/why-mage-os') },
+        { text: 'Roadmap', href: getPermalink('/product/roadmap') },
+        { text: 'Releases', href: getPermalink('/product/releases') },
       ],
     },
     {
-      title: 'Resources',
+      title: 'Get Started',
       links: [
-        { text: 'Documentation', href: '#' },
-        { text: 'Blog', href: '/blog' },
+        { text: 'Quick Start', href: getPermalink('/get-started/quick-start') },
+        { text: 'Installation', href: getPermalink('/get-started/installation') },
+        { text: 'Migration Guide', href: getPermalink('/get-started/migration-guide') },
+        { text: 'Documentation', href: getPermalink('/documentation') },
       ],
     },
     {
       title: 'Community',
       links: [
+        { text: 'Get Involved', href: getPermalink('/community') },
+        { text: 'Blog', href: getBlogPermalink() },
         { text: 'GitHub', href: 'https://github.com/mage-os' },
-        { text: 'Discord', href: '#' },
+        { text: 'Discord', href: 'https://discord.com/invite/nvZDVA2NdC' },
       ],
     },
     {
-      title: 'Company',
+      title: 'About',
       links: [
-        { text: 'About', href: '/about' },
-        { text: 'Contact', href: '/contact' },
+        { text: 'About Mage-OS', href: getPermalink('/about') },
+        { text: 'Contact', href: getPermalink('/contact') },
       ],
     },
   ],
@@ -62,11 +84,12 @@ export const footerData = {
     { text: 'Privacy Policy', href: getPermalink('/privacy') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
+    { ariaLabel: 'X', icon: 'tabler:brand-x', href: 'https://x.com/maborak' },
     { ariaLabel: 'GitHub', icon: 'tabler:brand-github', href: 'https://github.com/mage-os' },
+    { ariaLabel: 'Discord', icon: 'tabler:brand-discord', href: 'https://discord.com/invite/nvZDVA2NdC' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
-    &copy; Mage-OS Association. All rights reserved.
+    &copy; ${new Date().getFullYear()} Mage-OS Association. All rights reserved.
   `,
 };
