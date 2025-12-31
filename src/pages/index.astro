@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
@@ -22,6 +23,10 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data for SEO -->
+  <StructuredData type="Organization" />
+  <StructuredData type="WebSite" />
+
   <!-- Hero Widget ******************* -->
 
   <Hero

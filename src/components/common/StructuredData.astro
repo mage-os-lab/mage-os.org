@@ -1,0 +1,105 @@
+---
+/**
+ * StructuredData Component
+ * Outputs JSON-LD structured data for SEO
+ *
+ * Usage:
+ * <StructuredData type="Organization" />
+ * <StructuredData type="Event" data={{ name: "...", startDate: "..." }} />
+ * <StructuredData type="Article" data={{ headline: "...", author: "..." }} />
+ */
+
+export interface Props {
+  type: 'Organization' | 'WebSite' | 'Event' | 'Article' | 'BreadcrumbList';
+  data?: Record<string, unknown>;
+}
+
+const { type, data = {} } = Astro.props;
+
+// Base organization data for Mage-OS
+const baseOrganization = {
+  '@type': 'Organization',
+  name: 'Mage-OS Association',
+  url: 'https://mage-os.org',
+  logo: 'https://mage-os.org/images/mage-os-logo.png',
+  description:
+    'Mage-OS is an independent, community-driven distribution of Magento Open Source, maintained by the Mage-OS Association.',
+  sameAs: [
+    'https://github.com/mage-os',
+    'https://discord.com/invite/nvZDVA2NdC',
+    'https://opencollective.com/mage-os',
+    'https://twitter.com/maborak',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Reichensteinstr. 36',
+    addressLocality: 'Neckargemünd',
+    postalCode: '69151',
+    addressCountry: 'DE',
+  },
+  email: 'info@mage-os.org',
+};
+
+// Build the structured data based on type
+let structuredData: Record<string, unknown>;
+
+switch (type) {
+  case 'Organization':
+    structuredData = {
+      '@context': 'https://schema.org',
+      ...baseOrganization,
+      ...data,
+    };
+    break;
+
+  case 'WebSite':
+    structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Mage-OS',
+      url: 'https://mage-os.org',
+      description:
+        'Mage-OS is an independent, community-driven distribution of Magento Open Source.',
+      publisher: baseOrganization,
+      ...data,
+    };
+    break;
+
+  case 'Event':
+    structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Event',
+      organizer: baseOrganization,
+      ...data,
+    };
+    break;
+
+  case 'Article':
+    structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'Article',
+      publisher: baseOrganization,
+      ...data,
+    };
+    break;
+
+  case 'BreadcrumbList':
+    structuredData = {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      ...data,
+    };
+    break;
+
+  default:
+    structuredData = {
+      '@context': 'https://schema.org',
+      ...data,
+    };
+}
+---
+
+<script
+  type="application/ld+json"
+  set:html={JSON.stringify(structuredData, null, 0)}
+/>

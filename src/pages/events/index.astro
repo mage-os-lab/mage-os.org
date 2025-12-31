@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import StructuredData from '~/components/common/StructuredData.astro';
 
 const metadata = {
   title: 'Events',
@@ -27,6 +28,29 @@ function formatDate(date: Date) {
 ---
 
 <Layout metadata={metadata}>
+  <!-- Structured Data for upcoming events -->
+  {
+    upcomingEvents.map((event) => (
+      <StructuredData
+        type="Event"
+        data={{
+          name: event.data.title,
+          startDate: new Date(event.data.date).toISOString(),
+          description: event.data.excerpt || `${event.data.title} - A Mage-OS community event`,
+          location: event.data.location
+            ? {
+                '@type': 'Place',
+                name: event.data.location,
+              }
+            : undefined,
+          url: event.data.url || `https://mage-os.org/events`,
+          eventStatus: 'https://schema.org/EventScheduled',
+          eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+        }}
+      />
+    ))
+  }
+
   <Hero tagline="Events">
     <Fragment slot="title">
       Community<br />
