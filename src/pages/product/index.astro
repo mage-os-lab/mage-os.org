@@ -1,0 +1,214 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Stats from '~/components/widgets/Stats.astro';
+
+const metadata = {
+  title: 'Product Overview',
+  description: 'Mage-OS Distribution is a community-driven ecommerce platform built on Magento Open Source, offering enhanced performance, security, and innovation.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="The Mage-OS Distribution"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Now',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      { text: 'View Features', href: '/product/features' },
+    ]}
+  >
+    <Fragment slot="title">
+      Enterprise-Grade Commerce,<br />
+      <span class="text-accent dark:text-white">Community-Driven</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Mage-OS Distribution is a community-owned ecommerce platform built on Magento Open Source 2.4.8-p3.
+      We include all the latest security fixes and platform improvements while adding enhanced features,
+      performance optimizations, and bug fixes developed by our global community.
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="Built on Solid Foundations"
+    stats={[
+      { title: 'Based On', amount: 'Magento 2.4.8-p3' },
+      { title: 'Extension Compatible', amount: '5000+' },
+      { title: 'Active Contributors', amount: '100+' },
+      { title: 'Cost', amount: 'Free' },
+    ]}
+  />
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    id="what-we-offer"
+    tagline="What We Offer"
+    title="Everything You Need for Modern Commerce"
+    subtitle="Mage-OS combines the reliability of Magento with community-driven innovation"
+    items={[
+      {
+        title: 'Full Magento Compatibility',
+        description:
+          '100% compatible with Magento Open Source extensions, themes, and integrations. Your existing ecosystem works out of the box.',
+        icon: 'tabler:plug-connected',
+      },
+      {
+        title: 'Enhanced Performance',
+        description:
+          'Optimized caching, database queries, and frontend performance deliver faster page loads and better user experience.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Security First',
+        description:
+          'Built on the latest security patches with proactive community-driven improvements. PCI DSS 4.0 compliance included.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Modern Standards',
+        description:
+          'Support for PHP 8.4, Composer 2.x, and modern JavaScript frameworks enable cutting-edge development practices.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'API-First Design',
+        description:
+          'RESTful and GraphQL APIs enable headless commerce, mobile apps, IoT integrations, and omnichannel experiences.',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'Open Governance',
+        description:
+          'Transparent roadmaps, public discussions, and democratic governance ensure the platform evolves for the community.',
+        icon: 'tabler:users',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="Innovation"
+    title="The Mage-OS Lab: Where Innovation Develops"
+    items={[
+      {
+        title: 'Collaborative Development',
+        description:
+          'The Lab is our innovation space where community members experiment, improve, and perfect new ideas.',
+      },
+      {
+        title: 'Graduated Modules',
+        description:
+          'Successful Lab projects graduate into the core distribution, bringing real-world improvements to all users.',
+      },
+      {
+        title: 'Open Contribution',
+        description:
+          'Everyone is welcome to contribute. If you have an open source module, get in touch about including it.',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Mage-OS Lab',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Community-Driven Innovation</h3>
+      Every feature in Mage-OS represents dedicated work by talented developers who believe in pushing the platform forward.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Explore the Product"
+    tagline="Learn More"
+    items={[
+      {
+        title: 'Features',
+        description: 'Deep dive into performance, security, and innovation capabilities.',
+        icon: 'tabler:list-check',
+        callToAction: {
+          text: 'View Features',
+          href: '/product/features',
+        },
+      },
+      {
+        title: 'Why Mage-OS',
+        description: 'Understand the benefits and see how we compare to alternatives.',
+        icon: 'tabler:bulb',
+        callToAction: {
+          text: 'Learn Why',
+          href: '/product/why-mage-os',
+        },
+      },
+      {
+        title: 'Roadmap',
+        description: 'See what\'s coming next and how you can influence our direction.',
+        icon: 'tabler:map',
+        callToAction: {
+          text: 'View Roadmap',
+          href: '/product/roadmap',
+        },
+      },
+      {
+        title: 'Releases',
+        description: 'Download the latest version and review release notes.',
+        icon: 'tabler:package',
+        callToAction: {
+          text: 'View Releases',
+          href: '/product/releases',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      {
+        text: 'View Documentation',
+        href: '/documentation',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Experience Mage-OS?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Download the distribution and see the difference community-driven development makes.
+    </Fragment>
+  </CallToAction>
+</Layout>

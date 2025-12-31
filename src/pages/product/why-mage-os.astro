@@ -1,0 +1,240 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Steps2 from '~/components/widgets/Steps2.astro';
+
+const metadata = {
+  title: 'Why Mage-OS',
+  description: 'Discover why Mage-OS is the right choice for your ecommerce needs. Compare benefits, understand use cases, and see success stories.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Why Choose Us"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Get Started',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      { text: 'View Features', href: '/product/features' },
+    ]}
+  >
+    <Fragment slot="title">
+      Why <span class="text-accent dark:text-white">Mage-OS</span>?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Mage-OS exists to accelerate change and pioneer innovation in the Magento ecosystem—owned by the community, built for the future.
+    </Fragment>
+  </Hero>
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="The Numbers Speak"
+    stats={[
+      { title: 'Open Letter Signers', amount: '1,641' },
+      { title: 'Financial Contributors', amount: '172+' },
+      { title: 'Total Contributions', amount: '€106K+' },
+      { title: 'Years Active', amount: '3+' },
+    ]}
+  />
+
+  <!-- Features Widget *************** -->
+
+  <Features
+    tagline="Core Benefits"
+    title="What Sets Mage-OS Apart"
+    subtitle="More than just another distribution—a movement to preserve and enhance open-source commerce"
+    items={[
+      {
+        title: 'True Independence',
+        description:
+          'No corporate agenda. No shareholders to please. Mage-OS is 100% community-owned and operated, ensuring decisions prioritize ecosystem health.',
+        icon: 'tabler:flag',
+      },
+      {
+        title: 'Faster Innovation',
+        description:
+          'Community-driven development means faster feature releases, quicker bug fixes, and improvements that address real-world needs.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Zero Vendor Lock-in',
+        description:
+          'Full compatibility with Magento ensures you can migrate freely. Your investment in extensions, themes, and customizations is protected.',
+        icon: 'tabler:lock-open',
+      },
+      {
+        title: 'Transparent Governance',
+        description:
+          'Public roadmaps, open discussions, and democratic decision-making. See exactly where the project is heading and have your say.',
+        icon: 'tabler:eye',
+      },
+      {
+        title: 'Community Support',
+        description:
+          'Access a global network of developers, agencies, and merchants who contribute knowledge and support each other.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'Long-term Sustainability',
+        description:
+          'As a non-profit association, Mage-OS is built for longevity. We\'re here to serve the ecosystem for decades, not quarterly earnings.',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
+
+  <!-- Content Widget **************** -->
+
+  <Content
+    isReversed
+    tagline="Our Story"
+    title="It All Started with an Open Letter"
+    image={{
+      src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Community collaboration',
+    }}
+  >
+    <Fragment slot="content">
+      <p class="mb-4">
+        Mage-OS was born from a collective vision shared by <strong>1,641 community members</strong> who signed an Open Letter about the future of Magento.
+      </p>
+      <p class="mb-4">
+        That letter sparked global discussions and collective action. From those conversations, Mage-OS was born—dedicated to building:
+      </p>
+      <ul class="list-disc list-inside mb-4 space-y-2">
+        <li>An <strong>independent distribution</strong> enhancing Magento Open Source</li>
+        <li>A <strong>sustainable organization</strong> supporting long-term ecosystem growth</li>
+      </ul>
+      <p>
+        Today, Mage-OS represents the collective effort of merchants, developers, and agencies worldwide who believe in the power of open-source commerce.
+      </p>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Steps2 Widget ****************** -->
+
+  <Steps2
+    title="Who Benefits from Mage-OS"
+    subtitle="Different stakeholders, shared benefits"
+    items={[
+      {
+        title: 'For Merchants',
+        description:
+          'Faster time-to-market, reduced total cost of ownership, and access to world-class features without vendor lock-in or enterprise pricing.',
+        icon: 'tabler:shopping-cart',
+      },
+      {
+        title: 'For Developers',
+        description:
+          'Modern tools, transparent development processes, and career-building opportunities in a thriving ecosystem with active contribution paths.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'For Agencies',
+        description:
+          'Competitive differentiation, client confidence, and sustainable long-term project support backed by a non-profit organization.',
+        icon: 'tabler:building',
+      },
+    ]}
+  />
+
+  <!-- Testimonials Widget *********** -->
+
+  <Testimonials
+    title="What Our Community Says"
+    testimonials={[
+      {
+        testimonial: `Collaborating closely with Mage-OS is not just about securing our clients' future; it's about actively shaping it, contributing to making Mage-OS even better.`,
+        name: 'Ignacio Riesco',
+        job: 'CEO, Interactiv4',
+      },
+      {
+        testimonial: `Making the decision to sponsor Mage-OS and become a gold partner was the easiest decision we've made. We are very excited for the future of the Magento platform.`,
+        name: 'Arron Moss',
+        job: 'Co-founder, MDOQ',
+      },
+      {
+        testimonial: `Mage-OS 2.0 represents more than just a software release—it's proof that community-driven innovation works. Every module, every security enhancement exists because developers chose to invest in open source.`,
+        name: 'Community',
+        job: 'Mage-OS Contributors',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget ************** -->
+
+  <Features2
+    title="Why Magento? Why Mage-OS?"
+    tagline="The Platform"
+    items={[
+      {
+        title: 'Flexibility',
+        description: 'Open platform with endless features, integrations, and the support of a thriving open-source ecosystem.',
+        icon: 'tabler:adjustments',
+      },
+      {
+        title: 'Scalability',
+        description: 'Empower SMBs to grow into mid-market and enterprise players seamlessly.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Innovation',
+        description: 'Best practices across all verticals and business models, driven by 300,000 developers and agencies worldwide.',
+        icon: 'tabler:bulb',
+      },
+      {
+        title: 'Ecosystem',
+        description: '5,000+ extensions, countless themes, and integrations with every major platform and service.',
+        icon: 'tabler:apps',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Mage-OS',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      {
+        text: 'Join the Community',
+        href: '/community',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      Ready to Join the Movement?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Download Mage-OS and become part of the community shaping the future of open-source commerce.
+    </Fragment>
+  </CallToAction>
+</Layout>

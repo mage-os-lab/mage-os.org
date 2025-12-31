@@ -1,0 +1,338 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Content from '~/components/widgets/Content.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+
+const metadata = {
+  title: 'Features',
+  description: 'Explore Mage-OS features including performance optimization, advanced security, innovation tools, and full compatibility with Magento extensions.',
+};
+---
+
+<Layout metadata={metadata}>
+  <!-- Hero Widget ******************* -->
+
+  <Hero
+    tagline="Features"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Now',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      { text: 'Compare Editions', href: '#comparison' },
+    ]}
+  >
+    <Fragment slot="title">
+      Features That <span class="text-accent dark:text-white">Drive Results</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Mage-OS Distribution delivers the performance, security, and flexibility enterprises demand
+      with the transparency, accessibility, and agility only true open source provides.
+    </Fragment>
+  </Hero>
+
+  <!-- Features Widget: Performance *************** -->
+
+  <Features
+    id="performance"
+    tagline="Performance"
+    title="Performance at Scale"
+    subtitle="Optimized for speed and efficiency from development to production"
+    items={[
+      {
+        title: 'Optimized Architecture',
+        description:
+          'Lightweight package composition reduces bloat and accelerates page load times compared to standard Magento configurations.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Advanced Caching',
+        description:
+          'Enhanced full-page cache, Varnish integration, and Redis optimization deliver sub-second response times.',
+        icon: 'tabler:database',
+      },
+      {
+        title: 'Database Efficiency',
+        description:
+          'Query optimization and indexing improvements reduce database load for higher concurrent user volumes.',
+        icon: 'tabler:chart-bar',
+      },
+      {
+        title: 'Scalable Infrastructure',
+        description:
+          'Built to scale from startup to enterprise with horizontal scaling, microservices compatibility, and cloud-native deployment.',
+        icon: 'tabler:cloud',
+      },
+      {
+        title: 'Back/Forward Cache',
+        description:
+          'bfcache support enables almost instant browser navigation for cacheable pages.',
+        icon: 'tabler:arrow-back-up',
+      },
+      {
+        title: 'Speculative Preloading',
+        description:
+          'Intelligently preloads links before users click them for perceived instant navigation.',
+        icon: 'tabler:link',
+      },
+    ]}
+  />
+
+  <!-- Features Widget: Security *************** -->
+
+  <Features
+    id="security"
+    tagline="Security"
+    title="Security You Can Trust"
+    subtitle="Enterprise-grade security with proactive community-driven improvements"
+    classes={{ container: 'bg-blue-50 dark:bg-transparent' }}
+    items={[
+      {
+        title: 'Proactive Patch Management',
+        description:
+          'Built on the latest Magento Open Source security releases with accelerated community-driven patches.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'PCI DSS 4.0 Compliance',
+        description:
+          'Updated admin policies including automatic account deactivation, session security, and strengthened authentication.',
+        icon: 'tabler:certificate',
+      },
+      {
+        title: 'Enhanced Authentication',
+        description:
+          'Two-factor authentication (2FA), OAuth 2.0 support, and role-based access control (RBAC).',
+        icon: 'tabler:lock',
+      },
+      {
+        title: 'Security Audits',
+        description:
+          'Community-led security audits and transparent vulnerability disclosure ensure rapid response.',
+        icon: 'tabler:search',
+      },
+      {
+        title: 'Strengthened Passwords',
+        description:
+          '12-character minimum length and complexity rules for enhanced account security.',
+        icon: 'tabler:key',
+      },
+      {
+        title: 'Session Management',
+        description:
+          '15-minute idle timeout enforcement and improved lockout policies protect admin accounts.',
+        icon: 'tabler:clock',
+      },
+    ]}
+  />
+
+  <!-- Features Widget: Innovation *************** -->
+
+  <Features
+    id="innovation"
+    tagline="Innovation"
+    title="Innovation Without Limits"
+    subtitle="Modern development standards and cutting-edge capabilities"
+    items={[
+      {
+        title: 'Modern PHP Support',
+        description:
+          'Support for PHP 8.3/8.4, Composer 2.8, and modern JavaScript frameworks.',
+        icon: 'tabler:brand-php',
+      },
+      {
+        title: 'Full Extension Ecosystem',
+        description:
+          'Compatible with 5,000+ Magento extensions while maintaining flexibility for custom development.',
+        icon: 'tabler:puzzle',
+      },
+      {
+        title: 'API-First Design',
+        description:
+          'RESTful and GraphQL APIs enable headless commerce, mobile apps, and omnichannel experiences.',
+        icon: 'tabler:api',
+      },
+      {
+        title: 'PWA Ready',
+        description:
+          'Native support for PWA Studio and third-party solutions like Vue Storefront.',
+        icon: 'tabler:device-mobile',
+      },
+      {
+        title: 'AI-Powered Translation',
+        description:
+          'Automatic translation using DeepL, OpenAI, or Google Gemini for global expansion.',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'PageBuilder Enhancements',
+        description:
+          'CMS Widget support with live previews and import/export capabilities.',
+        icon: 'tabler:layout',
+      },
+    ]}
+  />
+
+  <!-- Content Widget: Comparison **************** -->
+
+  <Content
+    id="comparison"
+    tagline="Comparison"
+    title="Feature Comparison"
+    isReversed
+  >
+    <Fragment slot="content">
+      <div class="overflow-x-auto">
+        <table class="min-w-full text-sm">
+          <thead>
+            <tr class="border-b dark:border-gray-700">
+              <th class="text-left py-3 px-4 font-semibold">Capability</th>
+              <th class="text-center py-3 px-4 font-semibold">Mage-OS</th>
+              <th class="text-center py-3 px-4 font-semibold">Magento OS</th>
+              <th class="text-center py-3 px-4 font-semibold">Adobe Commerce</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Performance Optimization</td>
+              <td class="text-center py-3 px-4 text-green-600">Enhanced</td>
+              <td class="text-center py-3 px-4">Standard</td>
+              <td class="text-center py-3 px-4">Enterprise</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Security Patches</td>
+              <td class="text-center py-3 px-4 text-green-600">Community-accelerated</td>
+              <td class="text-center py-3 px-4">Adobe schedule</td>
+              <td class="text-center py-3 px-4">Adobe schedule</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Open Governance</td>
+              <td class="text-center py-3 px-4 text-green-600">100% transparent</td>
+              <td class="text-center py-3 px-4">Adobe-controlled</td>
+              <td class="text-center py-3 px-4">Adobe-controlled</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Extension Compatibility</td>
+              <td class="text-center py-3 px-4 text-green-600">Full</td>
+              <td class="text-center py-3 px-4">Full</td>
+              <td class="text-center py-3 px-4">Full</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">API Access</td>
+              <td class="text-center py-3 px-4">REST, GraphQL</td>
+              <td class="text-center py-3 px-4">REST, GraphQL</td>
+              <td class="text-center py-3 px-4">REST, GraphQL</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Community Contribution</td>
+              <td class="text-center py-3 px-4 text-green-600">Open to all</td>
+              <td class="text-center py-3 px-4">Limited</td>
+              <td class="text-center py-3 px-4">Closed</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4 font-semibold">Cost</td>
+              <td class="text-center py-3 px-4 text-green-600 font-semibold">Free</td>
+              <td class="text-center py-3 px-4 font-semibold">Free</td>
+              <td class="text-center py-3 px-4 font-semibold">Enterprise pricing</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Features2 Widget: Developer Experience ************** -->
+
+  <Features2
+    title="Developer Experience"
+    tagline="For Developers"
+    items={[
+      {
+        title: 'Simplified Setup',
+        description: 'Single-command installation and migration reduce setup time from hours to minutes.',
+        icon: 'tabler:terminal-2',
+      },
+      {
+        title: 'Comprehensive Documentation',
+        description: 'Community-maintained docs cover installation, customization, and troubleshooting.',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Active Community Support',
+        description: 'Access forums, Discord, GitHub discussions, and global events.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Transparent Roadmap',
+        description: 'Public roadmaps and RFC processes let you plan and contribute to future features.',
+        icon: 'tabler:map',
+      },
+    ]}
+  />
+
+  <!-- Features2 Widget: Merchant Experience ************** -->
+
+  <Features2
+    title="Merchant Experience"
+    tagline="For Merchants"
+    classes={{ container: 'bg-blue-50 dark:bg-transparent' }}
+    items={[
+      {
+        title: 'Intuitive Admin Interface',
+        description: 'Streamlined admin panel reduces training time and improves daily operations.',
+        icon: 'tabler:dashboard',
+      },
+      {
+        title: 'Multi-Store Management',
+        description: 'Manage multiple brands, languages, and currencies from a single installation.',
+        icon: 'tabler:building-store',
+      },
+      {
+        title: 'Advanced Catalog',
+        description: 'Unlimited products, categories, and attributes with bulk operations.',
+        icon: 'tabler:category',
+      },
+      {
+        title: 'Flexible Pricing',
+        description: 'Tier pricing, customer groups, catalog rules, and cart promotions.',
+        icon: 'tabler:tag',
+      },
+    ]}
+  />
+
+  <!-- CallToAction Widget *********** -->
+
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Download Mage-OS',
+        href: '/get-started/quick-start',
+        icon: 'tabler:download',
+      },
+      {
+        text: 'View Documentation',
+        href: '/documentation',
+      },
+    ]}
+  >
+    <Fragment slot="title">
+      See Mage-OS in Action
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Download the distribution and experience the difference for yourself.
+    </Fragment>
+  </CallToAction>
+</Layout>
