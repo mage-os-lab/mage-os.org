@@ -13,7 +13,12 @@ import Steps2 from '~/components/widgets/Steps2.astro';
 import Content from '~/components/widgets/Content.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Pricing from '~/components/widgets/Pricing.astro';
+import PartnerTiers from '~/components/widgets/PartnerTiers.astro';
+import PartnersGrid from '~/components/widgets/PartnersGrid.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
+import { getCommunityStats } from '~/utils/openCollective';
+
+const stats = await getCommunityStats();
 
 const metadata = {
   title: 'Community | Mage-OS',
@@ -60,16 +65,23 @@ const metadata = {
 
   <Stats
     stats={[
-      { title: 'Financial Contributors', amount: '172+', icon: 'tabler:heart' },
-      { title: 'Community Members', amount: '81+', icon: 'tabler:users' },
-      { title: 'Professional Members', amount: '67+', icon: 'tabler:briefcase' },
-      { title: 'Partner Companies', amount: '15+', icon: 'tabler:building' },
+      { title: 'Financial Contributors', amount: `${stats.totalContributors}+`, icon: 'tabler:heart' },
+      { title: 'Community Members', amount: `${stats.communityMembers}+`, icon: 'tabler:users' },
+      { title: 'Professional Members', amount: `${stats.professionalMembers}+`, icon: 'tabler:briefcase' },
+      { title: 'Partner Companies', amount: `${stats.partnerCompanies}+`, icon: 'tabler:building' },
     ]}
   >
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Stats>
+
+  <!-- Current Partners Grid ****************** -->
+
+  <PartnersGrid
+    title="Our Current Partners"
+    subtitle="These organizations are actively supporting Mage-OS development"
+  />
 
   <!-- Steps Widget: Getting Started Journey ****************** -->
 
@@ -359,7 +371,7 @@ const metadata = {
   <!-- Pricing Widget: Membership Tiers ****************** -->
 
   <Pricing
-    title="Membership Tiers"
+    title="Individual Membership"
     subtitle="Support the project and get involved at the level that's right for you. All members get voting rights in our democratic governance."
     tagline="Join Us"
     prices={[
@@ -399,25 +411,20 @@ const metadata = {
         hasRibbon: true,
         ribbonTitle: 'Popular',
       },
-      {
-        title: 'Partner',
-        subtitle: 'For businesses and agencies',
-        price: 1250,
-        period: 'and up / year',
-        items: [
-          { description: 'Bronze €1,250 | Silver €4,000' },
-          { description: 'Gold €10,000 | Platinum €25,000' },
-          { description: 'Logo placement on website' },
-          { description: 'Sponsor specific features' },
-        ],
-        callToAction: {
-          text: 'Become a Partner',
-          href: 'https://opencollective.com/mage-os/contribute/bronze-supporter-48131/checkout',
-          target: '_blank',
-        },
-      },
     ]}
   />
+
+  <!-- Partner Tiers Widget ****************** -->
+
+  <PartnerTiers
+    title="Business Partner Tiers"
+    subtitle="The more you donate, the more change we can impact. Partner with us to shape the future of open-source commerce."
+    tagline="For Businesses & Agencies"
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </PartnerTiers>
 
   <!-- Steps2 Widget: How Funds Are Used ****************** -->
 
