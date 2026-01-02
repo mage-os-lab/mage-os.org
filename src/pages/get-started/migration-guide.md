@@ -317,8 +317,6 @@ bin/magento setup:static-content:deploy -f
 
 ## Need Help?
 
-@TODO: Change Discord references to embedded widgetbot page
-
 You are not alone. The Mage-OS community is here to support your migration journey.
 
 ### Community Support (Free)

@@ -110,14 +110,6 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
-/* Syntax highlighting - dual theme support for light/dark modes */
-/* Shiki with dual themes generates CSS custom properties */
-pre.astro-code,
-pre.astro-code span {
-  color: var(--shiki-light) !important;
-  background-color: var(--shiki-light-bg) !important;
-}
-
 .dark pre.astro-code,
 .dark pre.astro-code span {
   color: var(--shiki-dark) !important;
@@ -130,8 +122,6 @@ pre.astro-code code,
 pre.astro-code code::before,
 pre.astro-code code::after {
   background-color: transparent !important;
-  padding: 0 !important;
-  border-radius: 0 !important;
 }
 
 /* Code block container styling */

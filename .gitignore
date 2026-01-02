@@ -24,5 +24,8 @@ pnpm-lock.yaml
 .astro.idea/
 .idea/
 
+# Astro cache
+.astro/
+
 # Partner data cache
 .cache/
