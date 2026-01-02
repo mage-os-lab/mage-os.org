@@ -1,25 +1,293 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-import HeroText from '~/components/widgets/HeroText.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+import ContactUs from '~/components/widgets/Contact.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Contact | Mage-OS',
   description:
-    'Get in touch with the Mage-OS community. Connect via Discord, report issues on GitHub, or reach us by email for partnership inquiries.',
+    'Get in touch with the Mage-OS community. Connect via Discord for real-time support, report issues on GitHub, attend weekly meetings, or reach us by email for partnership inquiries.',
 };
 ---
 
 <Layout metadata={metadata}>
-  <!-- HeroText Widget ******************* -->
+  <!-- Hero Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <Hero
+    tagline="Contact"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Discord',
+        href: 'https://chat.mage-os.org',
+        target: '_blank',
+        icon: 'tabler:brand-discord',
+      },
+      {
+        text: 'View GitHub',
+        href: 'https://github.com/mage-os',
+        target: '_blank',
+        icon: 'tabler:brand-github',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Contact the Mage-OS community',
+    }}
+  >
+    <Fragment slot="title">
+      Let's Connect!<br />
+      <span class="text-accent dark:text-white">We're Here to Help</span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Whether you need <strong>technical support</strong>, want to <strong>contribute</strong> to the project, or have <strong>partnership inquiries</strong>, we have the right channel for you. Our community is welcoming, responsive, and eager to help.
+    </Fragment>
+  </Hero>
+
+  <!-- Note Widget: Discord Emphasis ******************* -->
+
+  <Note
+    title="Discord is Our Primary Support Channel"
+    description="For the fastest response, join our Discord server. Active community members and contributors are ready to assist you with installation, migration, development questions, and more."
+    icon="tabler:brand-discord"
+    callToAction={{ text: 'Join Discord', href: 'https://chat.mage-os.org', target: '_blank' }}
+  />
+
+  <!-- Stats Widget ****************** -->
+
+  <Stats
+    title="An Active, Responsive Community"
+    subtitle="Our community members actively help each other every day"
+    stats={[
+      { title: 'Discord Members', amount: '500+', icon: 'tabler:brand-discord' },
+      { title: 'GitHub Contributors', amount: '100+', icon: 'tabler:brand-github' },
+      { title: 'Weekly Meetings', amount: 'Every Tuesday', icon: 'tabler:calendar' },
+      { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Stats>
+
+  <!-- Steps Widget: Response Expectations ****************** -->
+
+  <Steps
+    title="What to Expect"
+    tagline="Response Times"
+    subtitle="Choose the right channel based on your needs and expected response time"
+    items={[
+      {
+        title: 'Discord: <span class="font-medium">Minutes to Hours</span>',
+        description:
+          'Real-time chat with community members. Best for technical questions, installation help, and general discussion. Most active during European and US business hours.',
+        icon: 'tabler:message-2',
+      },
+      {
+        title: 'GitHub Issues: <span class="font-medium">1-3 Days</span>',
+        description:
+          'For bug reports and feature requests. Our development team reviews all submissions and prioritizes based on impact and community feedback.',
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'Email: <span class="font-medium">2-3 Business Days</span>',
+        description:
+          'For partnership inquiries, sponsorship opportunities, press, and official association matters. Contact us at info@mage-os.org.',
+        icon: 'tabler:mail',
+      },
+      {
+        title: 'Weekly Tech Meeting: <span class="font-medium">Every Tuesday</span>',
+        description:
+          'Join us at 3 PM CET (9 AM EST) on Discord. Discuss development progress, ask questions directly, and meet the core team. Everyone is welcome!',
+        icon: 'tabler:calendar-event',
+      },
+    ]}
+  />
+
+  <!-- Features Widget: Contact Channels *************** -->
+
+  <Features
+    tagline="Contact Channels"
+    title="Choose Your Contact Method"
+    subtitle="Different inquiries need different channels. Find the right way to reach us based on your needs."
+    columns={3}
+    items={[
+      {
+        title: 'Community Support',
+        description:
+          'Get real-time help with Mage-OS installation, migration, development questions, and general discussion. Our most active support channel.',
+        icon: 'tabler:brand-discord',
+        callToAction: {
+          text: 'Join Discord',
+          href: 'https://chat.mage-os.org',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Bug Reports & Features',
+        description:
+          'Found a bug or have a feature request? Open an issue on GitHub with reproduction steps and our team will review it.',
+        icon: 'tabler:brand-github',
+        callToAction: {
+          text: 'Open Issue',
+          href: 'https://github.com/mage-os/mageos-magento2/issues',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Partnership & Sponsorship',
+        description:
+          'Interested in becoming a Mage-OS partner or sponsor? We offer Bronze, Silver, Gold, and Platinum partnership tiers.',
+        icon: 'tabler:handshake',
+        callToAction: {
+          text: 'Email Us',
+          href: 'mailto:info@mage-os.org',
+        },
+      },
+      {
+        title: 'Weekly Tech Meeting',
+        description:
+          'Join our Tuesday meeting at 3 PM CET to discuss development, ask questions, and connect with the core team. No registration needed.',
+        icon: 'tabler:calendar',
+        callToAction: {
+          text: 'Meeting Details',
+          href: '/community',
+        },
+      },
+      {
+        title: 'Press & Media',
+        description:
+          'For press inquiries, interviews, or media coverage requests, contact our communications team via email.',
+        icon: 'tabler:news',
+        callToAction: {
+          text: 'Press Contact',
+          href: 'mailto:info@mage-os.org?subject=Press%20Inquiry',
+        },
+      },
+      {
+        title: 'Official Association Matters',
+        description:
+          'For legal, governance, or official association business, reach out to our administrative team.',
+        icon: 'tabler:building',
+        callToAction: {
+          text: 'Contact Administration',
+          href: 'mailto:info@mage-os.org?subject=Official%20Inquiry',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
+
+  <!-- Features2 Widget: Follow Us ************** -->
+
+  <Features2
+    title="Stay Connected"
+    subtitle="Follow us on social media for the latest news, release announcements, and community highlights"
+    tagline="Social Media"
+    columns={4}
+    items={[
+      {
+        title: 'LinkedIn',
+        description: 'Professional updates, partnership announcements, and ecosystem news.',
+        icon: 'tabler:brand-linkedin',
+        callToAction: {
+          text: 'Follow',
+          href: 'https://www.linkedin.com/company/mage-os',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Twitter/X',
+        description: 'Quick updates, release announcements, and community engagement.',
+        icon: 'tabler:brand-x',
+        callToAction: {
+          text: 'Follow',
+          href: 'https://twitter.com/mage_os',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'YouTube',
+        description: 'Tutorials, event recordings, and community presentations.',
+        icon: 'tabler:brand-youtube',
+        callToAction: {
+          text: 'Subscribe',
+          href: 'https://www.youtube.com/@maborak',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Blog',
+        description: 'In-depth articles, release notes, and community stories.',
+        icon: 'tabler:article',
+        callToAction: {
+          text: 'Read Blog',
+          href: '/blog',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- FAQs Widget ******************* -->
+
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Quick answers to common contact questions"
+    tagline="FAQs"
+    items={[
+      {
+        title: 'What is the best way to get technical support?',
+        description:
+          'Discord is our primary support channel. Join at chat.mage-os.org and ask in the #tech or #general channels. Community members and core contributors actively help answer questions.',
+      },
+      {
+        title: 'How do I report a security vulnerability?',
+        description:
+          'For security issues, please email security@mage-os.org directly instead of opening a public GitHub issue. We take security seriously and will respond promptly to investigate and address vulnerabilities.',
+      },
+      {
+        title: 'Can I schedule a call with the Mage-OS team?',
+        description:
+          'For partnership discussions or sponsorship inquiries, email info@mage-os.org to schedule a call. For general questions, the weekly Tuesday tech meeting is a great opportunity to speak with core team members directly.',
+      },
+      {
+        title: 'How can I contribute to Mage-OS?',
+        description:
+          'There are many ways to contribute: submit code on GitHub, help with documentation, test new releases, participate in discussions on Discord, or become a financial supporter. Visit our Community page to learn more.',
+      },
+      {
+        title: 'Where can I find the association address?',
+        description:
+          'The Mage-OS Association is registered in Germany at Reichensteinstr. 36, 69151 Neckargemuend, Germany. For legal correspondence, please use this address or email info@mage-os.org.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- Contact Form Widget ************** -->
 
   <ContactUs
     id="form"
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our <a href='/faq' class='text-primary hover:underline'>FAQ section</a>. You may find the solution you're looking for right there! If not, our support team is delighted to help you."
+    title="Send Us a Message"
+    subtitle="Can't find what you need above? Use this form for general inquiries. For faster support, we recommend joining our Discord community."
     inputs={[
       {
         type: 'text',
@@ -42,41 +310,47 @@ const metadata = {
       label:
         'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
     }}
-    description="Our support team typically responds within 24 business hours."
-  />
+    description="We typically respond to form submissions within 2-3 business days."
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </ContactUs>
 
-  <!-- Features2 Widget ************** -->
+  <!-- CallToAction Widget *********** -->
 
-  <Features2
-    title="We are here to help!"
-    items={[
+  <CallToAction
+    actions={[
       {
-        title: 'Community Chat',
-        description: `The best way to connect with the Mage-OS community is through our Discord server at chat.mage-os.org. Get help, share ideas, and collaborate with developers worldwide.`,
+        variant: 'primary',
+        text: 'Join Discord',
+        href: 'https://chat.mage-os.org',
+        target: '_blank',
         icon: 'tabler:brand-discord',
       },
       {
-        title: 'Technical Support',
-        description:
-          'For technical questions about Mage-OS installation, migration, or development, join our Discord or open an issue on GitHub at github.com/mage-os.',
-        icon: 'tabler:code',
+        text: 'Become a Member',
+        href: 'https://opencollective.com/mage-os',
+        target: '_blank',
+        icon: 'tabler:heart',
       },
       {
-        title: 'Partnership Inquiries',
-        description:
-          'Interested in becoming a Mage-OS partner or sponsor? Reach out to discuss collaboration opportunities with the Mage-OS Association.',
-        icon: 'tabler:users',
-      },
-      {
-        title: 'Email',
-        description: 'info@mage-os.org',
-        icon: 'tabler:mail',
-      },
-      {
-        title: 'Location',
-        description: 'Mage-OS Association, Reichensteinstr. 36, 69151 Neckargemünd, Germany',
-        icon: 'tabler:map-pin',
+        text: 'Get Involved',
+        href: '/community',
       },
     ]}
-  />
+  >
+    <Fragment slot="title">
+      Ready to Join the Community?
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      Beyond just asking questions, become part of a global community building the future of open-source ecommerce.
+      Whether you contribute code, documentation, ideas, or financial support—<strong>every contribution matters</strong>.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </CallToAction>
 </Layout>
