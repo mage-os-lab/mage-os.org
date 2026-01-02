@@ -13,6 +13,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
+import PartnersBar from '~/components/widgets/PartnersBar.astro';
 
 const metadata = {
   title: 'Mage-OS | Community-Driven Open Source Commerce Platform',
@@ -37,7 +38,7 @@ const metadata = {
         href: '/get-started/quick-start',
         icon: 'tabler:download',
       },
-      { text: 'Learn More', href: '/product/features' },
+      { text: 'View Features', href: '/product/features', icon: 'tabler:list-check' },
     ]}
   >
     <Fragment slot="title">
@@ -242,9 +243,9 @@ const metadata = {
         job: 'Co-founder, MDOQ',
       },
       {
-        testimonial: `The Mage-OS community represents the best of what open source can be—collaborative, innovative, and focused on delivering real value to merchants and developers alike.`,
-        name: 'Community Member',
-        job: 'Mage-OS Contributor',
+        testimonial: `Mage-OS represents the future of open-source ecommerce. The community-driven approach ensures the platform evolves based on real merchant and developer needs, not just corporate priorities.`,
+        name: 'Vinai Kopp',
+        job: 'Mage-OS Founding Member',
       },
     ]}
   />
@@ -258,7 +259,15 @@ const metadata = {
       { title: 'Community Members', amount: '81+' },
       { title: 'Professional Members', amount: '67+' },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Stats>
+
+  <!-- Partners Bar Widget ************ -->
+
+  <PartnersBar />
 
   <!-- FAQs Widget ******************* -->
 
@@ -308,6 +317,40 @@ const metadata = {
     information={`Stay up to date with the latest Mage-OS releases, community events, and ecosystem news.`}
   />
 
+  <!-- Community Section ************* -->
+
+  <Features2
+    title="Join the Community"
+    subtitle="There are many ways to get involved with Mage-OS, regardless of your experience level"
+    tagline="Get Involved"
+    items={[
+      {
+        title: 'Contribute Code',
+        description: 'Submit pull requests for bug fixes, new features, or performance improvements on GitHub.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Join Discord',
+        description: 'Connect with developers and merchants in real-time. Weekly tech meetings every Tuesday at 3 PM CET.',
+        icon: 'tabler:brand-discord',
+      },
+      {
+        title: 'Become a Member',
+        description: 'Support the project financially and gain voting rights in our democratic governance.',
+        icon: 'tabler:users',
+      },
+      {
+        title: 'Attend Events',
+        description: 'Meet us at Meet Magento events worldwide and local community gatherings.',
+        icon: 'tabler:calendar-event',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
@@ -331,7 +374,7 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Download Mage-OS today and join thousands of merchants and developers building the future of open-source
+      Download Mage-OS today and join the many merchants and developers building the future of open-source
       ecommerce.
     </Fragment>
   </CallToAction>
