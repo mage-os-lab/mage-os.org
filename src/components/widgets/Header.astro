@@ -84,8 +84,12 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       class="items-center w-full lg:w-auto hidden lg:flex lg:mx-5 text-default overflow-y-auto overflow-x-hidden lg:overflow-y-visible lg:overflow-x-auto lg:justify-self-end"
       aria-label="Main navigation"
     >
+      <!-- Mobile menu header - only visible on mobile -->
+      <div class="lg:hidden w-full pt-4 pb-2 px-2 mb-2 border-b border-gray-200 dark:border-slate-700">
+        <span class="text-xs font-semibold uppercase tracking-wider text-muted">Navigation</span>
+      </div>
       <ul
-        class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-xl lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
+        class="flex flex-col lg:flex-row lg:self-center w-full lg:w-auto text-lg lg:text-[0.9375rem] tracking-[0.01rem] font-medium lg:justify-center"
       >
         {
           links.map(({ text, href, links }) => (
@@ -94,19 +98,19 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
                 <>
                   <button
                     type="button"
-                    class="hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap"
+                    class="hover:text-link dark:hover:text-white px-4 py-3.5 lg:py-3 flex items-center whitespace-nowrap w-full lg:w-auto border-b border-gray-100 dark:border-slate-800 lg:border-0"
                     aria-expanded="false"
                     aria-haspopup="menu"
                   >
                     {text}{' '}
-                    <Icon name="tabler:chevron-down" class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 hidden lg:inline" aria-hidden="true" />
+                    <Icon name="tabler:chevron-down" class="w-4 h-4 lg:w-3.5 lg:h-3.5 ml-auto lg:ml-0.5 rtl:ml-0 rtl:mr-0.5" aria-hidden="true" />
                   </button>
-                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-slate-800 dark:lg:border dark:lg:border-slate-600 rounded lg:absolute pl-4 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl" role="menu">
+                  <ul class="dropdown-menu lg:backdrop-blur-md dark:lg:bg-slate-800 dark:lg:border dark:lg:border-slate-600 rounded lg:absolute pl-6 lg:pl-0 lg:hidden font-medium lg:bg-white/90 lg:min-w-[200px] drop-shadow-xl bg-gray-50/50 dark:bg-slate-800/50" role="menu">
                     {links.map(({ text: text2, href: href2 }) => (
                       <li role="none">
                         <a
                           class:list={[
-                            'first:rounded-t last:rounded-b lg:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-2 px-5 block whitespace-no-wrap',
+                            'first:rounded-t last:rounded-b lg:hover:bg-gray-100 hover:text-link dark:hover:text-white dark:hover:bg-gray-700 py-3 lg:py-2 px-5 block whitespace-no-wrap text-base lg:text-sm',
                             { 'aw-link-active': href2 === currentPath },
                           ]}
                           href={href2}
@@ -121,7 +125,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
               ) : (
                 <a
                   class:list={[
-                    'hover:text-link dark:hover:text-white px-4 py-3 flex items-center whitespace-nowrap',
+                    'hover:text-link dark:hover:text-white px-4 py-3.5 lg:py-3 flex items-center whitespace-nowrap border-b border-gray-100 dark:border-slate-800 lg:border-0',
                     { 'aw-link-active': href === currentPath },
                   ]}
                   href={href}
