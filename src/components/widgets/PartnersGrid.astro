@@ -1,0 +1,130 @@
+---
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
+import { getPartners, groupPartnersByTier, getInitials, type PartnerTier } from '~/utils/openCollective';
+
+interface Props {
+  title?: string;
+  subtitle?: string;
+  id?: string;
+  isDark?: boolean;
+}
+
+const {
+  title = 'Our Partners',
+  subtitle = 'Companies supporting the Mage-OS community',
+  id,
+  isDark = false,
+} = Astro.props;
+
+const partners = await getPartners();
+const partnersByTier = groupPartnersByTier(partners);
+
+// Tier display configuration - larger sizes with more differentiation
+const tierConfig: Record<
+  PartnerTier,
+  {
+    label: string;
+    logoSize: string;
+    cardClass: string;
+    initialsClass: string;
+    nameClass: string;
+  }
+> = {
+  platinum: {
+    label: 'Platinum Partners',
+    logoSize: 'h-32 md:h-44',
+    cardClass: 'ring-2 ring-slate-400/50 bg-slate-50 dark:bg-slate-800/50',
+    initialsClass: 'text-5xl',
+    nameClass: 'text-xl md:text-2xl font-bold',
+  },
+  gold: {
+    label: 'Gold Partners',
+    logoSize: 'h-24 md:h-32',
+    cardClass: 'ring-2 ring-amber-400/50 bg-amber-50 dark:bg-amber-900/20',
+    initialsClass: 'text-3xl',
+    nameClass: 'text-lg md:text-xl font-semibold',
+  },
+  silver: {
+    label: 'Silver Partners',
+    logoSize: 'h-16 md:h-20',
+    cardClass: 'ring-1 ring-gray-400/50 bg-gray-50 dark:bg-gray-800/30',
+    initialsClass: 'text-2xl',
+    nameClass: 'text-base font-medium',
+  },
+  bronze: {
+    label: 'Bronze Partners',
+    logoSize: 'h-10 md:h-12',
+    cardClass: 'ring-1 ring-orange-400/50 bg-orange-50/50 dark:bg-orange-900/10',
+    initialsClass: 'text-xl',
+    nameClass: 'text-sm',
+  },
+};
+
+const tiersToDisplay: PartnerTier[] = ['platinum', 'gold', 'silver', 'bronze'];
+const hasAnyPartners = partners.length > 0;
+---
+
+{
+  hasAnyPartners && (
+    <WidgetWrapper id={id} isDark={isDark} containerClass="max-w-7xl mx-auto">
+      <Headline title={title} subtitle={subtitle} />
+
+      <div class="space-y-12">
+        {tiersToDisplay.map((tier) => {
+          const tierPartners = partnersByTier[tier];
+          const config = tierConfig[tier];
+
+          if (tierPartners.length === 0) return null;
+
+          return (
+            <div class="space-y-4">
+              <h3 class="text-sm font-semibold text-center text-muted uppercase tracking-wider">{config.label}</h3>
+
+              <div class="flex flex-wrap justify-center gap-4">
+                {tierPartners.map((partner) => (
+                  <a
+                    href={partner.website || partner.profileUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class={`group flex flex-col items-center justify-center p-4 rounded-lg transition-all duration-200 hover:scale-105 hover:shadow-lg ${config.cardClass}`}
+                  >
+                    <div class="flex items-center justify-center">
+                      {partner.logoUrl ? (
+                        <img
+                          src={partner.logoUrl}
+                          alt={partner.name}
+                          class={`${config.logoSize} w-auto max-w-[200px] object-contain transition-opacity group-hover:opacity-90`}
+                          loading="lazy"
+                          decoding="async"
+                        />
+                      ) : (
+                        <div class={`${config.logoSize} flex items-center justify-center px-4 min-w-[80px]`}>
+                          <span class={`${config.initialsClass} font-bold text-gray-500 dark:text-gray-400`}>
+                            {getInitials(partner.name)}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <span class={`mt-3 text-center text-gray-700 dark:text-gray-300 ${config.nameClass}`}>
+                      {partner.name}
+                    </span>
+                  </a>
+                ))}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+
+      <div class="mt-10 text-center">
+        <a
+          href="/community"
+          class="inline-flex items-center justify-center px-6 py-3 text-sm font-medium text-primary bg-transparent border-2 border-primary hover:bg-primary hover:text-white rounded-full shadow-sm hover:shadow-md transition-all duration-200"
+        >
+          Become a Partner
+        </a>
+      </div>
+    </WidgetWrapper>
+  )
+}
