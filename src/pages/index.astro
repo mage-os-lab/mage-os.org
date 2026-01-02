@@ -13,7 +13,7 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
-import PartnersBar from '~/components/widgets/PartnersBar.astro';
+import PartnersGrid from '~/components/widgets/PartnersGrid.astro';
 
 const metadata = {
   title: 'Mage-OS | Community-Driven Open Source Commerce Platform',
@@ -265,9 +265,12 @@ const metadata = {
     </Fragment>
   </Stats>
 
-  <!-- Partners Bar Widget ************ -->
+  <!-- Partners Grid Widget ************ -->
 
-  <PartnersBar />
+  <PartnersGrid
+    title="Our Partners"
+    subtitle="Companies supporting the Mage-OS community"
+  />
 
   <!-- FAQs Widget ******************* -->
 

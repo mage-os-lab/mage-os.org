@@ -3,7 +3,7 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
-import PartnersBar from '~/components/widgets/PartnersBar.astro';
+import PartnersMarquee from '~/components/widgets/PartnersMarquee.astro';
 
 import { headerData, footerData } from '~/navigation';
 
@@ -26,7 +26,7 @@ const { metadata } = Astro.props;
   <main id="main-content">
     <slot />
   </main>
-  <PartnersBar />
+  <PartnersMarquee />
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
