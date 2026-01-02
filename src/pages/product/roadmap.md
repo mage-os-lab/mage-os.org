@@ -7,124 +7,120 @@ layout: '~/layouts/ContentPageLayout.astro'
 
 Our roadmap is community-driven and transparent. See what we're working on, what's planned, and how you can influence the direction of Mage-OS.
 
+---
+
 ## Version & Support Policy
 
-Starting with Mage-OS 1.2, we adopted a new versioning policy:
+Starting with Mage-OS 1.2, we adopted a new [versioning strategy](/product/versioning-strategy) that provides clarity and predictability for upgrades.
 
-### Major Updates (#.0.0)
+| Release Type | Version Change | Frequency | What to Expect |
+|-------------|---------------|-----------|----------------|
+| **Major** (#.0.0) | 1.x to 2.0.0 | ~2x per year (April, October) | New features, dependency changes, system requirement updates |
+| **Minor** (2.#.0) | 2.0.x to 2.1.0 | Following security patches | Security patches, compatibility updates |
+| **Patch** (2.0.#) | 2.0.0 to 2.0.1 | As needed | Critical off-schedule fixes |
 
-- **Frequency:** 2x per year, around April/May and October
-- **Content:** New features, bundled extensions, significant changes, or system requirement updates
-- **Compatibility:** Mostly compatible with Magento and existing extensions
-
-### Minor Updates (2.#.0)
-
-- **Frequency:** Following Magento releases or security patches
-- **Content:** Security patches and compatibility updates
-- **Compatibility:** Compatible with existing installations
-
-### Patch Updates (2.0.#)
-
-- **Frequency:** As needed for critical fixes
-- **Content:** Small but critical off-schedule fixes
+**Support Policy:** Only the latest Mage-OS release is supported. Stay up to date to receive security patches and community support.
 
 ---
 
-## Current Focus: Mage-OS 2.x
+## Current Release: Mage-OS 2.0
 
-### Released in Mage-OS 2.0
+Released in late 2025, Mage-OS 2.0 represents our most feature-rich release to date:
 
-- **PCI DSS 4.0 Compliance** - Enhanced security policies
-- **AI-Powered Translation** - DeepL, OpenAI, Gemini integration
-- **Inventory Reservations Grid** - Better stock visibility
-- **Meta Robots Control** - Fine-grained SEO control
-- **PageBuilder Enhancements** - Widget support and import/export
-- **Theme Optimization** - bfcache, preloading, transitions
-- **PHP 8.4 Support** - Latest PHP compatibility
+| Feature | Description |
+|---------|-------------|
+| **PCI DSS 4.0 Compliance** | Enhanced security policies including automatic account deactivation and strengthened authentication |
+| **AI-Powered Translation** | Automatic translation via DeepL, OpenAI, or Google Gemini for products, categories, and CMS content |
+| **Inventory Reservations Grid** | Direct visibility and management of stock reservations in the admin panel |
+| **Meta Robots Control** | Fine-grained NOINDEX, NOFOLLOW, and NOARCHIVE settings per page for better SEO |
+| **PageBuilder Enhancements** | CMS Widget support with live previews and import/export capabilities |
+| **Theme Optimization** | Back/forward cache support, speculative preloading, and smooth page transitions |
+| **PHP 8.4 Support** | Full compatibility with the latest PHP version |
 
-### Coming in Mage-OS 2.1+
-
-- Security patches from Magento releases
-- Additional Mage-OS Lab graduations
-- Performance improvements
-- Community-contributed enhancements
+Ready to try it? [Get started with Mage-OS 2.0](/get-started/quick-start)
 
 ---
 
-## 2025 Roadmap
+## 2026 Roadmap
 
-### Q1 2025
+Our development priorities are shaped by community input through weekly tech meetings, GitHub discussions, and member voting.
 
-- Monthly security patch releases
-- Documentation improvements
-- Community tooling enhancements
+### Q1 2026 (January - March)
 
-### Q2 2025 (April/May)
-
-- **Mage-OS 2.1** - Minor update with security patches
-- Additional Lab module graduations
-- Ecosystem integrations
-
-### Q3 2025
-
-- Continued security updates
+- **Mage-OS 2.1** - Minor release incorporating upstream security patches
+- Continued Mage-OS Lab module evaluations
 - Developer experience improvements
+- Documentation expansion
+
+### Q2 2026 (April - June)
+
+- **Mage-OS 3.0** - Next major release aligned with Magento feature release
+- New community-driven features from the Mage-OS Lab
+- System requirement updates as needed
+
+### Q3-Q4 2026
+
+- Ongoing security patch releases
+- Additional Lab module graduations
+- Ecosystem integrations and partner tooling
 - Community growth initiatives
 
-### Q4 2025 (October)
-
-- **Mage-OS 3.0** - Next major release
-- New feature development
-- System requirement updates (if needed)
+**Note:** Roadmap timing may adjust based on upstream Magento release schedules and community priorities.
 
 ---
 
 ## Security Patch Schedule
 
-Adobe announced plans to release security patches on the second Tuesday of each month in 2026. Mage-OS will publish updates with each security release.
+Starting in 2026, Adobe will release security patches on the **second Tuesday of each month**. Mage-OS commits to publishing corresponding minor releases promptly after each upstream security patch.
 
-**Important:** As a volunteer-run nonprofit, we currently support only the latest release branch. Stay up to date to stay secure.
+| Security Release | Mage-OS Response |
+|-----------------|------------------|
+| Monthly Adobe patch | Minor version release within days |
+| Critical vulnerability | Emergency patch as needed |
+| End-of-life upstream version | Assessment for extended support |
+
+**Important:** As a volunteer-run nonprofit, we support only the latest release branch. Staying current ensures you receive all security updates.
 
 ---
 
 ## The Mage-OS Lab
 
-The [Mage-OS Lab](https://github.com/mage-os-lab) is our innovation space where community members experiment and develop new features.
+The [Mage-OS Lab](https://github.com/mage-os-lab) is our innovation incubator where community members experiment with new features before they graduate to the core distribution.
 
-### How It Works
+### How Features Graduate
 
-1. **Proposal** - Community members propose ideas
-2. **Development** - Collaborative development in the Lab
-3. **Testing** - Community testing and feedback
-4. **Graduation** - Successful projects join the core distribution
+| Stage | Description | Duration |
+|-------|-------------|----------|
+| **1. Proposal** | Community members submit ideas via GitHub or Discord | 1-2 weeks |
+| **2. Development** | Collaborative coding in the Lab repository | Varies by scope |
+| **3. Testing** | Community testing, feedback collection, iteration | 2-4 weeks minimum |
+| **4. Graduation** | Successful projects merge into the Mage-OS Distribution | Next major release |
 
-### Current Lab Projects
+### Recent Graduates (Now in Mage-OS 2.0)
 
-Visit [github.com/mage-os-lab](https://github.com/mage-os-lab) to see active projects and contribute.
+- AI-Powered Translation module
+- PCI DSS 4.0 Compliance enhancements
+- Meta Robots Control for SEO
+- PageBuilder Widget support
 
-### Graduate Your Module
+### Contribute to the Lab
 
-Have an open source module you'd like to include? [Get in touch](https://discord.com/invite/nvZDVA2NdC) with the community!
+- **Explore active projects:** [github.com/mage-os-lab](https://github.com/mage-os-lab)
+- **Propose a new feature:** Open a discussion on [GitHub](https://github.com/mage-os/mageos-magento2/discussions)
+- **Graduate your existing module:** Have an open-source module you'd like to include? [Join our Discord](https://discord.com/invite/nvZDVA2NdC) to discuss!
 
 ---
 
 ## How to Influence the Roadmap
 
-### Weekly Tech Meetings
+Your voice shapes the future of Mage-OS. Here are the ways to get involved:
 
-Join our technical meetings every **Tuesday at 3 PM CET** on Discord. Everyone is welcome to participate, share ideas, and discuss priorities.
-
-### GitHub Discussions
-
-Propose features, discuss implementations, and vote on priorities in our [GitHub discussions](https://github.com/mage-os/mageos-magento2/discussions).
-
-### Become a Member
-
-Members get voting rights in our democratic governance, including roadmap priorities.
-
-### Contribute Directly
-
-Submit pull requests, develop Lab projects, or help with documentation.
+| Participation Level | How to Participate | Impact |
+|--------------------|--------------------|--------|
+| **Weekly Tech Meetings** | Join every **Tuesday at 3 PM CET** on [Discord](https://discord.com/invite/nvZDVA2NdC) | Direct input on technical decisions |
+| **GitHub Discussions** | Propose and vote on features in [GitHub discussions](https://github.com/mage-os/mageos-magento2/discussions) | Shape feature priorities |
+| **Become a Member** | [Join the Mage-OS Association](/about/membership) | Voting rights on governance and roadmap |
+| **Contribute Code** | Submit pull requests or develop Lab projects | Direct contribution to features |
 
 ---
 
@@ -132,39 +128,46 @@ Submit pull requests, develop Lab projects, or help with documentation.
 
 ### Foundation (Completed)
 
-- Magento mirror distribution
-- Association governance
-- Mage-OS Distribution 1.0
+- Magento mirror distribution established
+- Association governance and legal structure
+- Mage-OS Distribution 1.0 and 2.0 releases
+- Growing partner and contributor ecosystem
 
-### Growth (Current)
+### Growth (2026)
 
-- Enhanced distribution features
-- Comprehensive documentation
-- Global community expansion
-- Partner ecosystem growth
+- Comprehensive developer and merchant documentation
+- Expanded Mage-OS Lab with more community modules
+- Global community expansion and regional events
+- Strengthened partner ecosystem with certified integrators
 
-### Maturity (2026+)
+### Maturity (2027+)
 
-- Grant program for sponsored development
-- Merchant support services
-- Certification and training programs
-- Sustainable funding model
+- **Grant program** for sponsored feature development
+- **Merchant support services** through partner network
+- **Certification and training programs** for developers and agencies
+- **Sustainable funding model** through memberships and partnerships
 
 ---
 
 ## Stay Updated
 
-- **Blog** - Release announcements and updates at [/blog](/blog)
-- **Discord** - Real-time discussions at [chat.mage-os.org](https://discord.com/invite/nvZDVA2NdC)
-- **GitHub** - Watch our repositories at [github.com/mage-os](https://github.com/mage-os)
-- **Newsletter** - Subscribe for updates (coming soon)
+| Channel | Purpose | Link |
+|---------|---------|------|
+| **Blog** | Release announcements, community updates | [/blog](/blog) |
+| **Discord** | Real-time discussions, support, weekly meetings | [chat.mage-os.org](https://discord.com/invite/nvZDVA2NdC) |
+| **GitHub** | Code, issues, discussions, contributions | [github.com/mage-os](https://github.com/mage-os) |
+| **Releases** | Download the latest Mage-OS Distribution | [/releases](/releases) |
 
 ---
 
 ## Questions?
 
-Have questions about the roadmap or want to discuss priorities?
+Have questions about the roadmap or want to discuss priorities? We'd love to hear from you.
 
-- Join our [Discord community](https://discord.com/invite/nvZDVA2NdC)
-- Open a [GitHub discussion](https://github.com/mage-os/mageos-magento2/discussions)
-- Email us at info@mage-os.org
+- **Real-time chat:** Join our [Discord community](https://discord.com/invite/nvZDVA2NdC)
+- **Async discussions:** Open a [GitHub discussion](https://github.com/mage-os/mageos-magento2/discussions)
+- **Direct contact:** Email us at [info@mage-os.org](mailto:info@mage-os.org)
+
+---
+
+**Ready to get started?** [Download Mage-OS 2.0](/get-started/quick-start) and join the community building the future of open-source commerce.

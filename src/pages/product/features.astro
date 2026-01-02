@@ -2,15 +2,17 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
 import FeaturesWidget from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
+import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 const metadata = {
-  title: 'Features',
+  title: 'Mage-OS Features | Performance, Security & Innovation',
   description:
-    'Explore Mage-OS features including performance optimization, advanced security, innovation tools, and full compatibility with Magento extensions.',
+    'Discover how Mage-OS Distribution delivers enhanced performance, enterprise-grade security, and community-driven innovation. 100% compatible with Magento extensions. Free and open source.',
 };
 ---
 
@@ -18,11 +20,11 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Features"
+    tagline="Mage-OS Distribution"
     actions={[
       {
         variant: 'primary',
-        text: 'Download Now',
+        text: 'Get Started',
         href: '/get-started/quick-start',
         icon: 'tabler:download',
       },
@@ -30,14 +32,21 @@ const metadata = {
     ]}
   >
     <Fragment slot="title">
-      Features That <span class="text-accent dark:text-white">Drive Results</span>
+      Built for <span class="text-accent dark:text-white">Performance</span>, Secured by <span class="text-accent dark:text-white">Community</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Mage-OS Distribution delivers the performance, security, and flexibility enterprises demand with the transparency,
-      accessibility, and agility only true open source provides.
+      Mage-OS Distribution is built on Magento 2.4.8-p3 with community-driven enhancements for performance, security, and developer experience.
+      100% compatible with existing Magento extensions. Free, open source, and ready for production.
     </Fragment>
   </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note
+    title="100% Upstream Compatible"
+    description="Migrate from Magento Open Source in minutes. Your existing extensions, themes, and customizations work without modification."
+  />
 
   <!-- Features Widget: Performance *************** -->
 
@@ -73,15 +82,28 @@ const metadata = {
       },
       {
         title: 'Back/Forward Cache',
-        description: 'bfcache support enables almost instant browser navigation for cacheable pages.',
+        description: 'bfcache support enables almost instant browser navigation for cacheable pages, improving Core Web Vitals.',
         icon: 'tabler:arrow-back-up',
       },
       {
         title: 'Speculative Preloading',
-        description: 'Intelligently preloads links before users click them for perceived instant navigation.',
+        description: 'Intelligently preloads links before users click them for perceived instant navigation and smoother UX.',
         icon: 'tabler:link',
       },
     ]}
+  />
+
+  <!-- Stats Widget ******************* -->
+
+  <Stats
+    title="Trusted by the Community"
+    stats={[
+      { title: 'Contributors', amount: '170+' },
+      { title: 'Compatible Extensions', amount: '5,000+' },
+      { title: 'Global Partners', amount: '60+' },
+      { title: 'Years in Development', amount: '3+' },
+    ]}
+    classes={{ container: 'bg-blue-50 dark:bg-transparent' }}
   />
 
   <!-- Features Widget: Security *************** -->
@@ -171,8 +193,9 @@ const metadata = {
 
   <!-- Content Widget: Comparison **************** -->
 
-  <Content id="comparison" tagline="Comparison" title="Feature Comparison" isReversed>
+  <Content id="comparison" tagline="Comparison" title="Choose the Right Platform for Your Business" isReversed>
     <Fragment slot="content">
+      <p class="mb-4 text-muted">See how Mage-OS compares to Magento Open Source and Adobe Commerce across key capabilities.</p>
       <div class="overflow-x-auto">
         <table class="min-w-full text-sm">
           <thead>
@@ -197,6 +220,12 @@ const metadata = {
               <td class="text-center py-3 px-4">Adobe schedule</td>
             </tr>
             <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">PCI DSS 4.0 Features</td>
+              <td class="text-center py-3 px-4 text-green-600">Included</td>
+              <td class="text-center py-3 px-4">Partial</td>
+              <td class="text-center py-3 px-4">Included</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
               <td class="py-3 px-4">Open Governance</td>
               <td class="text-center py-3 px-4 text-green-600">100% transparent</td>
               <td class="text-center py-3 px-4">Adobe-controlled</td>
@@ -215,10 +244,22 @@ const metadata = {
               <td class="text-center py-3 px-4">REST, GraphQL</td>
             </tr>
             <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">AI-Powered Translation</td>
+              <td class="text-center py-3 px-4 text-green-600">Built-in</td>
+              <td class="text-center py-3 px-4">Third-party</td>
+              <td class="text-center py-3 px-4">Third-party</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
               <td class="py-3 px-4">Community Contribution</td>
               <td class="text-center py-3 px-4 text-green-600">Open to all</td>
               <td class="text-center py-3 px-4">Limited</td>
               <td class="text-center py-3 px-4">Closed</td>
+            </tr>
+            <tr class="border-b dark:border-gray-700">
+              <td class="py-3 px-4">Vendor Lock-in</td>
+              <td class="text-center py-3 px-4 text-green-600">None</td>
+              <td class="text-center py-3 px-4">None</td>
+              <td class="text-center py-3 px-4">Adobe ecosystem</td>
             </tr>
             <tr class="border-b dark:border-gray-700">
               <td class="py-3 px-4 font-semibold">Cost</td>
@@ -229,6 +270,9 @@ const metadata = {
           </tbody>
         </table>
       </div>
+      <p class="mt-4 text-sm text-muted">
+        Want to understand the full value proposition? <a href="/product/why-mage-os" class="text-primary hover:underline">Learn why merchants and developers choose Mage-OS</a>.
+      </p>
     </Fragment>
 
     <Fragment slot="bg">
@@ -244,52 +288,55 @@ const metadata = {
     items={[
       {
         title: 'Simplified Setup',
-        description: 'Single-command installation and migration reduce setup time from hours to minutes.',
+        description: 'Single-command installation and migration reduce setup time from hours to minutes. See our Quick Start guide.',
         icon: 'tabler:terminal-2',
       },
       {
         title: 'Comprehensive Documentation',
-        description: 'Community-maintained docs cover installation, customization, and troubleshooting.',
+        description: 'Community-maintained docs cover installation, customization, API reference, and troubleshooting.',
         icon: 'tabler:book',
       },
       {
         title: 'Active Community Support',
-        description: 'Access forums, Discord, GitHub discussions, and global events.',
+        description: 'Access Discord, GitHub discussions, weekly tech meetings, and global events like Meet Magento.',
         icon: 'tabler:message-circle',
       },
       {
         title: 'Transparent Roadmap',
-        description: 'Public roadmaps and RFC processes let you plan and contribute to future features.',
+        description: 'Public roadmaps and RFC processes let you plan ahead and contribute to future features.',
         icon: 'tabler:map',
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
 
   <!-- Features2 Widget: Merchant Experience ************** -->
 
   <Features2
     title="Merchant Experience"
     tagline="For Merchants"
-    classes={{ container: 'bg-orange-50 dark:bg-transparent' }}
     items={[
       {
         title: 'Intuitive Admin Interface',
-        description: 'Streamlined admin panel reduces training time and improves daily operations.',
+        description: 'Streamlined admin panel reduces training time and improves daily operations for your team.',
         icon: 'tabler:dashboard',
       },
       {
         title: 'Multi-Store Management',
-        description: 'Manage multiple brands, languages, and currencies from a single installation.',
+        description: 'Manage multiple brands, languages, and currencies from a single installation with shared inventory.',
         icon: 'tabler:building-store',
       },
       {
         title: 'Advanced Catalog',
-        description: 'Unlimited products, categories, and attributes with bulk operations.',
+        description: 'Unlimited products, categories, and attributes with bulk operations and configurable products.',
         icon: 'tabler:category',
       },
       {
         title: 'Flexible Pricing',
-        description: 'Tier pricing, customer groups, catalog rules, and cart promotions.',
+        description: 'Tier pricing, customer groups, catalog rules, cart promotions, and coupon management built-in.',
         icon: 'tabler:tag',
       },
     ]}
@@ -301,18 +348,25 @@ const metadata = {
     actions={[
       {
         variant: 'primary',
-        text: 'Download Mage-OS',
+        text: 'Get Started Now',
         href: '/get-started/quick-start',
         icon: 'tabler:download',
       },
       {
-        text: 'View Documentation',
-        href: '/documentation',
+        text: 'Migration Guide',
+        href: '/get-started/migration-guide',
       },
     ]}
   >
-    <Fragment slot="title"> See Mage-OS in Action </Fragment>
+    <Fragment slot="title"> Ready to Experience the Difference? </Fragment>
 
-    <Fragment slot="subtitle"> Download the distribution and experience the difference for yourself. </Fragment>
+    <Fragment slot="subtitle">
+      Install Mage-OS in minutes with a single Composer command, or migrate your existing Magento store with our step-by-step guide.
+      Join the many merchants and developers building the future of open-source commerce.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
   </CallToAction>
 </Layout>
