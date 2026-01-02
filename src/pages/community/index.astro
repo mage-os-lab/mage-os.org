@@ -2,16 +2,23 @@
 import Layout from '~/layouts/PageLayout.astro';
 
 import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
+import Features3 from '~/components/widgets/Features3.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import Steps from '~/components/widgets/Steps.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
+import Content from '~/components/widgets/Content.astro';
+import Testimonials from '~/components/widgets/Testimonials.astro';
+import Pricing from '~/components/widgets/Pricing.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
 
 const metadata = {
-  title: 'Community',
+  title: 'Community | Mage-OS',
   description:
-    'Join the Mage-OS community. Contribute code, attend events, and connect with developers and merchants worldwide.',
+    'Join the Mage-OS community. Contribute code, attend events, and connect with developers and merchants worldwide. Open to all skill levels.',
 };
 ---
 
@@ -28,7 +35,7 @@ const metadata = {
         target: '_blank',
         icon: 'tabler:brand-discord',
       },
-      { text: 'View GitHub', href: 'https://github.com/mage-os', target: '_blank' },
+      { text: 'Become a Member', href: 'https://opencollective.com/mage-os', target: '_blank', icon: 'tabler:heart' },
     ]}
   >
     <Fragment slot="title">
@@ -37,20 +44,68 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      Mage-OS thrives because of contributions from people like you. Whether you're a developer, merchant, marketer, or
-      enthusiast—there's a place for you here.
+      Mage-OS thrives because of contributions from people like you. Whether you are a <strong>developer</strong> contributing code, an <strong>agency</strong> shaping the platform, or a <strong>merchant</strong> driving requirements—there is a place for you here. No experience required.
     </Fragment>
   </Hero>
+
+  <!-- Note Widget ******************* -->
+
+  <Note
+    title="Open, Positive, and Inclusive"
+    description="Our community welcomes everyone. Read our Code of Conduct to learn more about our values."
+    icon="tabler:heart-handshake"
+    callToAction={{ text: 'Read Code of Conduct', href: '/code-of-conduct' }}
+  />
 
   <!-- Stats Widget ****************** -->
 
   <Stats
     stats={[
-      { title: 'Financial Contributors', amount: '172+' },
-      { title: 'Community Members', amount: '81+' },
-      { title: 'Professional Members', amount: '67+' },
-      { title: 'Partner Companies', amount: '15+' },
+      { title: 'Financial Contributors', amount: '172+', icon: 'tabler:heart' },
+      { title: 'Community Members', amount: '81+', icon: 'tabler:users' },
+      { title: 'Professional Members', amount: '67+', icon: 'tabler:briefcase' },
+      { title: 'Partner Companies', amount: '15+', icon: 'tabler:building' },
     ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Stats>
+
+  <!-- Steps Widget: Getting Started Journey ****************** -->
+
+  <Steps
+    title="New to Mage-OS? Start Here"
+    tagline="Your First Steps"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Join the Conversation</span>',
+        description:
+          'Introduce yourself on Discord in the #general channel. Our community is welcoming and happy to help newcomers find their way.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Attend a Weekly Meeting</span>',
+        description:
+          'Join our Tuesday tech meeting at 3 PM CET. Listen in, ask questions, and learn how the project works. No prior experience needed.',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Find Your First Contribution</span>',
+        description:
+          'Look for "good first issue" labels on GitHub, help with documentation, or share your Mage-OS experience on social media.',
+        icon: 'tabler:git-pull-request',
+      },
+      {
+        title: 'Welcome to the Community!',
+        description: 'You are now part of a global network of developers, agencies, and merchants building the future of open-source commerce.',
+        icon: 'tabler:confetti',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Mage-OS Community Collaboration',
+    }}
   />
 
   <!-- Features Widget: Ways to Contribute *************** -->
@@ -58,12 +113,12 @@ const metadata = {
   <Features
     tagline="Get Involved"
     title="Ways to Contribute"
-    subtitle="Every contribution matters, from code to community support"
+    subtitle="Every contribution matters—from code to community support. Start anywhere that matches your skills and interests."
     items={[
       {
         title: 'Contribute Code',
         description:
-          'Submit pull requests, fix bugs, or develop new features. Our GitHub repositories are open to all contributors.',
+          'Submit pull requests for bug fixes, performance improvements, or new features. Recent contributions include PCI DSS 4.0 compliance, AI-powered translations, and PageBuilder enhancements.',
         icon: 'tabler:code',
         callToAction: {
           text: 'View GitHub',
@@ -72,40 +127,41 @@ const metadata = {
         },
       },
       {
-        title: 'Join Weekly Meetings',
+        title: 'Join Working Groups',
         description:
-          'Participate in our weekly tech meetings every Tuesday at 3 PM CET on Discord. Shape the future of Mage-OS.',
-        icon: 'tabler:calendar',
+          'Contribute to Technical or Documentation working groups. Led by experienced community members, these teams drive platform development and maintain DevDocs.',
+        icon: 'tabler:users-group',
         callToAction: {
-          text: 'Join Discord',
-          href: 'https://discord.com/invite/nvZDVA2NdC',
-          target: '_blank',
+          text: 'Meet Contributors',
+          href: '/about/contributors',
         },
       },
       {
         title: 'Become a Member',
         description:
-          'Support the project financially and get voting rights in our democratic governance. Individual and professional memberships available.',
-        icon: 'tabler:users',
+          'Support the project financially and gain voting rights in our democratic governance. Choose from Community, Professional, or Partner tiers.',
+        icon: 'tabler:heart',
         callToAction: {
-          text: 'Learn More',
-          href: '/about',
+          text: 'View Membership Options',
+          href: 'https://opencollective.com/mage-os',
+          target: '_blank',
         },
       },
       {
         title: 'Help with Documentation',
         description:
-          'Improve our developer documentation, write tutorials, or translate content for international users.',
+          'Improve installation guides, write module tutorials, document APIs, or translate content for international communities.',
         icon: 'tabler:book',
         callToAction: {
-          text: 'View Docs',
+          text: 'View DevDocs',
           href: 'https://devdocs.mage-os.org',
           target: '_blank',
         },
       },
       {
         title: 'Test & Report',
-        description: 'Test new releases, report bugs, and help us maintain high quality standards across the platform.',
+        description:
+          'Test new releases on your development environments, report bugs with reproduction steps, or help triage existing issues.',
         icon: 'tabler:bug',
         callToAction: {
           text: 'Report Issues',
@@ -114,50 +170,297 @@ const metadata = {
         },
       },
       {
-        title: 'Spread the Word',
+        title: 'Become a Brand Ambassador',
         description:
-          'Share your experience with Mage-OS, write blog posts, speak at events, or recommend us to colleagues.',
-        icon: 'tabler:speakerphone',
+          'Represent Mage-OS at events, create content, and help grow the community. Ambassadors receive exclusive swag and recognition.',
+        icon: 'tabler:award',
+        callToAction: {
+          text: 'Learn More',
+          href: '/about/brand-ambassador',
+        },
       },
     ]}
-  />
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
 
-  <!-- Steps2 Widget: Membership Tiers ****************** -->
+  <!-- Features3 Widget: Global Community ****************** -->
 
-  <Steps2
-    title="Membership Tiers"
-    subtitle="Support the project and get involved at the level that's right for you"
+  <Features3
+    title="A Global Community"
+    subtitle="Mage-OS brings together contributors from around the world. Join your local chapter or connect with the global community."
+    tagline="Local Chapters"
+    columns={4}
     items={[
       {
-        title: 'Community Member - €10/year',
-        description:
-          'Show your support and get voting rights in our association. Perfect for individual supporters who believe in open source.',
-        icon: 'tabler:user',
+        title: 'Netherlands',
+        description: 'The first formally founded Mage-OS local group, reviving the Dutch Magento community.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join NL',
+          href: 'https://nl.mage-os.org/',
+          target: '_blank',
+        },
       },
       {
-        title: 'Professional Member - €100/year',
-        description:
-          'For developers and professionals making a living with the Magento ecosystem. Enhanced visibility and influence.',
-        icon: 'tabler:briefcase',
+        title: 'Germany',
+        description: 'Active German-speaking community with regular meetups and contributions.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join DE',
+          href: 'https://discord.gg/sRwHmpTrJM',
+          target: '_blank',
+        },
       },
       {
-        title: 'Partner Companies',
+        title: 'France',
+        description: 'French Mage-OS community sharing knowledge and best practices.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join FR',
+          href: 'https://discord.gg/5KtfeRnfV8',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Italy',
+        description: 'Italian community connecting at local events and online.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join IT',
+          href: 'https://discord.gg/sNSZcD28qU',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Poland',
+        description: 'Growing Polish community with active Discord presence.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join PL',
+          href: 'https://discord.gg/aJna4V4EC4',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'UK & Ireland',
+        description: 'United Kingdom and Ireland Mage-OS community.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join UK',
+          href: 'https://discord.gg/NXdGxYHH7B',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'USA',
+        description: 'American community with presence at major Magento events.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join US',
+          href: 'https://discord.gg/Wam6pjhsTC',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'India',
+        description: 'Active Indian developer community contributing to Mage-OS.',
+        icon: 'tabler:flag',
+        callToAction: {
+          text: 'Join IN',
+          href: 'https://discord.gg/dA3PqgBDy9',
+          target: '_blank',
+        },
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features3>
+
+  <!-- Testimonials Widget ****************** -->
+
+  <Testimonials
+    title="Community Voices"
+    tagline="What Our Members Say"
+    testimonials={[
+      {
+        testimonial:
+          'Collaborating closely with Mage-OS is not just about securing our clients\' future; it\'s about actively shaping it, contributing to making Mage-OS even better.',
+        name: 'Ignacio Riesco',
+        job: 'CEO, Interactiv4',
+      },
+      {
+        testimonial:
+          'Making the decision to sponsor Mage-OS and become a gold partner was the easiest decision we\'ve made. We are very excited for the future of the Magento platform.',
+        name: 'Arron Moss',
+        job: 'Co-founder, MDOQ',
+      },
+      {
+        testimonial:
+          'The Mage-OS community represents the best of what open source can be—collaborative, innovative, and focused on delivering real value to merchants and developers alike.',
+        name: 'Vinai Kopp',
+        job: 'Mage-OS Founding Member',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Testimonials>
+
+  <!-- Content Widget: Community Culture ****************** -->
+
+  <Content
+    isReversed
+    tagline="Our Culture"
+    title="A Community That Welcomes Everyone"
+    items={[
+      {
+        title: 'Volunteer-Driven',
         description:
-          'Bronze (€1,250), Silver (€4,000), Gold (€10,000), Platinum (€25,000). Logo placement, partnership benefits, and maximum impact.',
-        icon: 'tabler:building',
+          'Our entire operation, including the board of directors, works on a volunteer basis. Every contribution makes a real difference.',
+        icon: 'tabler:heart-handshake',
+      },
+      {
+        title: 'Democratic Governance',
+        description:
+          'Members vote on resolutions, elect the board, and shape the project direction at our annual Assembly.',
+        icon: 'tabler:gavel',
+      },
+      {
+        title: 'Global Reach',
+        description:
+          'From New York to Poland to Italy—Mage-OS contributors connect at Meet Magento events worldwide.',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'Knowledge Sharing',
+        description:
+          'Community members freely share expertise through documentation, blog posts, and mentorship.',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1531545514256-b1400bc00f31?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80',
+      alt: 'Mage-OS Community Collaboration',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
+        From Magento's Roots to Mage-OS
+      </h3>
+      The Magento community has always been about sharing knowledge and collaboration. Since the early days of the platform, talented professionals have freely shared their expertise despite working for competing agencies and businesses. Mage-OS continues this tradition, reinvigorating open source commerce development.
+    </Fragment>
+  </Content>
+
+  <!-- Pricing Widget: Membership Tiers ****************** -->
+
+  <Pricing
+    title="Membership Tiers"
+    subtitle="Support the project and get involved at the level that's right for you. All members get voting rights in our democratic governance."
+    tagline="Join Us"
+    prices={[
+      {
+        title: 'Community',
+        subtitle: 'For individual supporters',
+        price: 10,
+        period: 'per year',
+        items: [
+          { description: 'Voting rights in elections and resolutions' },
+          { description: 'Membership badge for your profile' },
+          { description: 'Apply for grant funds' },
+          { description: 'Participate in the annual Assembly' },
+        ],
+        callToAction: {
+          text: 'Join as Community Member',
+          href: 'https://opencollective.com/mage-os/contribute/community-member-44722/checkout',
+          target: '_blank',
+        },
+      },
+      {
+        title: 'Professional',
+        subtitle: 'For Magento professionals',
+        price: 100,
+        period: 'per year',
+        items: [
+          { description: 'All Community Member benefits' },
+          { description: 'Professional badge and visibility' },
+          { description: 'Enhanced influence in governance' },
+          { description: 'LinkedIn profile listing' },
+        ],
+        callToAction: {
+          text: 'Join as Professional',
+          href: 'https://opencollective.com/mage-os/contribute/professional-44723/checkout',
+          target: '_blank',
+        },
+        hasRibbon: true,
+        ribbonTitle: 'Popular',
+      },
+      {
+        title: 'Partner',
+        subtitle: 'For businesses and agencies',
+        price: 1250,
+        period: 'and up / year',
+        items: [
+          { description: 'Bronze €1,250 | Silver €4,000' },
+          { description: 'Gold €10,000 | Platinum €25,000' },
+          { description: 'Logo placement on website' },
+          { description: 'Sponsor specific features' },
+        ],
+        callToAction: {
+          text: 'Become a Partner',
+          href: 'https://opencollective.com/mage-os/contribute/bronze-supporter-48131/checkout',
+          target: '_blank',
+        },
       },
     ]}
   />
+
+  <!-- Steps2 Widget: How Funds Are Used ****************** -->
+
+  <Steps2
+    title="How Your Support Makes an Impact"
+    subtitle="As a not-for-profit organization, we invest funds directly into the platform and community"
+    items={[
+      {
+        title: 'Platform Development',
+        description:
+          'Fund new features, performance improvements, and security enhancements in the Mage-OS Distribution.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Grant Programs',
+        description:
+          'Support agency and independent developers through grants to work on platform improvements.',
+        icon: 'tabler:gift',
+      },
+      {
+        title: 'Community Operations',
+        description:
+          'Enable infrastructure, events, documentation, and outreach to grow the ecosystem.',
+        icon: 'tabler:users-group',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps2>
 
   <!-- Features2 Widget: Connect ************** -->
 
   <Features2
     title="Connect With Us"
     tagline="Stay in Touch"
+    columns={4}
     items={[
       {
         title: 'Discord',
-        description: 'Real-time chat with community members and developers. Get help, share ideas, and collaborate.',
+        description: 'Real-time chat with community members and developers. Join #tech for development or #general for everything else.',
         icon: 'tabler:brand-discord',
         callToAction: {
           text: 'Join Server',
@@ -167,7 +470,7 @@ const metadata = {
       },
       {
         title: 'GitHub',
-        description: 'Browse source code, submit issues, and contribute pull requests to our repositories.',
+        description: 'Browse source code, submit issues, and contribute pull requests. Star the repo to show your support.',
         icon: 'tabler:brand-github',
         callToAction: {
           text: 'View Repos',
@@ -178,7 +481,7 @@ const metadata = {
       {
         title: 'Mage-OS Lab',
         description:
-          'Our innovation space where new ideas are tested and developed before joining the core distribution.',
+          'Our innovation space where new features are tested and developed before joining the core distribution.',
         icon: 'tabler:flask',
         callToAction: {
           text: 'Explore Lab',
@@ -187,46 +490,49 @@ const metadata = {
         },
       },
       {
-        title: 'Blog',
-        description: 'Stay updated with the latest news, releases, and community stories.',
-        icon: 'tabler:news',
+        title: 'LinkedIn',
+        description: 'Follow us for announcements, community highlights, job opportunities, and ecosystem news.',
+        icon: 'tabler:brand-linkedin',
         callToAction: {
-          text: 'Read Blog',
-          href: '/blog',
+          text: 'Follow Us',
+          href: 'https://www.linkedin.com/company/81885701',
+          target: '_blank',
         },
       },
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </Features2>
 
-  <!-- Features2 Widget: Events ************** -->
+  <!-- FAQs Widget: Community FAQ ******************* -->
 
-  <Features2
-    title="Community Events"
-    tagline="Meet Us"
+  <FAQs
+    title="Community Questions"
+    subtitle="Common questions about getting involved with Mage-OS"
+    tagline="FAQs"
+    classes={{ container: 'max-w-6xl' }}
     items={[
       {
-        title: 'Meet Magento Events',
-        description: 'Find Mage-OS contributors at Meet Magento events worldwide, from New York to Poland to Italy.',
-        icon: 'tabler:map-pin',
+        title: 'Do I need to be an experienced developer to contribute?',
+        description:
+          'Not at all! Contributions come in many forms: documentation, testing, translation, community support, marketing, and more. We welcome everyone regardless of technical skill level.',
       },
       {
-        title: 'Weekly Tech Meetings',
-        description: 'Every Tuesday at 3 PM CET on Discord. Open to everyone interested in Mage-OS development.',
-        icon: 'tabler:video',
+        title: 'What happens at the weekly tech meetings?',
+        description:
+          'Contributors discuss ongoing development, review pull requests, plan upcoming features, and help newcomers get oriented. Meetings are casual and welcoming—feel free to just listen at first.',
       },
       {
-        title: 'Local Chapters',
-        description: 'Regional communities meeting in person to share knowledge and build connections.',
-        icon: 'tabler:users-group',
+        title: 'How is Mage-OS governed?',
+        description:
+          'Mage-OS is a not-for-profit association with democratic governance. Members vote on resolutions, elect the board of directors, and participate in the annual Assembly. All board members serve on a volunteer basis.',
       },
       {
-        title: 'Hackathons',
-        description: 'Collaborative coding sessions where community members work together on improvements.',
-        icon: 'tabler:code',
+        title: 'What are the membership benefits beyond voting?',
+        description:
+          'Members can apply for grant funds to work on platform improvements, receive membership badges for their profiles, get listed on our website, and have a direct voice in shaping the project direction.',
       },
     ]}
   />
@@ -244,14 +550,20 @@ const metadata = {
       },
       {
         text: 'Become a Member',
-        href: '/about',
+        href: 'https://opencollective.com/mage-os',
+        target: '_blank',
+        icon: 'tabler:heart',
       },
     ]}
   >
     <Fragment slot="title"> Ready to Get Involved? </Fragment>
 
     <Fragment slot="subtitle">
-      Join thousands of developers and merchants building the future of open-source ecommerce together.
+      Join developers, agencies, and merchants worldwide who are building the future of open-source ecommerce together. Your skills matter. Your voice matters. <strong>Every contribution matters.</strong>
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
   </CallToAction>
 </Layout>

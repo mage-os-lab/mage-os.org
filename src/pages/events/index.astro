@@ -2,11 +2,16 @@
 import { getCollection } from 'astro:content';
 import Layout from '~/layouts/PageLayout.astro';
 import Hero from '~/components/widgets/Hero.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import Features from '~/components/widgets/Features.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import StructuredData from '~/components/common/StructuredData.astro';
+import { Icon } from 'astro-icon/components';
 
 const metadata = {
-  title: 'Events',
-  description: 'Upcoming and past Mage-OS and Magento community events worldwide.',
+  title: 'Events | Mage-OS Community',
+  description: 'Join the Mage-OS community at events worldwide. From Meet Magento conferences to weekly tech meetings on Discord, connect with merchants, developers, and agencies shaping the future of open-source commerce.',
 };
 
 // Get all events and sort by date
@@ -25,6 +30,30 @@ function formatDate(date: Date) {
     day: 'numeric',
   }).format(new Date(date));
 }
+
+// Event types for visual categorization
+const eventTypes = [
+  {
+    title: 'Meet Magento Conferences',
+    description: 'Regional conferences bringing together the global Magento ecosystem for talks, networking, and innovation.',
+    icon: 'tabler:users-group',
+  },
+  {
+    title: 'Hackathons & Contribution Days',
+    description: 'Hands-on events where developers collaborate on Mage-OS improvements and community projects.',
+    icon: 'tabler:code',
+  },
+  {
+    title: 'Weekly Tech Meetings',
+    description: 'Join our weekly Discord calls to discuss development, roadmap, and community initiatives.',
+    icon: 'tabler:calendar-repeat',
+  },
+  {
+    title: 'Local Meetups',
+    description: 'Community-organized gatherings in cities around the world for networking and knowledge sharing.',
+    icon: 'tabler:map-pin',
+  },
+];
 ---
 
 <Layout metadata={metadata}>
@@ -51,63 +80,180 @@ function formatDate(date: Date) {
     ))
   }
 
-  <Hero tagline="Events">
+  <Hero
+    tagline="Connect & Collaborate"
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Join Weekly Meetings',
+        href: 'https://discord.gg/mage-os',
+        icon: 'tabler:brand-discord',
+        target: '_blank',
+      },
+      {
+        text: 'View Community Calendar',
+        href: 'https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com',
+        icon: 'tabler:calendar',
+        target: '_blank',
+      },
+    ]}
+  >
     <Fragment slot="title">
-      Community<br />
-      <span class="text-accent dark:text-white">Events</span>
+      Community <span class="text-accent dark:text-white">Events</span>
     </Fragment>
 
     <Fragment slot="subtitle">
-      Meet the Mage-OS community at events worldwide. From Meet Magento conferences to local hackathons, there's always
-      something happening.
+      From Meet Magento conferences across the globe to weekly tech meetings on Discord, the Mage-OS community gathers to share knowledge, build connections, and shape the future of open-source commerce. Whether you are a merchant exploring solutions, a developer contributing code, or an agency scaling implementations, there is an event for you.
     </Fragment>
   </Hero>
 
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 lg:py-20 max-w-6xl">
+  <!-- Global Community Stats -->
+  <Stats
+    title="A Truly Global Community"
+    subtitle="Mage-OS events bring together commerce professionals from around the world"
+    stats={[
+      { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
+      { title: 'Events Per Year', amount: '50+', icon: 'tabler:calendar-event' },
+      { title: 'Weekly Tech Meetings', amount: '52', icon: 'tabler:brand-discord' },
+      { title: 'Community Members', amount: '5K+', icon: 'tabler:users' },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Stats>
+
+  <!-- Weekly Tech Meetings Highlight -->
+  <section class="bg-orange-50 dark:bg-slate-800 not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="flex items-center gap-4">
+          <div class="bg-primary/10 dark:bg-primary/20 p-3 rounded-full">
+            <Icon name="tabler:calendar-repeat" class="w-8 h-8 text-primary dark:text-blue-400" />
+          </div>
+          <div>
+            <h2 class="text-xl font-bold dark:text-white">Weekly Tech Meetings</h2>
+            <p class="text-gray-600 dark:text-slate-400">
+              Join us every week on Discord to discuss development, roadmap priorities, and community initiatives.
+            </p>
+          </div>
+        </div>
+        <a
+          href="https://discord.gg/mage-os"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-colors whitespace-nowrap"
+        >
+          <Icon name="tabler:brand-discord" class="w-5 h-5" />
+          Join on Discord
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Attend Section -->
+  <Features
+    title="Why Attend Mage-OS Events?"
+    subtitle="Our events offer unique opportunities to grow your skills, expand your network, and contribute to the open-source commerce ecosystem."
+    columns={3}
+    items={[
+      {
+        title: 'Learn From Experts',
+        description: 'Gain insights from industry leaders, core contributors, and experienced practitioners sharing real-world knowledge.',
+        icon: 'tabler:school',
+      },
+      {
+        title: 'Network Globally',
+        description: 'Connect with merchants, developers, and agencies from around the world who share your passion for open-source commerce.',
+        icon: 'tabler:network',
+      },
+      {
+        title: 'Shape the Future',
+        description: 'Participate in discussions that influence the Mage-OS roadmap and contribute to community-driven innovation.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Hands-On Experience',
+        description: 'Join hackathons and contribution days to collaborate on real projects and improve your technical skills.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Stay Current',
+        description: 'Keep up with the latest developments, best practices, and emerging trends in the Magento ecosystem.',
+        icon: 'tabler:trending-up',
+      },
+      {
+        title: 'Find Partners',
+        description: 'Discover agencies, technology providers, and collaborators who can help you achieve your commerce goals.',
+        icon: 'tabler:handshake',
+      },
+    ]}
+  />
+
+  <!-- Event Types Section -->
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-6xl bg-orange-50 dark:bg-slate-800/30 rounded-xl my-8">
+    <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-8 text-center">Types of Events</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {eventTypes.map((type) => (
+        <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+          <div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full inline-block mb-4">
+            <Icon name={type.icon} class="w-8 h-8 text-primary dark:text-blue-400" />
+          </div>
+          <h3 class="text-lg font-semibold dark:text-white mb-2">{type.title}</h3>
+          <p class="text-gray-600 dark:text-slate-400 text-sm">{type.description}</p>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <section class="px-4 py-8 sm:px-6 mx-auto lg:px-8 lg:py-12 max-w-6xl">
     {
       upcomingEvents.length > 0 && (
         <section class="mb-16" aria-labelledby="upcoming-events-heading">
-          <h2 id="upcoming-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Upcoming Events</h2>
+          <h2 id="upcoming-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
+            Upcoming Events
+          </h2>
           <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
             {upcomingEvents.map((event) => (
-              <article class="bg-white dark:bg-slate-800 rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow border border-gray-200 dark:border-slate-700" role="listitem">
-                <div class="text-sm text-primary dark:text-blue-400 font-medium mb-2">
-                  {formatDate(event.data.date)}
-                </div>
-                <h3 class="text-xl font-semibold mb-2 dark:text-white">{event.data.title}</h3>
-                {event.data.location && (
-                  <p class="text-gray-600 dark:text-slate-400 text-sm mb-2">
-                    <span class="inline-flex items-center">
-                      <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-                        <title>Location</title>
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-                        />
-                        <path
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-                        />
-                      </svg>
-                      {event.data.location}
+              <article class="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-slate-700 overflow-hidden" role="listitem">
+                <div class="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-slate-700 p-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-semibold text-primary dark:text-blue-400">
+                      {formatDate(event.data.date)}
                     </span>
-                  </p>
-                )}
-                {event.data.excerpt && <p class="text-gray-600 dark:text-slate-400 text-sm">{event.data.excerpt}</p>}
-                {event.data.url && (
-                  <a
-                    href={event.data.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="mt-4 inline-block text-primary dark:text-blue-400 font-medium text-sm hover:underline"
-                  >
-                    Learn more &rarr;
-                  </a>
-                )}
+                    {event.data.location && (
+                      <span class="inline-flex items-center text-xs text-gray-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/50 px-2 py-1 rounded-full">
+                        <Icon name="tabler:map-pin" class="w-3 h-3 mr-1" />
+                        In-Person
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-3 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                    {event.data.title}
+                  </h3>
+                  {event.data.location && (
+                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-3 flex items-center">
+                      <Icon name="tabler:map-pin" class="w-4 h-4 mr-2 text-gray-400 dark:text-slate-500" />
+                      {event.data.location}
+                    </p>
+                  )}
+                  {event.data.excerpt && (
+                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">{event.data.excerpt}</p>
+                  )}
+                  {event.data.url && (
+                    <a
+                      href={event.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center text-primary dark:text-blue-400 font-medium text-sm hover:underline group-hover:gap-2 transition-all"
+                    >
+                      View Details
+                      <Icon name="tabler:arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    </a>
+                  )}
+                </div>
               </article>
             ))}
           </div>
@@ -117,11 +263,32 @@ function formatDate(date: Date) {
 
     {
       upcomingEvents.length === 0 && (
-        <div class="mb-16 text-center py-12 bg-gray-50 dark:bg-slate-800 rounded-lg">
-          <h2 class="text-2xl font-bold tracking-tight dark:text-white mb-4">No Upcoming Events</h2>
-          <p class="text-gray-600 dark:text-slate-400">
-            Check back soon for new events, or browse our past events below.
+        <div class="mb-16 text-center py-16 bg-gradient-to-br from-gray-50 to-orange-50/50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl border border-gray-200 dark:border-slate-700">
+          <Icon name="tabler:calendar-off" class="w-16 h-16 mx-auto text-gray-300 dark:text-slate-600 mb-4" />
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white mb-4">No Scheduled Events</h2>
+          <p class="text-gray-600 dark:text-slate-400 mb-6 max-w-md mx-auto">
+            Check back soon for new events, or join our weekly Discord meetings to stay connected with the community.
           </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="https://discord.gg/mage-os"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+            >
+              <Icon name="tabler:brand-discord" class="w-5 h-5" />
+              Join Discord
+            </a>
+            <a
+              href="https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-700 font-medium px-6 py-3 rounded-lg transition-colors dark:text-white"
+            >
+              <Icon name="tabler:calendar" class="w-5 h-5" />
+              View Community Calendar
+            </a>
+          </div>
         </div>
       )
     }
@@ -129,16 +296,22 @@ function formatDate(date: Date) {
     {
       pastEvents.length > 0 && (
         <section aria-labelledby="past-events-heading">
-          <h2 id="past-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">Past Events</h2>
+          <h2 id="past-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
+            Past Events
+          </h2>
           <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list">
             {pastEvents.map((event) => (
-              <article class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-4 border border-gray-200 dark:border-slate-700" role="listitem">
-                <div class="text-xs text-gray-500 dark:text-slate-500 font-medium mb-1">
+              <article class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-5 border border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 transition-colors" role="listitem">
+                <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-500 font-medium mb-2">
+                  <Icon name="tabler:calendar" class="w-4 h-4" />
                   {formatDate(event.data.date)}
                 </div>
-                <h3 class="text-lg font-medium dark:text-white">{event.data.title}</h3>
+                <h3 class="text-lg font-semibold dark:text-white">{event.data.title}</h3>
                 {event.data.location && (
-                  <p class="text-gray-500 dark:text-slate-500 text-sm mt-1">{event.data.location}</p>
+                  <p class="text-gray-500 dark:text-slate-500 text-sm mt-2 flex items-center">
+                    <Icon name="tabler:map-pin" class="w-4 h-4 mr-1" />
+                    {event.data.location}
+                  </p>
                 )}
               </article>
             ))}
@@ -146,5 +319,145 @@ function formatDate(date: Date) {
         </section>
       )
     }
+  </section>
+
+  <!-- Recent Event Highlights -->
+  <section class="bg-blue-50 dark:bg-slate-800/50 not-prose">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 py-12 lg:py-16">
+      <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-4 text-center">Recent Event Highlights</h2>
+      <p class="text-gray-600 dark:text-slate-400 text-center max-w-3xl mx-auto mb-10">
+        The Magento community continues to demonstrate its dedication to innovation, sustainability, and open collaboration at events worldwide.
+      </p>
+      <div class="grid gap-6 md:grid-cols-2">
+        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-slate-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-orange-100 dark:bg-orange-900/30 p-2 rounded-lg">
+              <Icon name="tabler:map-pin" class="w-6 h-6 text-orange-600 dark:text-orange-400" />
+            </div>
+            <div>
+              <h3 class="font-bold dark:text-white">Meet Magento Poland 2024</h3>
+              <p class="text-sm text-gray-500 dark:text-slate-500">Poznan, Poland</p>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">
+            Focused on "Need for Speed," this event emphasized balancing high-performance eCommerce with sustainability. The "Future of Magento Open Source vol. 2" panel highlighted the collaboration between the Magento Association and Mage-OS.
+          </p>
+          <p class="text-primary dark:text-blue-400 font-medium text-sm">#MagentoOpenForLife</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-slate-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-blue-100 dark:bg-blue-900/30 p-2 rounded-lg">
+              <Icon name="tabler:map-pin" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+            </div>
+            <div>
+              <h3 class="font-bold dark:text-white">Meet Magento NYC 2024</h3>
+              <p class="text-sm text-gray-500 dark:text-slate-500">New York, USA</p>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">
+            Adobe acknowledged the critical role Magento Open Source plays in their strategy, emphasizing community-led prioritization. Mathias Schreiber of the Magento Association called for more active participation in shaping the platform's future.
+          </p>
+          <p class="text-primary dark:text-blue-400 font-medium text-sm">Community-Driven Innovation</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-slate-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
+              <Icon name="tabler:map-pin" class="w-6 h-6 text-green-600 dark:text-green-400" />
+            </div>
+            <div>
+              <h3 class="font-bold dark:text-white">MageTitans Groningen 2024</h3>
+              <p class="text-sm text-gray-500 dark:text-slate-500">Netherlands</p>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">
+            After a five-year break, MageTitans returned to the Netherlands offering an exciting mix of technical talks and community networking, including the unveiling of MageWire Version 3.
+          </p>
+          <p class="text-primary dark:text-blue-400 font-medium text-sm">Code, Community, and Career</p>
+        </div>
+        <div class="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-md border border-gray-200 dark:border-slate-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="bg-purple-100 dark:bg-purple-900/30 p-2 rounded-lg">
+              <Icon name="tabler:map-pin" class="w-6 h-6 text-purple-600 dark:text-purple-400" />
+            </div>
+            <div>
+              <h3 class="font-bold dark:text-white">Magentiamo Day 2024</h3>
+              <p class="text-sm text-gray-500 dark:text-slate-500">Italy</p>
+            </div>
+          </div>
+          <p class="text-gray-600 dark:text-slate-400 text-sm mb-4">
+            After a three-year hiatus, the Italian Magento community came together highlighting the resurgence of interest in Magento Open Source, with significant contributions from Mage-OS and Hyva projects.
+          </p>
+          <p class="text-primary dark:text-blue-400 font-medium text-sm">Italian Magento Revival</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs Section -->
+  <FAQs
+    title="Frequently Asked Questions"
+    subtitle="Everything you need to know about attending and participating in Mage-OS community events."
+    columns={2}
+    items={[
+      {
+        title: 'How can I attend a Meet Magento conference?',
+        description: 'Meet Magento conferences are organized regionally by local community members. Visit the specific event website for registration details and ticket information. Many events offer early bird pricing and community discounts.',
+      },
+      {
+        title: 'What are the weekly tech meetings?',
+        description: 'Every week, the Mage-OS community holds open tech meetings on Discord where developers and contributors discuss ongoing development, roadmap priorities, and community initiatives. Anyone is welcome to join and participate.',
+      },
+      {
+        title: 'How can I organize a local Mage-OS event?',
+        description: 'We encourage community members to organize local meetups and events. Contact us at events@mage-os.org for support, promotional materials, and guidance on hosting a successful Mage-OS gathering.',
+      },
+      {
+        title: 'Are events in-person only or also virtual?',
+        description: 'Most major conferences are in-person events, while our weekly tech meetings are held virtually on Discord. Some events also offer hybrid formats with live streaming for remote attendees.',
+      },
+      {
+        title: 'How do I become a speaker at a Mage-OS event?',
+        description: 'Most events have a call for papers or speaker application process. Watch for announcements on our calendar and community channels. We welcome speakers of all experience levels sharing valuable insights.',
+      },
+      {
+        title: 'How do I subscribe to the community calendar?',
+        description: 'You can subscribe to our Google Calendar maintained by Simon Sprankel to stay updated on all upcoming Mage-OS and Magento community events worldwide. The subscribe link is available at the top of this page.',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </FAQs>
+
+  <!-- Submit Event CTA -->
+  <CallToAction
+    title="Have an Event to Share?"
+    subtitle="Organizing a Magento or Mage-OS related event? We would love to help spread the word. Submit your event to be featured on our calendar and reach the global community."
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Submit an Event',
+        href: 'mailto:events@mage-os.org',
+        icon: 'tabler:mail',
+      },
+      {
+        text: 'Subscribe to Calendar',
+        href: 'https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com',
+        icon: 'tabler:calendar',
+        target: '_blank',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </CallToAction>
+
+  <!-- Community Note -->
+  <section class="px-4 py-8 sm:px-6 mx-auto lg:px-8 max-w-6xl text-center">
+    <p class="text-sm text-gray-500 dark:text-slate-500">
+      Community calendar maintained by Simon Sprankel. Thank you for supporting the Mage-OS community!
+    </p>
   </section>
 </Layout>
