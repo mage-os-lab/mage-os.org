@@ -71,7 +71,11 @@ export default defineConfig({
   ],
 
   image: {
-    domains: ['images.unsplash.com'], // TODO: Remove when Unsplash placeholders are replaced
+    domains: [
+      'images.unsplash.com', // TODO: Remove when Unsplash placeholders are replaced
+      'opencollective-production.s3.us-west-1.amazonaws.com', // Open Collective partner logos
+      'images.opencollective.com', // Open Collective CDN
+    ],
   },
 
   markdown: {
@@ -79,8 +83,8 @@ export default defineConfig({
     rehypePlugins: [responsiveTablesRehypePlugin, lazyImagesRehypePlugin],
     shikiConfig: {
       themes: {
-        light: 'github-light',
-        dark: 'github-dark',
+        light: 'one-light',
+        dark: 'dracula',
       },
     },
   },
