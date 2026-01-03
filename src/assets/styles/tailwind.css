@@ -85,10 +85,17 @@
   padding: 0 5px;
 }
 
+/* Dropdown focus states work on all screen sizes for accessibility */
 .dropdown:focus .dropdown-menu,
-.dropdown:focus-within .dropdown-menu,
-.dropdown:hover .dropdown-menu {
+.dropdown:focus-within .dropdown-menu {
   display: block;
+}
+
+/* Dropdown hover only on large screens (desktop) */
+@media (min-width: 1024px) {
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
 }
 
 [astro-icon].icon-light > * {

@@ -85,7 +85,7 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
       aria-label="Main navigation"
     >
       <!-- Mobile menu header - only visible on mobile -->
-      <div class="lg:hidden w-full pt-4 pb-2 px-2 mb-2 border-b border-gray-200 dark:border-slate-700">
+      <div class="lg:hidden w-full pt-8 pb-2 px-2 mb-2 border-b border-gray-200 dark:border-slate-700">
         <span class="text-xs font-semibold uppercase tracking-wider text-muted">Navigation</span>
       </div>
       <ul
@@ -96,17 +96,44 @@ const currentPath = `/${trimSlash(new URL(Astro.url).pathname)}`;
             <li class={links?.length ? 'dropdown' : ''}>
               {links?.length ? (
                 <>
+                  {/* Mobile: parent link + separate toggle button */}
+                  <div class="flex items-center lg:hidden border-b border-gray-100 dark:border-slate-800">
+                    <a
+                      class:list={[
+                        'hover:text-link dark:hover:text-white pl-4 pr-2 py-3.5 flex-1 whitespace-nowrap',
+                        { 'aw-link-active': href === currentPath },
+                      ]}
+                      href={href}
+                    >
+                      {text}
+                    </a>
+                    <button
+                      type="button"
+                      class="hover:text-link dark:hover:text-white p-3.5 flex items-center justify-center"
+                      aria-expanded="false"
+                      aria-haspopup="menu"
+                      aria-label={`Toggle ${text} submenu`}
+                      data-aw-mobile-dropdown
+                    >
+                      <Icon
+                        name="tabler:chevron-down"
+                        class="w-5 h-5 transition-transform duration-200"
+                        aria-hidden="true"
+                      />
+                    </button>
+                  </div>
+                  {/* Desktop: hover-based dropdown */}
                   <button
                     type="button"
-                    class="hover:text-link dark:hover:text-white px-4 py-3.5 lg:py-3 flex items-center whitespace-nowrap w-full lg:w-auto border-b border-gray-100 dark:border-slate-800 lg:border-0"
+                    class="hidden lg:flex hover:text-link dark:hover:text-white px-4 py-3 items-center whitespace-nowrap"
                     aria-expanded="false"
                     aria-haspopup="menu"
-                    data-aw-mobile-dropdown
+                    data-aw-desktop-dropdown
                   >
                     {text}{' '}
                     <Icon
                       name="tabler:chevron-down"
-                      class="w-4 h-4 lg:w-3.5 lg:h-3.5 ml-auto lg:ml-0.5 rtl:ml-0 rtl:mr-0.5 transition-transform duration-200"
+                      class="w-3.5 h-3.5 ml-0.5 rtl:ml-0 rtl:mr-0.5 transition-transform duration-200"
                       aria-hidden="true"
                     />
                   </button>
