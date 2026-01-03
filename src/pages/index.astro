@@ -8,6 +8,7 @@ import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import UpcomingEvents from '~/components/widgets/UpcomingEvents.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
@@ -70,6 +71,17 @@ const metadata = {
       <div class="absolute inset-0 bg-slate-50 dark:bg-slate-800/50"></div>
     </Fragment>
   </BlogLatestPosts>
+
+  <!-- Upcoming Events Widget ******** -->
+
+  <UpcomingEvents
+    title="Upcoming Events"
+    daysAhead={90}
+  >
+    <Fragment slot="subtitle">
+      Meet the Mage-OS community at conferences and meetups around the world.
+    </Fragment>
+  </UpcomingEvents>
 
   <!-- Features Widget *************** -->
 

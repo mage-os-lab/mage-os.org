@@ -1,0 +1,120 @@
+---
+import { getCollection } from 'astro:content';
+import { Icon } from 'astro-icon/components';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Button from '~/components/ui/Button.astro';
+import type { Widget } from '~/types';
+
+export interface Props extends Widget {
+  title?: string;
+  subtitle?: string;
+  linkText?: string;
+  linkUrl?: string | URL;
+  daysAhead?: number;
+}
+
+const {
+  title = 'Upcoming Events',
+  subtitle = await Astro.slots.render('subtitle'),
+  linkText = 'View all events',
+  linkUrl = '/events',
+  daysAhead = 90,
+
+  id,
+  isDark = false,
+  classes = {},
+  bg = await Astro.slots.render('bg'),
+} = Astro.props;
+
+// Get all events
+const allEvents = await getCollection('event');
+const now = new Date();
+const cutoffDate = new Date(now.getTime() + daysAhead * 24 * 60 * 60 * 1000);
+
+// Filter events within the next N days and sort by date (soonest first)
+const upcomingEvents = allEvents
+  .filter((event) => {
+    const eventDate = new Date(event.data.eventDate);
+    return eventDate >= now && eventDate <= cutoffDate && !event.data.draft;
+  })
+  .sort((a, b) => new Date(a.data.eventDate).getTime() - new Date(b.data.eventDate).getTime());
+
+function formatDate(date: Date) {
+  return new Intl.DateTimeFormat('en-US', {
+    month: 'short',
+    day: 'numeric',
+  }).format(new Date(date));
+}
+
+function formatDateRange(startDate: Date, endDate?: Date) {
+  const start = formatDate(startDate);
+  if (!endDate || endDate.getTime() === startDate.getTime()) {
+    return start;
+  }
+  return `${start} - ${formatDate(endDate)}`;
+}
+---
+
+{
+  upcomingEvents.length > 0 && (
+    <WidgetWrapper id={id} isDark={isDark} containerClass={classes?.container as string} bg={bg}>
+      <div class="flex flex-col lg:justify-between lg:flex-row mb-8">
+        {title && (
+          <div class="md:max-w-sm">
+            <h2
+              class="text-3xl font-bold tracking-tight sm:text-4xl sm:leading-none group font-heading mb-2"
+              set:html={title}
+            />
+            {linkText && linkUrl && (
+              <Button variant="link" href={linkUrl}>
+                {linkText} »
+              </Button>
+            )}
+          </div>
+        )}
+
+        {subtitle && <p class="text-muted dark:text-slate-400 lg:text-sm lg:max-w-md" set:html={subtitle} />}
+      </div>
+
+      <div class="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {upcomingEvents.map((event) => (
+          <a
+            href={event.data.url || '/events'}
+            target={event.data.url ? '_blank' : undefined}
+            rel={event.data.url ? 'noopener noreferrer' : undefined}
+            class="group flex gap-4 p-4 bg-white dark:bg-slate-800 rounded-lg border border-gray-200 dark:border-slate-700 hover:border-primary dark:hover:border-blue-400 hover:shadow-md transition-all"
+          >
+            <div class="flex-shrink-0 flex flex-col items-center justify-center bg-primary/10 dark:bg-primary/20 rounded-lg p-3 min-w-[70px]">
+              <span class="text-xs font-medium text-primary dark:text-blue-400 uppercase">
+                {new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(event.data.eventDate))}
+              </span>
+              <span class="text-2xl font-bold text-primary dark:text-blue-400">
+                {new Date(event.data.eventDate).getDate()}
+              </span>
+            </div>
+            <div class="flex-1 min-w-0">
+              <h3 class="font-semibold text-gray-900 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors truncate">
+                {event.data.title}
+              </h3>
+              {event.data.location && (
+                <p class="text-sm text-gray-500 dark:text-slate-400 mt-1 flex items-center truncate">
+                  <Icon name="tabler:map-pin" class="w-4 h-4 mr-1 flex-shrink-0" />
+                  <span class="truncate">{event.data.location}</span>
+                </p>
+              )}
+              {event.data.endDate && event.data.endDate.getTime() !== event.data.eventDate.getTime() && (
+                <p class="text-xs text-gray-400 dark:text-slate-500 mt-1">
+                  {formatDateRange(event.data.eventDate, event.data.endDate)}
+                </p>
+              )}
+            </div>
+            <Icon
+              name="tabler:chevron-right"
+              class="w-5 h-5 text-gray-400 dark:text-slate-500 group-hover:text-primary dark:group-hover:text-blue-400 transition-colors flex-shrink-0 self-center"
+            />
+          </a>
+        ))}
+      </div>
+    </WidgetWrapper>
+  )
+}
