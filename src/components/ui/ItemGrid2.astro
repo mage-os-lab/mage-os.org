@@ -32,22 +32,50 @@ const {
         containerClass
       )}
     >
-      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => (
-        <div class={twMerge('relative flex flex-col', panelClass, itemClasses?.panel)}>
-          {(icon || defaultIcon) && (
-            <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
-          )}
-          <div class={twMerge('text-xl font-bold', titleClass, itemClasses?.title)}>{title}</div>
-          {description && (
-            <p class={twMerge('text-muted mt-2', descriptionClass, itemClasses?.description)} set:html={description} />
-          )}
-          {callToAction && (
-            <div class="mt-2">
-              <Button {...callToAction} />
+      {items.map(({ title, description, icon, callToAction, classes: itemClasses = {} }) => {
+        const hasLink = callToAction?.href;
+        const CardWrapper = hasLink ? 'a' : 'div';
+        const wrapperProps = hasLink
+          ? {
+              href: callToAction.href,
+              target: callToAction.target,
+              rel: callToAction.target === '_blank' ? 'noopener noreferrer' : undefined,
+            }
+          : {};
+
+        return (
+          <CardWrapper
+            {...wrapperProps}
+            class={twMerge(
+              'relative flex flex-col h-full',
+              hasLink && 'group cursor-pointer transition-transform duration-200 hover:scale-[1.02]',
+              panelClass,
+              itemClasses?.panel
+            )}
+          >
+            {(icon || defaultIcon) && (
+              <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
+            )}
+            <div class={twMerge('text-xl font-bold', hasLink && 'group-hover:text-primary transition-colors', titleClass, itemClasses?.title)}>
+              {title}
             </div>
-          )}
-        </div>
-      ))}
+            {description && (
+              <p class={twMerge('text-muted mt-2 flex-grow', descriptionClass, itemClasses?.description)} set:html={description} />
+            )}
+            {callToAction && (
+              <div class="mt-3 flex items-center">
+                <span class="text-primary font-medium group-hover:underline">
+                  {callToAction.text}
+                </span>
+                <Icon
+                  name="tabler:chevron-right"
+                  class="w-7 h-7 text-gray-400 dark:text-slate-500 group-hover:text-primary transition-colors flex-shrink-0 ml-auto"
+                />
+              </div>
+            )}
+          </CardWrapper>
+        );
+      })}
     </div>
   )
 }
