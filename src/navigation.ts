@@ -24,17 +24,21 @@ export const headerData = {
       ],
     },
     {
-      text: 'Documentation',
+      text: 'Learn',
       href: 'https://devdocs.mage-os.org',
+      links: [
+        { text: 'User Guide', href: 'https://docs.magento-opensource.com/' },
+        { text: 'Developer Docs', href: 'https://devdocs.mage-os.org' },
+      ],
     },
     {
       text: 'Community',
       href: getPermalink('/community'),
       links: [
         { text: 'Overview', href: getPermalink('/community') },
-        { text: 'Events', href: getPermalink('/events') },
         { text: 'Get Involved', href: getPermalink('/community#get-involved') },
         { text: 'Partners', href: getPermalink('/community/partners') },
+        { text: 'Events', href: getPermalink('/events') },
         { text: 'Apparel', href: getPermalink('/community/apparel') },
         { text: 'GitHub', href: 'https://github.com/mage-os' },
         { text: 'Discord', href: getPermalink('/discord-channel') },
