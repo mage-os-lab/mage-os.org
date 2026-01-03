@@ -10,7 +10,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
-import { getCommunityStats } from '~/utils/openCollective';
+import { getCommunityStats, formatContributions } from '~/utils/openCollective';
 
 const communityStats = await getCommunityStats();
 
@@ -55,7 +55,7 @@ const metadata = {
     stats={[
       { title: 'Open Letter Signers', amount: '1,641' },
       { title: 'Financial Contributors', amount: `${communityStats.totalContributors}+` },
-      { title: 'Total Contributions', amount: '106K+', icon: 'tabler:currency-euro' },
+      { title: 'Total Contributions', amount: formatContributions(communityStats.totalContributions), icon: 'tabler:currency-euro' },
       { title: 'Years Building Together', amount: '3+' },
     ]}
   />

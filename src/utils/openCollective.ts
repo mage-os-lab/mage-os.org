@@ -262,6 +262,7 @@ export interface CommunityStats {
   communityMembers: number;
   professionalMembers: number;
   partnerCompanies: number;
+  totalContributions: number;
 }
 
 // Fetch community stats from Open Collective (includes all contributors, active and past)
@@ -296,11 +297,21 @@ export async function getCommunityStats(): Promise<CommunityStats> {
     // Total unique contributors (all tiers including one-time donors with null tier)
     const totalContributors = validMembers.length;
 
+    // Calculate total contributions from unique members (by MemberId to avoid double-counting)
+    const uniqueMembers = new Map<number, number>();
+    for (const member of validMembers) {
+      const existing = uniqueMembers.get(member.MemberId) || 0;
+      // Take the max in case same member appears in multiple tiers
+      uniqueMembers.set(member.MemberId, Math.max(existing, member.totalAmountDonated));
+    }
+    const totalContributions = Array.from(uniqueMembers.values()).reduce((sum, amount) => sum + amount, 0);
+
     return {
       totalContributors,
       communityMembers,
       professionalMembers,
       partnerCompanies,
+      totalContributions,
     };
   } catch (error) {
     console.error('[Stats] Failed to fetch community stats:', error);
@@ -315,7 +326,18 @@ function getDefaultStats(): CommunityStats {
     communityMembers: 80,
     professionalMembers: 65,
     partnerCompanies: 10,
+    totalContributions: 106000,
   };
+}
+
+// Format contributions as a readable string (e.g., "€106K+")
+export function formatContributions(amount: number): string {
+  if (amount >= 1000000) {
+    return `€${(amount / 1000000).toFixed(1)}M+`;
+  } else if (amount >= 1000) {
+    return `€${Math.floor(amount / 1000)}K+`;
+  }
+  return `€${amount}+`;
 }
 
 // Individual member types

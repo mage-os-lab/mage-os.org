@@ -10,7 +10,7 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
-import { getCommunityStats } from '~/utils/openCollective';
+import { getCommunityStats, formatContributions } from '~/utils/openCollective';
 
 const stats = await getCommunityStats();
 
@@ -122,7 +122,7 @@ const metadata = {
   <Stats
     stats={[
       { title: 'Financial Contributors', amount: `${stats.totalContributors}+` },
-      { title: 'Total Contributions', amount: '€106K+' },
+      { title: 'Total Contributions', amount: formatContributions(stats.totalContributions) },
       { title: 'Community Members', amount: `${stats.communityMembers}+` },
       { title: 'Professional Members', amount: `${stats.professionalMembers}+` },
     ]}

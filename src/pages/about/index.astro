@@ -11,7 +11,7 @@ import Stats from '~/components/widgets/Stats.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import { getCommunityStats } from '~/utils/openCollective';
+import { getCommunityStats, formatContributions } from '~/utils/openCollective';
 
 const stats = await getCommunityStats();
 
@@ -189,7 +189,7 @@ const metadata = {
       { title: 'Open Letter Signatories', amount: '1,641', icon: 'tabler:signature' },
       { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
       { title: 'Financial Contributors', amount: `${stats.totalContributors}+`, icon: 'tabler:heart' },
-      { title: 'Total Contributions', amount: '106K+', icon: 'tabler:currency-euro' },
+      { title: 'Total Contributions', amount: formatContributions(stats.totalContributions), icon: 'tabler:currency-euro' },
     ]}
   >
     <Fragment slot="bg">
