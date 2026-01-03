@@ -49,7 +49,7 @@ For technical products, documentation quality directly impacts adoption. Getting
 
 **Journey:**
 1. Discovers Mage-OS from community forums or events
-2. Reviews "Why Mage-OS" content to understand benefits
+2. Reviews product overview content to understand benefits
 3. Reads Migration Guide to assess effort and compatibility
 4. Tests in development environment or plans migration
 
@@ -79,7 +79,6 @@ For technical products, documentation quality directly impacts adoption. Getting
 
 **1. Product** - Core product information
 - Features: Detailed capabilities and comparisons
-- Why Mage-OS: Value propositions and use cases
 - Roadmap: Future development direction
 - Releases: Version history and download links
 

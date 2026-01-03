@@ -8,7 +8,6 @@ export const headerData = {
       links: [
         { text: 'Overview', href: getPermalink('/product') },
         { text: 'Features', href: getPermalink('/product/features') },
-        { text: 'Why Mage-OS', href: getPermalink('/product/why-mage-os') },
         { text: 'Roadmap', href: getPermalink('/product/roadmap') },
         { text: 'Releases', href: getPermalink('/product/releases') },
       ],
@@ -66,7 +65,6 @@ export const footerData = {
       title: 'Product',
       links: [
         { text: 'Features', href: getPermalink('/product/features') },
-        { text: 'Why Mage-OS', href: getPermalink('/product/why-mage-os') },
         { text: 'Roadmap', href: getPermalink('/product/roadmap') },
         { text: 'Releases', href: getPermalink('/product/releases') },
       ],

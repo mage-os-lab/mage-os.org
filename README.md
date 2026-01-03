@@ -21,7 +21,7 @@ The official Mage-OS website built with Astro, featuring a product-focused desig
 | Section | Pages |
 |---------|-------|
 | Homepage | `/` |
-| Product | `/product`, `/product/features`, `/product/why-mage-os`, `/product/roadmap`, `/product/releases` |
+| Product | `/product`, `/product/features`, `/product/roadmap`, `/product/releases` |
 | Get Started | `/get-started`, `/get-started/quick-start`, `/get-started/installation`, `/get-started/migration-guide`, `/get-started/system-requirements` |
 | Documentation | `/documentation` |
 | Community | `/community` |
