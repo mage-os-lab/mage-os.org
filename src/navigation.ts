@@ -25,7 +25,7 @@ export const headerData = {
     },
     {
       text: 'Documentation',
-      href: getPermalink('/documentation'),
+      href: 'https://devdocs.mage-os.org',
     },
     {
       text: 'Community',
@@ -75,7 +75,7 @@ export const footerData = {
         { text: 'Quick Start', href: getPermalink('/get-started/quick-start') },
         { text: 'Installation', href: getPermalink('/get-started/installation') },
         { text: 'Migration Guide', href: getPermalink('/get-started/migration-guide') },
-        { text: 'Documentation', href: getPermalink('/documentation') },
+        { text: 'Documentation', href: 'https://devdocs.mage-os.org' },
       ],
     },
     {
