@@ -15,14 +15,21 @@ const metadata = {
     'Join the Mage-OS community at events worldwide. From Meet Magento conferences to weekly tech meetings on Discord, connect with merchants, developers, and agencies shaping the future of open-source commerce.',
 };
 
-// Get all events and sort by date
+// Get all events and sort by eventDate
 const allEvents = await getCollection('event');
 const now = new Date();
 
-const sortedEvents = allEvents.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+const sortedEvents = allEvents.sort(
+  (a, b) => new Date(b.data.eventDate).getTime() - new Date(a.data.eventDate).getTime()
+);
 
-const upcomingEvents = sortedEvents.filter((event) => new Date(event.data.date) >= now);
-const pastEvents = sortedEvents.filter((event) => new Date(event.data.date) < now).slice(0, 20);
+// Upcoming events sorted chronologically (soonest first)
+const upcomingEvents = sortedEvents
+  .filter((event) => new Date(event.data.eventDate) >= now)
+  .sort((a, b) => new Date(a.data.eventDate).getTime() - new Date(b.data.eventDate).getTime());
+
+// Past events sorted by most recent first, limited to 12
+const pastEvents = sortedEvents.filter((event) => new Date(event.data.eventDate) < now).slice(0, 12);
 
 function formatDate(date: Date) {
   return new Intl.DateTimeFormat('en-US', {
@@ -66,7 +73,8 @@ const eventTypes = [
         type="Event"
         data={{
           name: event.data.title,
-          startDate: new Date(event.data.date).toISOString(),
+          startDate: new Date(event.data.eventDate).toISOString(),
+          endDate: event.data.endDate ? new Date(event.data.endDate).toISOString() : undefined,
           description: event.data.excerpt || `${event.data.title} - A Mage-OS community event`,
           location: event.data.location
             ? {
@@ -84,21 +92,6 @@ const eventTypes = [
 
   <Hero
     tagline="Connect & Collaborate"
-    actions={[
-      {
-        variant: 'primary',
-        text: 'Join Weekly Meetings',
-        href: '/discord-channel',
-        icon: 'tabler:brand-discord',
-        target: '_blank',
-      },
-      {
-        text: 'View Community Calendar',
-        href: 'https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com',
-        icon: 'tabler:calendar',
-        target: '_blank',
-      },
-    ]}
   >
     <Fragment slot="title">
       Community <span class="text-accent dark:text-white">Events</span>
@@ -112,21 +105,112 @@ const eventTypes = [
     </Fragment>
   </Hero>
 
-  <!-- Global Community Stats -->
-  <Stats
-    title="A Truly Global Community"
-    subtitle="Mage-OS events bring together commerce professionals from around the world"
-    stats={[
-      { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
-      { title: 'Events Per Year', amount: '50+', icon: 'tabler:calendar-event' },
-      { title: 'Weekly Tech Meetings', amount: '52', icon: 'tabler:brand-discord' },
-      { title: 'Community Members', amount: '5K+', icon: 'tabler:users' },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Stats>
+  <section class="px-4 py-8 sm:px-6 mx-auto lg:px-8 lg:py-12 max-w-6xl">
+    {
+      upcomingEvents.length > 0 && (
+        <section class="mb-16" aria-labelledby="upcoming-events-heading">
+          <h2 id="upcoming-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
+            Upcoming Events
+          </h2>
+          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
+            {upcomingEvents.map((event) => (
+              <article
+                class="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-slate-700 overflow-hidden"
+                role="listitem"
+              >
+                {event.data.image && (
+                  <div class="h-40 overflow-hidden">
+                    <img
+                      src={`/images/events/${event.data.image}`}
+                      alt={event.data.title}
+                      class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      loading="lazy"
+                    />
+                  </div>
+                )}
+                <div class="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-slate-700 p-4">
+                  <div class="flex items-center justify-between">
+                    <span class="text-sm font-semibold text-primary dark:text-blue-400">
+                      {formatDate(event.data.eventDate)}
+                      {event.data.endDate &&
+                        event.data.endDate.getTime() !== event.data.eventDate.getTime() &&
+                        ` - ${formatDate(event.data.endDate)}`}
+                    </span>
+                    {event.data.location && (
+                      <span class="inline-flex items-center text-xs text-gray-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/50 px-2 py-1 rounded-full">
+                        <Icon name="tabler:map-pin" class="w-3 h-3 mr-1" />
+                        In-Person
+                      </span>
+                    )}
+                  </div>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-xl font-bold mb-3 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
+                    {event.data.title}
+                  </h3>
+                  {event.data.location && (
+                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-3 flex items-center">
+                      <Icon name="tabler:map-pin" class="w-4 h-4 mr-2 text-gray-400 dark:text-slate-500" />
+                      {event.data.location}
+                    </p>
+                  )}
+                  {event.data.excerpt && (
+                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">{event.data.excerpt}</p>
+                  )}
+                  {event.data.url && (
+                    <a
+                      href={event.data.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="inline-flex items-center text-primary dark:text-blue-400 font-medium text-sm hover:underline group-hover:gap-2 transition-all"
+                    >
+                      View Details
+                      <Icon
+                        name="tabler:arrow-right"
+                        class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                      />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
+
+    {
+      upcomingEvents.length === 0 && (
+        <div class="mb-16 text-center py-16 bg-gradient-to-br from-gray-50 to-orange-50/50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl border border-gray-200 dark:border-slate-700">
+          <Icon name="tabler:calendar-off" class="w-16 h-16 mx-auto text-gray-300 dark:text-slate-600 mb-4" />
+          <h2 class="text-2xl font-bold tracking-tight dark:text-white mb-4">No Currently Scheduled Events</h2>
+          <p class="text-gray-600 dark:text-slate-400 mb-6 max-w-md mx-auto">
+            Check back soon for new events, or join our weekly Discord meetings to stay connected with the community.
+          </p>
+          <div class="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/discord-channel"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-colors"
+            >
+              <Icon name="tabler:brand-discord" class="w-5 h-5" />
+              Join Discord
+            </a>
+            <a
+              href="https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-700 font-medium px-6 py-3 rounded-lg transition-colors dark:text-white"
+            >
+              <Icon name="tabler:calendar" class="w-5 h-5" />
+              View Community Calendar
+            </a>
+          </div>
+        </div>
+      )
+    }
+  </section>
 
   <!-- Weekly Tech Meetings Highlight -->
   <section class="bg-orange-50 dark:bg-slate-800 not-prose">
@@ -200,148 +284,6 @@ const eventTypes = [
       },
     ]}
   />
-
-  <!-- Event Types Section -->
-  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-6xl bg-orange-50 dark:bg-slate-800/30 rounded-xl my-8">
-    <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-8 text-center">Types of Events</h2>
-    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-      {
-        eventTypes.map((type) => (
-          <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
-            <div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full inline-block mb-4">
-              <Icon name={type.icon} class="w-8 h-8 text-primary dark:text-blue-400" />
-            </div>
-            <h3 class="text-lg font-semibold dark:text-white mb-2">{type.title}</h3>
-            <p class="text-gray-600 dark:text-slate-400 text-sm">{type.description}</p>
-          </div>
-        ))
-      }
-    </div>
-  </section>
-
-  <section class="px-4 py-8 sm:px-6 mx-auto lg:px-8 lg:py-12 max-w-6xl">
-    {
-      upcomingEvents.length > 0 && (
-        <section class="mb-16" aria-labelledby="upcoming-events-heading">
-          <h2 id="upcoming-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
-            Upcoming Events
-          </h2>
-          <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3" role="list">
-            {upcomingEvents.map((event) => (
-              <article
-                class="group bg-white dark:bg-slate-800 rounded-xl shadow-md hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-slate-700 overflow-hidden"
-                role="listitem"
-              >
-                <div class="bg-gradient-to-r from-primary/10 to-orange-100 dark:from-primary/20 dark:to-slate-700 p-4">
-                  <div class="flex items-center justify-between">
-                    <span class="text-sm font-semibold text-primary dark:text-blue-400">
-                      {formatDate(event.data.date)}
-                    </span>
-                    {event.data.location && (
-                      <span class="inline-flex items-center text-xs text-gray-600 dark:text-slate-400 bg-white/80 dark:bg-slate-900/50 px-2 py-1 rounded-full">
-                        <Icon name="tabler:map-pin" class="w-3 h-3 mr-1" />
-                        In-Person
-                      </span>
-                    )}
-                  </div>
-                </div>
-                <div class="p-6">
-                  <h3 class="text-xl font-bold mb-3 dark:text-white group-hover:text-primary dark:group-hover:text-blue-400 transition-colors">
-                    {event.data.title}
-                  </h3>
-                  {event.data.location && (
-                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-3 flex items-center">
-                      <Icon name="tabler:map-pin" class="w-4 h-4 mr-2 text-gray-400 dark:text-slate-500" />
-                      {event.data.location}
-                    </p>
-                  )}
-                  {event.data.excerpt && (
-                    <p class="text-gray-600 dark:text-slate-400 text-sm mb-4 line-clamp-2">{event.data.excerpt}</p>
-                  )}
-                  {event.data.url && (
-                    <a
-                      href={event.data.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      class="inline-flex items-center text-primary dark:text-blue-400 font-medium text-sm hover:underline group-hover:gap-2 transition-all"
-                    >
-                      View Details
-                      <Icon
-                        name="tabler:arrow-right"
-                        class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
-                      />
-                    </a>
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
-      )
-    }
-
-    {
-      upcomingEvents.length === 0 && (
-        <div class="mb-16 text-center py-16 bg-gradient-to-br from-gray-50 to-orange-50/50 dark:from-slate-800 dark:to-slate-800/50 rounded-xl border border-gray-200 dark:border-slate-700">
-          <Icon name="tabler:calendar-off" class="w-16 h-16 mx-auto text-gray-300 dark:text-slate-600 mb-4" />
-          <h2 class="text-2xl font-bold tracking-tight dark:text-white mb-4">No Scheduled Events</h2>
-          <p class="text-gray-600 dark:text-slate-400 mb-6 max-w-md mx-auto">
-            Check back soon for new events, or join our weekly Discord meetings to stay connected with the community.
-          </p>
-          <div class="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/discord-channel"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 bg-primary hover:bg-primary/90 text-white font-medium px-6 py-3 rounded-lg transition-colors"
-            >
-              <Icon name="tabler:brand-discord" class="w-5 h-5" />
-              Join Discord
-            </a>
-            <a
-              href="https://calendar.google.com/calendar/u/0/embed?src=9ns1e12ucfd84tpnsehekkc6g0@group.calendar.google.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="inline-flex items-center justify-center gap-2 border border-gray-300 dark:border-slate-600 hover:bg-gray-100 dark:hover:bg-slate-700 font-medium px-6 py-3 rounded-lg transition-colors dark:text-white"
-            >
-              <Icon name="tabler:calendar" class="w-5 h-5" />
-              View Community Calendar
-            </a>
-          </div>
-        </div>
-      )
-    }
-
-    {
-      pastEvents.length > 0 && (
-        <section aria-labelledby="past-events-heading">
-          <h2 id="past-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
-            Past Events
-          </h2>
-          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list">
-            {pastEvents.map((event) => (
-              <article
-                class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-5 border border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 transition-colors"
-                role="listitem"
-              >
-                <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-500 font-medium mb-2">
-                  <Icon name="tabler:calendar" class="w-4 h-4" />
-                  {formatDate(event.data.date)}
-                </div>
-                <h3 class="text-lg font-semibold dark:text-white">{event.data.title}</h3>
-                {event.data.location && (
-                  <p class="text-gray-500 dark:text-slate-500 text-sm mt-2 flex items-center">
-                    <Icon name="tabler:map-pin" class="w-4 h-4 mr-1" />
-                    {event.data.location}
-                  </p>
-                )}
-              </article>
-            ))}
-          </div>
-        </section>
-      )
-    }
-  </section>
 
   <!-- Recent Event Highlights -->
   <section class="bg-blue-50 dark:bg-slate-800/50 not-prose">
@@ -422,6 +364,56 @@ const eventTypes = [
         </div>
       </div>
     </div>
+  </section>
+
+  <!-- Event Types Section -->
+  <section class="px-4 py-12 sm:px-6 mx-auto lg:px-8 max-w-6xl bg-orange-50 dark:bg-slate-800/30 rounded-xl my-8">
+    <h2 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-8 text-center">Types of Events</h2>
+    <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        eventTypes.map((type) => (
+          <div class="text-center p-6 bg-white dark:bg-slate-800 rounded-xl shadow-sm">
+            <div class="bg-primary/10 dark:bg-primary/20 p-4 rounded-full inline-block mb-4">
+              <Icon name={type.icon} class="w-8 h-8 text-primary dark:text-blue-400" />
+            </div>
+            <h3 class="text-lg font-semibold dark:text-white mb-2">{type.title}</h3>
+            <p class="text-gray-600 dark:text-slate-400 text-sm">{type.description}</p>
+          </div>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="px-4 py-8 sm:px-6 mx-auto lg:px-8 lg:py-12 max-w-6xl">
+    {
+      pastEvents.length > 0 && (
+        <section aria-labelledby="past-events-heading">
+          <h2 id="past-events-heading" class="text-3xl font-bold tracking-tight dark:text-white sm:text-4xl mb-8">
+            Past Events
+          </h2>
+          <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3" role="list">
+            {pastEvents.map((event) => (
+              <article
+                class="bg-gray-50 dark:bg-slate-800/50 rounded-lg p-5 border border-gray-200 dark:border-slate-700 hover:border-gray-300 dark:hover:border-slate-600 transition-colors"
+                role="listitem"
+              >
+                <div class="flex items-center gap-2 text-xs text-gray-500 dark:text-slate-500 font-medium mb-2">
+                  <Icon name="tabler:calendar" class="w-4 h-4" />
+                  {formatDate(event.data.eventDate)}
+                </div>
+                <h3 class="text-lg font-semibold dark:text-white">{event.data.title}</h3>
+                {event.data.location && (
+                  <p class="text-gray-500 dark:text-slate-500 text-sm mt-2 flex items-center">
+                    <Icon name="tabler:map-pin" class="w-4 h-4 mr-1" />
+                    {event.data.location}
+                  </p>
+                )}
+              </article>
+            ))}
+          </div>
+        </section>
+      )
+    }
   </section>
 
   <!-- FAQs Section -->
