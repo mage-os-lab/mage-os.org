@@ -6,14 +6,10 @@ import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
-import Steps from '~/components/widgets/Steps.astro';
-import Content from '~/components/widgets/Content.astro';
 import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
-import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Testimonials from '~/components/widgets/Testimonials.astro';
-import PartnersGrid from '~/components/widgets/PartnersGrid.astro';
 import { getCommunityStats } from '~/utils/openCollective';
 
 const stats = await getCommunityStats();
@@ -79,8 +75,8 @@ const metadata = {
   <Features
     id="features"
     tagline="Why Choose Mage-OS"
-    title="Enterprise-Grade Capabilities, Community-Driven Innovation"
-    subtitle="Mage-OS Distribution delivers the performance, security, and flexibility enterprises demand with the transparency and agility only true open source provides."
+    title="Complete Capabilities, Community-Driven Innovation"
+    subtitle="Mage-OS Distribution delivers the performance, security, and flexibility that companies rely on, with the transparency and agility only true open source provides."
     items={[
       {
         title: 'Innovation Without Compromise',
@@ -95,7 +91,7 @@ const metadata = {
         icon: 'tabler:refresh',
       },
       {
-        title: 'Enterprise Performance',
+        title: 'Excellent Performance',
         description:
           'Lightweight by design, optimized for speed, and ready to scale from SMB to enterprise without compromise.',
         icon: 'tabler:bolt',
@@ -115,132 +111,26 @@ const metadata = {
       {
         title: 'Transparent Governance',
         description:
-          'Community-led development, transparent roadmaps, and democratic governance ensure Mage-OS evolves to meet your business needs.',
+          'Community-led development, transparent roadmaps, and open governance ensure Mage-OS evolves to meet your business needs.',
         icon: 'tabler:users',
       },
     ]}
   />
 
-  <!-- Content Widget **************** -->
+  <!-- Stats Widget ****************** -->
 
-  <Content
-    isReversed
-    tagline="The Mage-OS Distribution"
-    title="Built on Magento, Enhanced by Community"
-    items={[
-      {
-        title: 'Based on Magento 2.4.8-p3',
-        description:
-          'Built on the rock-solid Magento foundation with all the latest security fixes and platform improvements.',
-      },
-      {
-        title: 'Community-Driven Features',
-        description:
-          'Innovations from the Mage-OS Lab including PCI DSS 4.0 compliance, AI-powered translation, and performance optimization.',
-      },
-      {
-        title: 'Developer-Friendly',
-        description:
-          'Accessible contribution pathways, comprehensive documentation, and active community support empower developers at every level.',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
-      alt: 'Mage-OS Development',
-    }}
-  >
-    <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">
-        Open Source Commerce, Reimagined
-      </h3>
-      The Mage-OS Distribution delivers everything you need to run a successful online store.
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Content>
-
-  <!-- Steps Widget ****************** -->
-
-  <Steps
-    title="Getting Started is Simple"
-    items={[
-      {
-        title: 'Step 1: <span class="font-medium">Check Requirements</span>',
-        description:
-          'Review system requirements: PHP 8.3+, MySQL 8.0+, Composer 2.x, and OpenSearch. Most modern hosting environments are already compatible.',
-        icon: 'tabler:checklist',
-      },
-      {
-        title: 'Step 2: <span class="font-medium">Install via Composer</span>',
-        description:
-          'Create a new project with a single command: <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded">composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition .</code>',
-        icon: 'tabler:terminal-2',
-      },
-      {
-        title: 'Step 3: <span class="font-medium">Configure & Launch</span>',
-        description:
-          'Run the installer, compile assets, and launch your store. Full documentation guides you through every step.',
-        icon: 'tabler:settings',
-      },
-      {
-        title: "You're Live!",
-        icon: 'tabler:check',
-      },
-    ]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
-      alt: 'Getting Started with Mage-OS',
-    }}
-  />
-
-  <!-- Features2 Widget ************** -->
-
-  <Features2
-    title="Mage-OS 2.0 Highlights"
-    subtitle="Our latest release showcases the power of community-driven innovation"
-    tagline="New in 2.0"
-    items={[
-      {
-        title: 'PCI DSS 4.0 Compliance',
-        description:
-          'Enhanced security policies including automatic account deactivation, session security, and strengthened authentication.',
-        icon: 'tabler:shield-lock',
-      },
-      {
-        title: 'AI-Powered Translation',
-        description:
-          'Automatic translation using DeepL, OpenAI, or Google Gemini for products, categories, and CMS content.',
-        icon: 'tabler:language',
-      },
-      {
-        title: 'Theme Optimization',
-        description:
-          'Back/forward cache support, speculative preloading, and smooth page transitions for better Core Web Vitals.',
-        icon: 'tabler:gauge',
-      },
-      {
-        title: 'PageBuilder Widgets',
-        description: 'CMS Widget support directly in Page Builder with live previews and import/export capabilities.',
-        icon: 'tabler:layout',
-      },
-      {
-        title: 'Inventory Reservations Grid',
-        description: 'Better visibility into stock reservations with direct management in the admin panel.',
-        icon: 'tabler:package',
-      },
-      {
-        title: 'Meta Robots Control',
-        description: 'Fine-tune NOINDEX, NOFOLLOW, and NOARCHIVE tags page by page for better SEO control.',
-        icon: 'tabler:robot',
-      },
+  <Stats
+    stats={[
+      { title: 'Financial Contributors', amount: `${stats.totalContributors}+` },
+      { title: 'Total Contributions', amount: '€106K+' },
+      { title: 'Community Members', amount: `${stats.communityMembers}+` },
+      { title: 'Professional Members', amount: `${stats.professionalMembers}+` },
     ]}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
     </Fragment>
-  </Features2>
+  </Stats>
 
   <!-- Testimonials Widget *********** -->
 
@@ -261,66 +151,6 @@ const metadata = {
         testimonial: `Mage-OS represents the future of open-source ecommerce. The community-driven approach ensures the platform evolves based on real merchant and developer needs, not just corporate priorities.`,
         name: 'Vinai Kopp',
         job: 'Mage-OS Founding Member',
-      },
-    ]}
-  />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    stats={[
-      { title: 'Financial Contributors', amount: `${stats.totalContributors}+` },
-      { title: 'Total Contributions', amount: '€106K+' },
-      { title: 'Community Members', amount: `${stats.communityMembers}+` },
-      { title: 'Professional Members', amount: `${stats.professionalMembers}+` },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Stats>
-
-  <!-- Partners Grid Widget ************ -->
-
-  <PartnersGrid title="Our Partners" subtitle="Companies supporting the Mage-OS community" />
-
-  <!-- FAQs Widget ******************* -->
-
-  <FAQs
-    title="Frequently Asked Questions"
-    subtitle="Everything you need to know about Mage-OS and how it relates to Magento Open Source."
-    tagline="FAQs"
-    classes={{ container: 'max-w-6xl' }}
-    items={[
-      {
-        title: 'What is Mage-OS?',
-        description:
-          'Mage-OS is a community-driven ecommerce platform built on Magento Open Source. We maintain full compatibility with Magento while adding enhanced features, performance improvements, and faster security patches.',
-      },
-      {
-        title: 'Is Mage-OS compatible with my existing Magento extensions?',
-        description:
-          'Yes! Mage-OS maintains 100% compatibility with Magento Open Source extensions and themes. Your existing ecosystem stays intact when you migrate.',
-      },
-      {
-        title: 'How do I migrate from Magento to Mage-OS?',
-        description:
-          'Migration is straightforward—update your composer.json to use the Mage-OS repository and run composer update. The process typically takes 15-30 minutes. See our Migration Guide for detailed instructions.',
-      },
-      {
-        title: 'Is Mage-OS free to use?',
-        description:
-          "Yes, Mage-OS Distribution is completely free and open source. There are no license fees, no vendor lock-in, and no hidden costs. We're funded by community contributions and partnerships.",
-      },
-      {
-        title: 'How can I contribute to Mage-OS?',
-        description:
-          'There are many ways to contribute: submit code to our GitHub repository, join our weekly tech meetings on Discord, become a member or partner, or help with documentation and community support.',
-      },
-      {
-        title: 'What support is available?',
-        description:
-          'Community support is available through our Discord server, GitHub discussions, and forums. For enterprise needs, our partner network offers professional services and dedicated support.',
       },
     ]}
   />
