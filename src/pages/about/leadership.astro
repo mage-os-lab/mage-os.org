@@ -4,7 +4,20 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { Image } from 'astro:assets';
 import { getCommunityStats } from '~/utils/openCollective';
+
+// Team member photos
+import vinaiKopp from '~/assets/images/team/vinai-kopp.png';
+import davidLambauer from '~/assets/images/team/david-lambauer.png';
+import cezaryKozon from '~/assets/images/team/cezary-kozon.png';
+import johnPrendergast from '~/assets/images/team/john-prendergast.png';
+import ryanHoerr from '~/assets/images/team/ryan-hoerr.png';
+import ruggeroLandolina from '~/assets/images/team/ruggero-landolina.png';
+import michielGerritsen from '~/assets/images/team/michiel-gerritsen.png';
+import maciejKalkowski from '~/assets/images/team/maciej-kalkowski.png';
+import lauraFolco from '~/assets/images/team/laura-folco.png';
+import francisGallagher from '~/assets/images/team/francis-gallagher.png';
 
 const stats = await getCommunityStats();
 
@@ -29,6 +42,7 @@ const boardMembers = [
     isOfficer: true,
     bio: 'Vinai has been a developer for nearly 25 years. He delivered Magento training for over a decade through the official Magento U program and was awarded Magento Master three times. Today he serves as Partner, CTO, and CIO at Hyva. Known as a calm and kind leader who achieves incredible things through his following in the Magento ecosystem.',
     country: 'Germany',
+    image: vinaiKopp,
   },
   {
     name: 'David Lambauer',
@@ -36,6 +50,7 @@ const boardMembers = [
     isOfficer: true,
     bio: 'Founder and CEO of run_as_root GmbH, specializing in high-quality Magento 2, Hyva, and Shopware development. Adobe Certified Master Architect, long-time open-source contributor, creator of the Mage-OS DevDocs, and frequent speaker at industry events. Brings strategic focus on quality, community collaboration, and long-term sustainability.',
     country: 'Germany',
+    image: davidLambauer,
   },
   {
     name: 'Cezary Kożon',
@@ -43,6 +58,7 @@ const boardMembers = [
     isOfficer: true,
     bio: 'With over ten years of eCommerce experience, Cezary is head of Spyrosoft eCommerce. He helps businesses translate their strategic vision into eCommerce operations, viewing eCommerce as a fundamental component impacting everything from brand perception to logistics. His career goals: inspire businesses to innovate and help his team work uninterrupted.',
     country: 'Poland',
+    image: cezaryKozon,
   },
   {
     name: 'John Prendergast',
@@ -50,6 +66,7 @@ const boardMembers = [
     isOfficer: true,
     bio: "Over 30 years of experience leading web technology businesses, delivering projects for global brands including Apple, Calvin Klein, HP, and Lidl. Co-founder and director of Aonach.com, a specialist Magento Open Source agency based in Ireland. A long-time advocate for open source power and community strength, committed to the Magento ecosystem's growth and sustainability.",
     country: 'Ireland',
+    image: johnPrendergast,
   },
   {
     name: 'Ryan Hoerr',
@@ -57,6 +74,7 @@ const boardMembers = [
     isOfficer: false,
     bio: "Software developer at ParadoxLabs since 2008, working extensively on payment services, subscriptions, and security. His Magento extensions process billions of dollars in transactions each year. Previously community manager for one of the internet's largest forums under Curse LLC (acquired by Amazon). Holds a degree in Electrical Engineering.",
     country: 'USA',
+    image: ryanHoerr,
   },
   {
     name: 'Ruggero Landolina',
@@ -64,6 +82,7 @@ const boardMembers = [
     isOfficer: false,
     bio: '20 years of experience in e-commerce development, specializing in scalable and high-performance solutions on Magento 2, Laravel, and WordPress. As an e-commerce consultant, provides targeted strategies to optimize online presence and increase revenue. Actively contributes to the Mage-OS community, supporting innovation in open-source e-commerce.',
     country: 'Italy',
+    image: ruggeroLandolina,
   },
   {
     name: 'Michiel Gerritsen',
@@ -71,6 +90,7 @@ const boardMembers = [
     isOfficer: false,
     bio: 'Founder of Control Alt Delete and MageDispatch.com. Over a decade of Magento experience, including projects for Mollie and PostNL, specializing in checkout flows and automated testing. Active open source contributor and frequent speaker in the Magento community.',
     country: 'Netherlands',
+    image: michielGerritsen,
   },
   {
     name: 'Maciej Kalkowski',
@@ -78,6 +98,7 @@ const boardMembers = [
     isOfficer: false,
     bio: 'CEO and founder of Centuria (managed service provider), active in the IT industry for 20 years. Holds a PhD in computer science and is an assistant professor at AMU in Poznan. Speaker at many retail and Meet Magento conferences worldwide. Extensive experience designing IT infrastructure for large and medium-sized e-commerce, evangelizing business continuity and growth readiness.',
     country: 'Poland',
+    image: maciejKalkowski,
   },
 ];
 
@@ -87,12 +108,14 @@ const bccMembers = [
     role: 'Business Control Committee',
     bio: 'Working with Magento since 2010 as a freelancer. Instructor for Adobe (formerly Magento U) since 2017, teaching the fundamentals of Magento 2 development.',
     country: 'USA',
+    image: lauraFolco,
   },
   {
     name: 'Francis Michael Gallagher',
     role: 'Business Control Committee',
     bio: "One of Akoova's leading Ecommerce Architects, in the Magento community since 2012. Strong passion for helping others and recognizing positive impacts.",
     country: 'UK',
+    image: francisGallagher,
   },
 ];
 
@@ -137,7 +160,7 @@ const governancePrinciples = [
     stats={[
       { title: 'Board Members', amount: '8', icon: 'tabler:users' },
       { title: 'Countries Represented', amount: '6', icon: 'tabler:world' },
-      { title: 'Supporters', amount: '${stats.totalContributors}+', icon: 'tabler:heart-handshake' },
+      { title: 'Supporters', amount: `${stats.totalContributors}+`, icon: 'tabler:heart-handshake' },
       { title: 'Founded', amount: '2022', icon: 'tabler:calendar-event' },
     ]}
   >
@@ -175,14 +198,24 @@ const governancePrinciples = [
           .map((member) => (
             <div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-6 border-2 border-primary-200 dark:border-primary-800 hover:shadow-xl transition-shadow">
               <div class="flex items-start gap-4 mb-4">
-                <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 flex items-center justify-center flex-shrink-0 ring-2 ring-primary-300 dark:ring-primary-700 shadow-md">
-                  <span class="text-primary-700 dark:text-primary-300 font-bold text-xl">
-                    {member.name
-                      .split(' ')
-                      .map((n) => n[0])
-                      .join('')}
-                  </span>
-                </div>
+                {member.image ? (
+                  <Image
+                    src={member.image}
+                    alt={member.name}
+                    width={64}
+                    height={64}
+                    class="w-16 h-16 rounded-full object-cover flex-shrink-0 ring-2 ring-primary-300 dark:ring-primary-700 shadow-md"
+                  />
+                ) : (
+                  <div class="w-16 h-16 rounded-full bg-gradient-to-br from-primary-100 to-primary-200 dark:from-primary-900 dark:to-primary-800 flex items-center justify-center flex-shrink-0 ring-2 ring-primary-300 dark:ring-primary-700 shadow-md">
+                    <span class="text-primary-700 dark:text-primary-300 font-bold text-xl">
+                      {member.name
+                        .split(' ')
+                        .map((n) => n[0])
+                        .join('')}
+                    </span>
+                  </div>
+                )}
                 <div class="flex-1">
                   <h3 class="font-bold text-xl text-gray-900 dark:text-white">{member.name}</h3>
                   <span class="inline-flex items-center gap-1 px-3 py-1 text-xs font-semibold bg-primary-100 dark:bg-primary-900 text-primary-700 dark:text-primary-300 rounded-full mt-1">
@@ -255,14 +288,24 @@ const governancePrinciples = [
             .map((member) => (
               <div class="bg-white dark:bg-slate-900 rounded-xl shadow-md p-5 border border-orange-100 dark:border-gray-700 hover:shadow-lg transition-shadow">
                 <div class="flex items-center gap-3 mb-4">
-                  <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900 dark:to-orange-800 flex items-center justify-center flex-shrink-0 shadow">
-                    <span class="text-orange-700 dark:text-orange-300 font-bold text-base">
-                      {member.name
-                        .split(' ')
-                        .map((n) => n[0])
-                        .join('')}
-                    </span>
-                  </div>
+                  {member.image ? (
+                    <Image
+                      src={member.image}
+                      alt={member.name}
+                      width={48}
+                      height={48}
+                      class="w-12 h-12 rounded-full object-cover flex-shrink-0 shadow"
+                    />
+                  ) : (
+                    <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-100 to-orange-200 dark:from-orange-900 dark:to-orange-800 flex items-center justify-center flex-shrink-0 shadow">
+                      <span class="text-orange-700 dark:text-orange-300 font-bold text-base">
+                        {member.name
+                          .split(' ')
+                          .map((n) => n[0])
+                          .join('')}
+                      </span>
+                    </div>
+                  )}
                   <div>
                     <h3 class="font-bold text-base text-gray-900 dark:text-white">{member.name}</h3>
                     <p class="text-xs text-gray-500 dark:text-gray-400 flex items-center gap-1">
@@ -377,14 +420,24 @@ const governancePrinciples = [
         bccMembers.map((member) => (
           <div class="bg-white dark:bg-slate-900 rounded-xl shadow-lg p-6 border-2 border-green-200 dark:border-green-800 hover:shadow-xl transition-shadow">
             <div class="flex items-center gap-4 mb-4">
-              <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 flex items-center justify-center ring-2 ring-green-300 dark:ring-green-700 shadow-md">
-                <span class="text-green-700 dark:text-green-300 font-bold text-lg">
-                  {member.name
-                    .split(' ')
-                    .map((n) => n[0])
-                    .join('')}
-                </span>
-              </div>
+              {member.image ? (
+                <Image
+                  src={member.image}
+                  alt={member.name}
+                  width={56}
+                  height={56}
+                  class="w-14 h-14 rounded-full object-cover ring-2 ring-green-300 dark:ring-green-700 shadow-md"
+                />
+              ) : (
+                <div class="w-14 h-14 rounded-full bg-gradient-to-br from-green-100 to-emerald-200 dark:from-green-900 dark:to-emerald-800 flex items-center justify-center ring-2 ring-green-300 dark:ring-green-700 shadow-md">
+                  <span class="text-green-700 dark:text-green-300 font-bold text-lg">
+                    {member.name
+                      .split(' ')
+                      .map((n) => n[0])
+                      .join('')}
+                  </span>
+                </div>
+              )}
               <div>
                 <h3 class="font-bold text-lg text-gray-900 dark:text-white">{member.name}</h3>
                 <span class="inline-flex items-center gap-1 px-2 py-1 text-xs font-semibold bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 rounded-full">
