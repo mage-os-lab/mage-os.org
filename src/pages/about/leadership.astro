@@ -4,6 +4,9 @@ import HeroText from '~/components/widgets/HeroText.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Features from '~/components/widgets/Features.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { getCommunityStats } from '~/utils/openCollective';
+
+const stats = await getCommunityStats();
 
 const metadata = {
   title: 'Leadership Team',
@@ -134,7 +137,7 @@ const governancePrinciples = [
     stats={[
       { title: 'Board Members', amount: '8', icon: 'tabler:users' },
       { title: 'Countries Represented', amount: '6', icon: 'tabler:world' },
-      { title: 'Paying Members', amount: '135+', icon: 'tabler:heart-handshake' },
+      { title: 'Supporters', amount: '${stats.totalContributors}+', icon: 'tabler:heart-handshake' },
       { title: 'Founded', amount: '2022', icon: 'tabler:calendar-event' },
     ]}
   >

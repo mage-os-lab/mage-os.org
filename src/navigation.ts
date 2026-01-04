@@ -95,8 +95,8 @@ export const footerData = {
       title: 'About',
       links: [
         { text: 'About Mage-OS', href: getPermalink('/about') },
-        { text: 'Leadership', href: getPermalink('/about/leadership') },
         { text: 'Contributors', href: getPermalink('/about/contributors') },
+        { text: 'Presskit', href: 'https://drive.google.com/drive/folders/1Z4rz4Or1u6p5Xg6ozSmMs2q287OhOa3H' },
         { text: 'FAQ', href: getPermalink('/faq') },
         { text: 'Contact', href: getPermalink('/contact') },
       ],
@@ -107,7 +107,6 @@ export const footerData = {
     { text: 'Terms', href: getPermalink('/terms') },
     { text: 'Code of Conduct', href: getPermalink('/code-of-conduct') },
     { text: 'Imprint', href: getPermalink('/imprint') },
-    { text: 'Presskit', href: 'https://drive.google.com/drive/folders/1Z4rz4Or1u6p5Xg6ozSmMs2q287OhOa3H' },
   ],
   socialLinks: [
     { ariaLabel: 'LinkedIn', icon: 'tabler:brand-linkedin', href: 'https://www.linkedin.com/company/mage-os/' },

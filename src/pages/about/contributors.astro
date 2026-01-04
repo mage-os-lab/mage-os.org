@@ -1,7 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
 import HeroText from '~/components/widgets/HeroText.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
@@ -199,16 +198,6 @@ const contributionSteps = [
     tagline="Our Global Community"
     title="Meet the Contributors"
     subtitle="Mage-OS is built by passionate individuals and companies from around the world, volunteering their time and expertise to advance open-source e-commerce. Every contribution matters, and we celebrate everyone who helps make Mage-OS better."
-  />
-
-  <!-- Community Stats -->
-  <Stats
-    stats={[
-      { title: 'Active Contributors', amount: `${totalContributors}+`, icon: 'tabler:users' },
-      { title: 'Countries Represented', amount: `${uniqueCountries.size}`, icon: 'tabler:world' },
-      { title: 'Working Groups', amount: '2', icon: 'tabler:sitemap' },
-      { title: 'Contributing Companies', amount: `${companyContributions.length}`, icon: 'tabler:building' },
-    ]}
   />
 
   <!-- Technical Working Group -->

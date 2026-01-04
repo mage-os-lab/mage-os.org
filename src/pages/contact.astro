@@ -5,7 +5,6 @@ import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
-import Stats from '~/components/widgets/Stats.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import ContactUs from '~/components/widgets/Contact.astro';
@@ -60,23 +59,6 @@ const metadata = {
     icon="tabler:brand-discord"
     callToAction={{ text: 'Join Discord', href: '/discord-channel' }}
   />
-
-  <!-- Stats Widget ****************** -->
-
-  <Stats
-    title="An Active, Responsive Community"
-    subtitle="Our community members actively help each other every day"
-    stats={[
-      { title: 'Discord Members', amount: '500+', icon: 'tabler:brand-discord' },
-      { title: 'GitHub Contributors', amount: '100+', icon: 'tabler:brand-github' },
-      { title: 'Weekly Meetings', amount: 'Every Tuesday', icon: 'tabler:calendar' },
-      { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Stats>
 
   <!-- Steps Widget: Response Expectations ****************** -->
 
