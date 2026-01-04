@@ -66,6 +66,7 @@ export const footerData = {
   links: [
     {
       title: 'Product',
+      href: getPermalink('/product'),
       links: [
         { text: 'Features', href: getPermalink('/product/features') },
         { text: 'Roadmap', href: getPermalink('/product/roadmap') },
@@ -74,6 +75,7 @@ export const footerData = {
     },
     {
       title: 'Get Started',
+      href: getPermalink('/get-started'),
       links: [
         { text: 'Quick Start', href: getPermalink('/get-started/quick-start') },
         { text: 'Installation', href: getPermalink('/get-started/installation') },
@@ -83,8 +85,8 @@ export const footerData = {
     },
     {
       title: 'Community',
+      href: getPermalink('/community'),
       links: [
-        { text: 'Get Involved', href: getPermalink('/community') },
         { text: 'Events', href: getPermalink('/events') },
         { text: 'Blog', href: getBlogPermalink() },
         { text: 'GitHub', href: 'https://github.com/mage-os' },
@@ -93,8 +95,8 @@ export const footerData = {
     },
     {
       title: 'About',
+      href: getPermalink('/about'),
       links: [
-        { text: 'About Mage-OS', href: getPermalink('/about') },
         { text: 'Contributors', href: getPermalink('/about/contributors') },
         { text: 'Presskit', href: 'https://drive.google.com/drive/folders/1Z4rz4Or1u6p5Xg6ozSmMs2q287OhOa3H' },
         { text: 'FAQ', href: getPermalink('/faq') },

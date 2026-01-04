@@ -69,13 +69,17 @@ const metadata = {
       {
         title: 'Full Magento Compatibility',
         description:
-          '100% compatible with Magento Open Source extensions, themes, and integrations. Your existing ecosystem works out of the box with zero migration friction.',
+          '100% compatible with Magento Open Source extensions, themes, and integrations. Your existing ecosystem works out of the box with minimal friction.',
         icon: 'tabler:plug-connected',
+        callToAction: {
+          text: 'Compatibility Info',
+          href: '/product#faq',
+        },
       },
       {
         title: 'Faster Security Patches',
         description:
-          'Critical security fixes ship as soon as they are validated by the community. No waiting for quarterly corporate release schedules.',
+          'Critical security fixes are published in an update as soon as they are validated by the community. No waiting for corporate release schedules.',
         icon: 'tabler:shield-check',
         callToAction: {
           text: 'Security Features',
@@ -85,24 +89,12 @@ const metadata = {
       {
         title: 'Enhanced Performance',
         description:
-          'Optimized caching, database queries, and frontend performance deliver faster page loads and better Core Web Vitals scores.',
+          'Optimized caching and modern technologies deliver faster page loads and better Core Web Vitals scores.',
         icon: 'tabler:bolt',
         callToAction: {
           text: 'Performance Features',
           href: '/product/features#performance',
         },
-      },
-      {
-        title: 'Modern PHP Support',
-        description:
-          'Mage-OS adapts quickly to new PHP versions, ensuring compatibility with modern hosting environments ahead of upstream releases.',
-        icon: 'tabler:code',
-      },
-      {
-        title: 'API-First Design',
-        description:
-          'RESTful and GraphQL APIs enable headless commerce, mobile apps, IoT integrations, and omnichannel experiences.',
-        icon: 'tabler:api',
       },
       {
         title: 'Transparent Governance',
@@ -189,7 +181,7 @@ const metadata = {
       alt: 'Mage-OS Lab Development',
     }}
     callToAction={{
-      text: 'Explore the Lab on GitHub',
+      text: 'Explore the Mage-OS Lab on GitHub',
       href: 'https://github.com/mage-os-lab',
       icon: 'tabler:brand-github',
     }}
@@ -199,34 +191,6 @@ const metadata = {
       Every feature in Mage-OS represents dedicated work by talented developers who believe in pushing the platform forward.
     </Fragment>
   </Content>
-
-  <!-- Testimonials Widget ************ -->
-
-  <Testimonials
-    title="Trusted by the Magento Community"
-    subtitle="Hear what agencies, developers, and merchants say about Mage-OS"
-    testimonials={[
-      {
-        testimonial: `Collaborating closely with Mage-OS is not just about securing our clients' future; it's about actively shaping it, contributing to making Mage-OS even better.`,
-        name: 'Ignacio Riesco',
-        job: 'CEO, Interactiv4',
-      },
-      {
-        testimonial: `Making the decision to sponsor Mage-OS and become a gold partner was the easiest decision we've made. We are very excited for the future of the Magento platform.`,
-        name: 'Arron Moss',
-        job: 'Co-founder, MDOQ',
-      },
-      {
-        testimonial: `The Mage-OS community represents the best of what open source can be: collaborative, innovative, and focused on delivering real value to merchants and developers alike.`,
-        name: 'Community Member',
-        job: 'Mage-OS Contributor',
-      },
-    ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Testimonials>
 
   <!-- Features2 Widget - Explore ************** -->
 
@@ -283,6 +247,7 @@ const metadata = {
   <FAQs
     title="Frequently Asked Questions"
     tagline="Product FAQ"
+    id="faq"
     classes={{ container: 'max-w-6xl' }}
     items={[
       {
@@ -318,18 +283,46 @@ const metadata = {
     ]}
   />
 
+  <!-- Testimonials Widget ************ -->
+
+  <Testimonials
+    title="Trusted by the Magento Community"
+    subtitle="Hear what agencies, developers, and merchants say about Mage-OS"
+    testimonials={[
+      {
+        testimonial: `Collaborating closely with Mage-OS is not just about securing our clients' future; it's about actively shaping it, contributing to making Mage-OS even better.`,
+        name: 'Ignacio Riesco',
+        job: 'CEO, Interactiv4',
+      },
+      {
+        testimonial: `Making the decision to sponsor Mage-OS and become a gold partner was the easiest decision we've made. We are very excited for the future of the Magento platform.`,
+        name: 'Arron Moss',
+        job: 'Co-founder, MDOQ',
+      },
+      {
+        testimonial: `The Mage-OS community represents the best of what open source can be: collaborative, innovative, and focused on delivering real value to merchants and developers alike.`,
+        name: 'Community Member',
+        job: 'Mage-OS Contributor',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Testimonials>
+
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
     actions={[
       {
         variant: 'primary',
-        text: 'Download Mage-OS',
+        text: 'Get Mage-OS',
         href: '/get-started/quick-start',
         icon: 'tabler:download',
       },
       {
-        text: 'Read Migration Guide',
+        text: 'Migration Guide',
         href: '/get-started/migration-guide',
         icon: 'tabler:arrow-right',
       },
