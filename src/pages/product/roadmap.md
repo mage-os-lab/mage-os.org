@@ -11,7 +11,7 @@ Our roadmap is community-driven and transparent. See what we're working on, what
 
 ## Version & Support Policy
 
-Starting with Mage-OS 1.2, we adopted a new [versioning strategy](/product/versioning-strategy) that provides clarity and predictability for upgrades.
+Starting with Mage-OS 1.2, we adopted a new versioning strategy to provide clarity and predictability for upgrades.
 
 | Release Type | Version Change | Frequency | What to Expect |
 |-------------|---------------|-----------|----------------|
