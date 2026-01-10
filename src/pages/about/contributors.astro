@@ -139,10 +139,6 @@ const companyContributions = [
   },
 ];
 
-// Calculate stats
-const uniqueCountries = new Set([...technicalTeam.map((m) => m.country), ...documentationTeam.map((m) => m.country)]);
-const totalContributors = technicalTeam.length + documentationTeam.length;
-
 // Contribution FAQs
 const contributorFaqs = [
   {

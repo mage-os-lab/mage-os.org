@@ -1,6 +1,4 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Button from '~/components/ui/Button.astro';
 import Headline from '~/components/ui/Headline.astro';
 import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
 import type { Pricing as Props } from '~/types';
@@ -62,7 +60,7 @@ const {
                   {items && (
                     <ul class="space-y-3 mb-8 flex-grow">
                       {items.map(
-                        ({ description, icon }) =>
+                        ({ description }) =>
                           description && (
                             <li class="flex items-start">
                               <svg

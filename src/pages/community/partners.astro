@@ -4,7 +4,6 @@ import Layout from '~/layouts/PageLayout.astro';
 import PageHero from '~/components/widgets/PageHero.astro';
 import Content from '~/components/widgets/Content.astro';
 import Features from '~/components/widgets/Features.astro';
-import Features2 from '~/components/widgets/Features2.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import Steps2 from '~/components/widgets/Steps2.astro';
 import PartnerTiers from '~/components/widgets/PartnerTiers.astro';
@@ -14,24 +13,17 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 
 import {
-  getPartners,
   getIndividualMembers,
-  groupPartnersByTier,
   groupMembersByTier,
-  calculatePartnerStats,
   getCommunityStats,
   formatContributions,
   getInitials,
-  type Partner,
   type IndividualMember,
 } from '~/utils/openCollective';
 
 // Fetch data from Open Collective
-const partners = await getPartners();
 const members = await getIndividualMembers();
-const partnersByTier = groupPartnersByTier(partners);
 const membersByTier = groupMembersByTier(members);
-const partnerStats = calculatePartnerStats(partners);
 const communityStats = await getCommunityStats();
 
 const metadata = {
