@@ -39,12 +39,8 @@ const {
             </svg>
 
             <blockquote class="flex-grow">
-              {cardTitle && (
-                <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{cardTitle}</h3>
-              )}
-              {testimonial && (
-                <p class="text-gray-500 dark:text-gray-400 leading-relaxed">{testimonial}</p>
-              )}
+              {cardTitle && <h3 class="text-lg font-semibold text-gray-900 dark:text-white mb-2">{cardTitle}</h3>}
+              {testimonial && <p class="text-gray-500 dark:text-gray-400 leading-relaxed">{testimonial}</p>}
             </blockquote>
 
             <figcaption class="flex items-center mt-6 pt-4 border-t border-gray-100 dark:border-gray-700">
@@ -65,12 +61,8 @@ const {
                 </div>
               )}
               <div class={image ? 'ml-3 rtl:ml-0 rtl:mr-3' : ''}>
-                {name && (
-                  <div class="font-semibold text-gray-900 dark:text-white">{name}</div>
-                )}
-                {job && (
-                  <div class="text-sm text-gray-500 dark:text-gray-400">{job}</div>
-                )}
+                {name && <div class="font-semibold text-gray-900 dark:text-white">{name}</div>}
+                {job && <div class="text-sm text-gray-500 dark:text-gray-400">{job}</div>}
               </div>
             </figcaption>
           </figure>

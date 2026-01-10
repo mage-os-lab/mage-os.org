@@ -188,7 +188,9 @@ export const findCategories = async (): Promise<Array<{ slug: string; title: str
 };
 
 /** Get posts grouped by category */
-export const getPostsByCategory = async (): Promise<Record<string, { category: { slug: string; title: string }; posts: Array<Post> }>> => {
+export const getPostsByCategory = async (): Promise<
+  Record<string, { category: { slug: string; title: string }; posts: Array<Post> }>
+> => {
   const posts = await fetchPosts();
   const grouped: Record<string, { category: { slug: string; title: string }; posts: Array<Post> }> = {};
 

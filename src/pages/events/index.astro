@@ -37,9 +37,7 @@ const pastEvents = sortedEvents.filter((event) => new Date(event.data.eventDate)
 
 // Get latest 4 blog posts from Events category
 const allPosts = await fetchPosts();
-const eventPosts = allPosts
-  .filter((post) => post.category?.title === 'Events')
-  .slice(0, 4);
+const eventPosts = allPosts.filter((post) => post.category?.title === 'Events').slice(0, 4);
 
 // Prepare event posts with images
 const eventPostsWithImages = await Promise.all(
@@ -108,9 +106,7 @@ const eventTypes = [
     ))
   }
 
-  <Hero
-    tagline="Connect & Collaborate"
-  >
+  <Hero tagline="Connect & Collaborate">
     <Fragment slot="title">
       Community <span class="text-accent dark:text-white">Events</span>
     </Fragment>
@@ -349,12 +345,13 @@ const eventTypes = [
                   <h3 class="font-bold dark:text-white text-lg leading-6 mb-2 group-hover:text-primary dark:group-hover:text-indigo-400 transition-colors">
                     {post.title}
                   </h3>
-                  {post.excerpt && (
-                    <p class="text-gray-600 dark:text-slate-400 text-sm line-clamp-3">{post.excerpt}</p>
-                  )}
+                  {post.excerpt && <p class="text-gray-600 dark:text-slate-400 text-sm line-clamp-3">{post.excerpt}</p>}
                   <span class="inline-flex items-center text-primary dark:text-indigo-400 font-medium text-sm mt-4 group-hover:gap-2 transition-all">
                     Read More
-                    <Icon name="tabler:arrow-right" class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                    <Icon
+                      name="tabler:arrow-right"
+                      class="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform"
+                    />
                   </span>
                 </div>
               </a>

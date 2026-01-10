@@ -102,14 +102,11 @@ function transformPost(filename, content) {
   let updatedBody = body;
 
   // Fix markdown image references
-  updatedBody = updatedBody.replace(
-    /!\[([^\]]*)\]\((?!http)([^)]+)\)/g,
-    (match, alt, src) => {
-      // Strip 'images/' prefix if present since assets are stored directly in year folders
-      const cleanSrc = src.replace(/^images\//, '');
-      return `![${alt}](~/assets/images/blog/${year}/${cleanSrc})`;
-    }
-  );
+  updatedBody = updatedBody.replace(/!\[([^\]]*)\]\((?!http)([^)]+)\)/g, (match, alt, src) => {
+    // Strip 'images/' prefix if present since assets are stored directly in year folders
+    const cleanSrc = src.replace(/^images\//, '');
+    return `![${alt}](~/assets/images/blog/${year}/${cleanSrc})`;
+  });
 
   // Generate new content
   const newContent = `---

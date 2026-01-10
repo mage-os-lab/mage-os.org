@@ -55,17 +55,25 @@ const {
             {(icon || defaultIcon) && (
               <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
             )}
-            <div class={twMerge('text-xl font-bold', hasLink && 'group-hover:text-primary transition-colors', titleClass, itemClasses?.title)}>
+            <div
+              class={twMerge(
+                'text-xl font-bold',
+                hasLink && 'group-hover:text-primary transition-colors',
+                titleClass,
+                itemClasses?.title
+              )}
+            >
               {title}
             </div>
             {description && (
-              <p class={twMerge('text-muted mt-2 flex-grow', descriptionClass, itemClasses?.description)} set:html={description} />
+              <p
+                class={twMerge('text-muted mt-2 flex-grow', descriptionClass, itemClasses?.description)}
+                set:html={description}
+              />
             )}
             {callToAction && (
               <div class="mt-3 flex items-center">
-                <span class="text-primary font-medium group-hover:underline">
-                  {callToAction.text}
-                </span>
+                <span class="text-primary font-medium group-hover:underline">{callToAction.text}</span>
                 <Icon
                   name="tabler:chevron-right"
                   class="w-7 h-7 text-gray-400 dark:text-slate-500 group-hover:text-primary transition-colors flex-shrink-0 ml-auto"

@@ -57,8 +57,11 @@ const metadata = {
           src={heroDark.src}
           alt=""
           class="w-full h-full object-cover object-right-top opacity-75 hidden dark:block"
-        />                       
-        <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent dark:from-slate-900/95 dark:via-slate-900/80 dark:to-transparent"></div>
+        />
+        <div
+          class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent dark:from-slate-900/95 dark:via-slate-900/80 dark:to-transparent"
+        >
+        </div>
       </div>
     </Fragment>
 
@@ -68,8 +71,9 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="font-semibold">Mage-OS</span> is a community-owned, open-source ecommerce platform built on Magento<sup><small>®</small></sup> Open
-      Source. Experience innovation, independence, and great performance with seamless migration.
+      <span class="font-semibold">Mage-OS</span> is a community-owned, open-source ecommerce platform built on Magento<sup
+        ><small>®</small></sup
+      > Open Source. Experience innovation, independence, and great performance with seamless migration.
     </Fragment>
   </Hero>
 
@@ -86,18 +90,12 @@ const metadata = {
     title="Latest News & Updates"
     information={`Stay up to date with the latest Mage-OS releases, community events, and ecosystem news.`}
     count={3}
-  >
-  </BlogLatestPosts>
+  />
 
   <!-- Upcoming Events Widget ******** -->
 
-  <UpcomingEvents
-    title="Upcoming Events"
-    daysAhead={90}
-  >
-    <Fragment slot="subtitle">
-      Meet the Mage-OS community at conferences and meetups around the world.
-    </Fragment>
+  <UpcomingEvents title="Upcoming Events" daysAhead={90}>
+    <Fragment slot="subtitle"> Meet the Mage-OS community at conferences and meetups around the world. </Fragment>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-indigo-50 dark:bg-slate-800/50"></div>
     </Fragment>
@@ -129,7 +127,7 @@ const metadata = {
     image={{
       src: adminDashboard,
       alt: 'Mage-OS Admin Dashboard showing the sleek M137 admin theme',
-      objectPosition: 'left'
+      objectPosition: 'left',
     }}
   >
     <Fragment slot="content">

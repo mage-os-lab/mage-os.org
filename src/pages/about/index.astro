@@ -185,7 +185,11 @@ const metadata = {
       { title: 'Open Letter Signatories', amount: '1,641', icon: 'tabler:signature' },
       { title: 'Countries Represented', amount: '30+', icon: 'tabler:world' },
       { title: 'Financial Contributors', amount: `${stats.totalContributors}+`, icon: 'tabler:heart' },
-      { title: 'Total Contributions', amount: formatContributions(stats.totalContributions), icon: 'tabler:currency-euro' },
+      {
+        title: 'Total Contributions',
+        amount: formatContributions(stats.totalContributions),
+        icon: 'tabler:currency-euro',
+      },
     ]}
   >
     <Fragment slot="bg">

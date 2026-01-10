@@ -19,9 +19,7 @@ async function parseWPExport() {
 function extractMeta(item, key) {
   if (!item['wp:postmeta']) return null;
 
-  const metas = Array.isArray(item['wp:postmeta'])
-    ? item['wp:postmeta']
-    : [item['wp:postmeta']];
+  const metas = Array.isArray(item['wp:postmeta']) ? item['wp:postmeta'] : [item['wp:postmeta']];
 
   for (const meta of metas) {
     if (meta['wp:meta_key'] === key) {

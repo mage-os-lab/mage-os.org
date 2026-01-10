@@ -64,21 +64,36 @@ const {
               </div>
               <div class="mt-0.5 flex-1 flex flex-col">
                 {title && (
-                  <h3 class={twMerge('text-xl font-bold', hasLink && 'group-hover:text-primary transition-colors', titleClass, itemClasses?.title)}>
+                  <h3
+                    class={twMerge(
+                      'text-xl font-bold',
+                      hasLink && 'group-hover:text-primary transition-colors',
+                      titleClass,
+                      itemClasses?.title
+                    )}
+                  >
                     {title}
                   </h3>
                 )}
                 {description && (
                   <p
-                    class={twMerge(`${title ? 'mt-3' : ''} text-muted flex-grow`, descriptionClass, itemClasses?.description)}
+                    class={twMerge(
+                      `${title ? 'mt-3' : ''} text-muted flex-grow`,
+                      descriptionClass,
+                      itemClasses?.description
+                    )}
                     set:html={description}
                   />
                 )}
                 {callToAction && (
-                  <div class={twMerge(`${title || description ? 'mt-3' : ''} flex items-center`, actionClass, itemClasses?.actionClass)}>
-                    <span class="text-primary font-medium group-hover:underline">
-                      {callToAction.text}
-                    </span>
+                  <div
+                    class={twMerge(
+                      `${title || description ? 'mt-3' : ''} flex items-center`,
+                      actionClass,
+                      itemClasses?.actionClass
+                    )}
+                  >
+                    <span class="text-primary font-medium group-hover:underline">{callToAction.text}</span>
                     <Icon
                       name="tabler:chevron-right"
                       class="w-7 h-7 text-gray-400 dark:text-slate-500 group-hover:text-primary transition-colors flex-shrink-0 ml-auto"

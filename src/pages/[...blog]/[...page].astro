@@ -52,49 +52,49 @@ const metadata = {
   <section class="px-4 sm:px-6 py-12 sm:py-16 lg:py-20 mx-auto max-w-7xl">
     <Headline subtitle="News, releases, tutorials, and community updates from the Mage-OS project"> The Blog </Headline>
 
-    {currentPage === 1 ? (
-      <>
-        {/* Category jump links - Flowbite pills style */}
-        <nav class="mb-12" aria-label="Jump to category">
-          <ul class="flex flex-wrap justify-center gap-2 text-sm font-medium">
-            {sortedCategories.map(([slug, { category }]) => (
-              <li>
-                <a
-                  href={`#${slug}`}
-                  class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white dark:bg-slate-700 dark:text-gray-300 dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
-                >
-                  {category.title}
-                </a>
-              </li>
-            ))}
-          </ul>
-        </nav>
+    {
+      currentPage === 1 ? (
+        <>
+          {/* Category jump links - Flowbite pills style */}
+          <nav class="mb-12" aria-label="Jump to category">
+            <ul class="flex flex-wrap justify-center gap-2 text-sm font-medium">
+              {sortedCategories.map(([slug, { category }]) => (
+                <li>
+                  <a
+                    href={`#${slug}`}
+                    class="inline-flex items-center px-4 py-2 rounded-full bg-gray-100 text-gray-700 hover:bg-primary hover:text-white dark:bg-slate-700 dark:text-gray-300 dark:hover:bg-primary dark:hover:text-white transition-colors duration-200"
+                  >
+                    {category.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div class="space-y-16">
-          {sortedCategories.map(([slug, { category, posts }]) => (
-            <div id={slug} class="scroll-mt-24">
-              <div class="flex items-center justify-between mb-6">
-                <h2 class="text-2xl font-bold font-heading dark:text-slate-200">
-                  {category.title}
-                </h2>
-                <Button
-                  variant="secondary"
-                  href={getPermalink(category.slug, 'category')}
-                  text="View all"
-                  icon="tabler:arrow-right"
-                  class="text-sm"
-                />
+          <div class="space-y-16">
+            {sortedCategories.map(([slug, { category, posts }]) => (
+              <div id={slug} class="scroll-mt-24">
+                <div class="flex items-center justify-between mb-6">
+                  <h2 class="text-2xl font-bold font-heading dark:text-slate-200">{category.title}</h2>
+                  <Button
+                    variant="secondary"
+                    href={getPermalink(category.slug, 'category')}
+                    text="View all"
+                    icon="tabler:arrow-right"
+                    class="text-sm"
+                  />
+                </div>
+                <BlogGrid posts={posts.slice(0, 4)} />
               </div>
-              <BlogGrid posts={posts.slice(0, 4)} />
-            </div>
-          ))}
-        </div>
-      </>
-    ) : (
-      <>
-        <BlogList posts={page.data} />
-        <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
-      </>
-    )}
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <BlogList posts={page.data} />
+          <Pagination prevUrl={page.url.prev} nextUrl={page.url.next} />
+        </>
+      )
+    }
   </section>
 </Layout>
