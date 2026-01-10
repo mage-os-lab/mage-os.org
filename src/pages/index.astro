@@ -51,12 +51,12 @@ const metadata = {
         <img
           src={heroLight.src}
           alt=""
-          class="w-full h-full object-cover object-top opacity-75 brightness-105 dark:hidden"
+          class="w-full h-full object-cover object-right-top opacity-75 brightness-105 dark:hidden"
         />
         <img
           src={heroDark.src}
           alt=""
-          class="w-full h-full object-cover object-top opacity-75 hidden dark:block"
+          class="w-full h-full object-cover object-right-top opacity-75 hidden dark:block"
         />                       
         <div class="absolute inset-0 bg-gradient-to-r from-white/90 via-white/60 to-transparent dark:from-slate-900/95 dark:via-slate-900/80 dark:to-transparent"></div>
       </div>
@@ -129,6 +129,7 @@ const metadata = {
     image={{
       src: adminDashboard,
       alt: 'Mage-OS Admin Dashboard showing the sleek M137 admin theme',
+      objectPosition: 'left'
     }}
   >
     <Fragment slot="content">
