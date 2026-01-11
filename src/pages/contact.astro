@@ -7,7 +7,9 @@ import Features2 from '~/components/widgets/Features2.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
-import ContactUs from '~/components/widgets/Contact.astro';
+import Newsletter from '~/components/widgets/Newsletter.astro';
+import WidgetWrapper from '~/components/ui/WidgetWrapper.astro';
+import Headline from '~/components/ui/Headline.astro';
 
 const metadata = {
   title: 'Contact | Mage-OS',
@@ -175,43 +177,48 @@ const metadata = {
   </Features>
 
   <!-- Contact Form Widget ************** -->
-  <!-- TODO: Replace this with a Google form or such. -->
-  <ContactUs
-    id="form"
-    title="Send Us a Message"
-    subtitle="Can't find what you need above? Use this form for general inquiries. For faster support, we recommend joining our Discord community."
-    inputs={[
-      {
-        type: 'text',
-        name: 'name',
-        label: 'Name',
-        required: true,
-      },
-      {
-        type: 'email',
-        name: 'email',
-        label: 'Email',
-        required: true,
-      },
-    ]}
-    textarea={{
-      label: 'Message',
-      required: true,
-    }}
-    disclaimer={{
-      label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
-    }}
-    description="We typically respond to form submissions within 2-3 business days."
-  >
+
+  <WidgetWrapper id="form" containerClass="max-w-4xl mx-auto">
+    <Headline
+      title="Send Us a Message"
+      subtitle="Can't find what you need above? Use this form for general inquiries. For faster support, we recommend joining our Discord community."
+      tagline="Contact"
+      classes={{
+        container: 'mb-8 md:mb-10',
+        title: 'text-3xl md:text-4xl font-bold tracking-tighter mb-4 font-heading',
+        subtitle: 'text-xl text-muted dark:text-slate-400',
+      }}
+    />
+    <div class="w-full flex justify-center">
+      <iframe
+        src="https://docs.google.com/forms/d/e/1FAIpQLSeL8f7ckVgHjU7SJPKdfSzr4HQR5Q8y9DnQ3V_bq8y70Nrd0g/viewform?embedded=true"
+        class="w-full max-w-[640px] h-[912px] border-0 overflow-hidden [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+        title="Contact Form"
+        loading="lazy"
+        scrolling="no"
+      >Loading…</iframe>
+    </div>
+    <p class="text-sm text-muted text-center mt-4">We typically respond to form submissions within 2-3 business days.</p>
     <Fragment slot="bg">
       <div class="absolute inset-0 bg-indigo-50 dark:bg-transparent"></div>
     </Fragment>
-  </ContactUs>
+  </WidgetWrapper>
+
+  <!-- Newsletter Widget ************** -->
+
+  <Newsletter
+    id="newsletter"
+    title="Subscribe to Our Newsletter"
+    subtitle="Stay up to date with Mage-OS releases, community news, and upcoming events. We send occasional updates—no spam, ever."
+    tagline="Newsletter"
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-[#f6f6f6] dark:bg-transparent"></div>
+    </Fragment>
+  </Newsletter>
 
   <!-- Features2 Widget: Follow Us ************** -->
 
-  <!-- TODO: Add a newsletter signup bit here. -->
   <Features2
     title="Stay Connected"
     subtitle="Follow us on social media for the latest news, release announcements, and community highlights"
