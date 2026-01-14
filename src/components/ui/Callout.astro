@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+
+export interface Props {
+  type?: 'info' | 'tip' | 'warning' | 'danger';
+  title?: string;
+  class?: string;
+}
+
+const { type = 'info', title, class: className } = Astro.props;
+
+const variants = {
+  info: {
+    icon: 'tabler:info-circle',
+    container: 'bg-blue-50 border-blue-200 dark:bg-blue-950/50 dark:border-blue-800',
+    iconClass: 'text-blue-600 dark:text-blue-400',
+    titleClass: 'text-blue-800 dark:text-blue-200',
+    contentClass: 'text-blue-700 dark:text-blue-300',
+  },
+  tip: {
+    icon: 'tabler:bulb',
+    container: 'bg-green-50 border-green-200 dark:bg-green-950/50 dark:border-green-800',
+    iconClass: 'text-green-600 dark:text-green-400',
+    titleClass: 'text-green-800 dark:text-green-200',
+    contentClass: 'text-green-700 dark:text-green-300',
+  },
+  warning: {
+    icon: 'tabler:alert-triangle',
+    container: 'bg-yellow-50 border-yellow-200 dark:bg-yellow-950/50 dark:border-yellow-700',
+    iconClass: 'text-yellow-600 dark:text-yellow-400',
+    titleClass: 'text-yellow-800 dark:text-yellow-200',
+    contentClass: 'text-yellow-700 dark:text-yellow-300',
+  },
+  danger: {
+    icon: 'tabler:alert-circle',
+    container: 'bg-red-50 border-red-200 dark:bg-red-950/50 dark:border-red-800',
+    iconClass: 'text-red-600 dark:text-red-400',
+    titleClass: 'text-red-800 dark:text-red-200',
+    contentClass: 'text-red-700 dark:text-red-300',
+  },
+};
+
+const variant = variants[type];
+---
+
+<aside
+  class={twMerge(
+    'not-prose my-4 rounded-lg border p-4',
+    variant.container,
+    className
+  )}
+  role="note"
+  aria-label={title || `${type} callout`}
+>
+  <div class="flex gap-3">
+    <Icon
+      name={variant.icon}
+      class={twMerge('h-5 w-5 flex-shrink-0 mt-0.5', variant.iconClass)}
+      aria-hidden="true"
+    />
+    <div class="flex-1 min-w-0">
+      {title && (
+        <p class={twMerge('font-semibold mb-1', variant.titleClass)}>
+          {title}
+        </p>
+      )}
+      <div class={twMerge('text-sm', variant.contentClass)}>
+        <slot />
+      </div>
+    </div>
+  </div>
+</aside>
