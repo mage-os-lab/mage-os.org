@@ -1,0 +1,636 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/widgets/PageHero.astro';
+import Headline from '~/components/ui/Headline.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import Callout from '~/components/ui/Callout.astro';
+import ChecklistItem from '~/components/ui/ChecklistItem.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Migration Guide',
+  description: 'Seamlessly migrate from Magento Open Source to Mage-OS with minimal downtime and full compatibility.',
+  openGraph: {
+    images: [{ url: '/og/page/migration-guide.png', width: 1200, height: 630 }],
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero tagline="Get Started" variant="default">
+    <Fragment slot="title">Migration Guide</Fragment>
+    <Fragment slot="subtitle">
+      Migrating from Magento Open Source to Mage-OS is straightforward and typically takes <strong
+        >under 30 minutes</strong
+      >. Your existing extensions, themes, and customizations will continue to work with little or no changes needed.
+    </Fragment>
+  </PageHero>
+
+  <!-- Why Migrate Section -->
+  <Features
+    id="why-migrate"
+    tagline="Benefits"
+    title="Why Migrate to Mage-OS?"
+    subtitle="Mage-OS is built on the same Magento Open Source foundation you already trust, enhanced with community-driven improvements."
+    columns={3}
+    items={[
+      {
+        title: 'Enhanced Performance',
+        description: 'Optimized caching and database queries for faster page loads and better user experience.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Faster Security Patches',
+        description: 'Community-accelerated security updates, often released ahead of upstream Magento.',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'PCI DSS 4.0 Ready',
+        description: 'Built-in compliance settings for modern payment security requirements.',
+        icon: 'tabler:lock',
+      },
+      {
+        title: 'AI-Powered Translation',
+        description: 'Automatic content translation using DeepL, OpenAI, or Google Gemini.',
+        icon: 'tabler:language',
+      },
+      {
+        title: 'Theme Optimization',
+        description: 'Back/forward cache support and speculative preloading for better Core Web Vitals.',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'No Vendor Lock-in',
+        description: 'Fully open source with transparent, community-led governance.',
+        icon: 'tabler:heart-handshake',
+      },
+    ]}
+  />
+
+  <!-- Pre-Migration Checklist -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="Pre-Migration Checklist"
+      subtitle="Complete these items before starting your migration"
+      tagline="Preparation"
+    />
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Backups -->
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm border-l-4 border-red-500">
+        <div class="flex items-center gap-3 mb-4">
+          <Icon name="tabler:database-export" class="w-6 h-6 text-red-500" />
+          <h3 class="text-lg font-bold dark:text-white">Backups</h3>
+        </div>
+        <div role="list">
+          <ChecklistItem>Complete file system backup of your Magento installation</ChecklistItem>
+          <ChecklistItem>Database backup (use the command in Step 1 below)</ChecklistItem>
+          <ChecklistItem
+            >Media files backup (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">pub/media</code> directory)</ChecklistItem
+          >
+          <ChecklistItem
+            >Custom configuration files backup (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs"
+              >.env</code
+            >, <code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs">app/etc/env.php</code>)</ChecklistItem
+          >
+        </div>
+      </div>
+
+      <!-- Environment Requirements -->
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm border-l-4 border-blue-500">
+        <div class="flex items-center gap-3 mb-4">
+          <Icon name="tabler:server" class="w-6 h-6 text-blue-500" />
+          <h3 class="text-lg font-bold dark:text-white">Environment</h3>
+        </div>
+        <div role="list">
+          <ChecklistItem>SSH/command-line access to your server</ChecklistItem>
+          <ChecklistItem
+            >Composer 2.8+ installed (<code class="bg-gray-100 dark:bg-gray-800 px-1 rounded text-xs"
+              >composer --version</code
+            >)</ChecklistItem
+          >
+          <ChecklistItem>Sufficient disk space (at least 2x current installation size)</ChecklistItem>
+          <ChecklistItem>Current Magento version is 2.4.6 or later</ChecklistItem>
+        </div>
+      </div>
+
+      <!-- Recommended Preparations -->
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm border-l-4 border-green-500">
+        <div class="flex items-center gap-3 mb-4">
+          <Icon name="tabler:checklist" class="w-6 h-6 text-green-500" />
+          <h3 class="text-lg font-bold dark:text-white">Recommended</h3>
+        </div>
+        <div role="list">
+          <ChecklistItem>Review third-party extension documentation</ChecklistItem>
+          <ChecklistItem>Notify your team about planned migration window</ChecklistItem>
+          <ChecklistItem>Prepare a staging environment for testing</ChecklistItem>
+        </div>
+      </div>
+    </div>
+
+    <Callout type="tip" title="Version Tip" class="mt-8">
+      If your Magento version is older than the latest version, we strongly suggest you update to the latest Magento
+      Open Source version first, then migrate to Mage-OS.
+    </Callout>
+  </section>
+
+  <!-- Migration Process Steps -->
+  <Steps
+    id="migration-steps"
+    title="Migration Process"
+    tagline="Step by Step"
+    subtitle="Follow these four steps to migrate your Magento store to Mage-OS"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Create Backup</span>',
+        description:
+          'Back up your database and files before making any changes. This ensures you can rollback if needed.',
+        icon: 'tabler:database-export',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Switch Repository</span>',
+        description: 'Add the Mage-OS repository and swap the product packages from Magento to Mage-OS using Composer.',
+        icon: 'tabler:refresh',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Run Upgrade</span>',
+        description: 'Execute setup:upgrade, compile DI, deploy static content, reindex, and flush caches.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Step 4: <span class="font-medium">Verify Installation</span>',
+        description:
+          'Confirm Mage-OS version and test your storefront and admin panel to ensure everything works correctly.',
+        icon: 'tabler:circle-check',
+      },
+    ]}
+  />
+
+  <!-- Detailed Migration Commands -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <div
+      class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900"
+    >
+      <h3 id="step-1-backup" class="flex items-center gap-3">
+        <span
+          class="flex-shrink-0 w-8 h-8 bg-red-500 text-white rounded-full flex items-center justify-center text-sm font-bold"
+          >1</span
+        >
+        Create Backup
+      </h3>
+
+      <pre><code>{`# Backup database
+mysqldump -u username -p database_name > backup.sql
+
+# Backup files
+tar -czvf magento-backup.tar.gz /path/to/magento`}</code></pre>
+
+      <h3 id="step-2-switch" class="flex items-center gap-3">
+        <span
+          class="flex-shrink-0 w-8 h-8 bg-blue-500 text-white rounded-full flex items-center justify-center text-sm font-bold"
+          >2</span
+        >
+        Switch to Mage-OS Repository
+      </h3>
+
+      <pre><code>{`cd /path/to/your/magento
+
+# Add Mage-OS repository
+composer config repositories.0 composer https://repo.mage-os.org/
+
+# Require Mage-OS product
+composer require mage-os/product-community-edition --no-update
+
+# Remove Magento product
+composer remove magento/product-community-edition \\
+  magento/composer-dependency-version-audit-plugin \\
+  magento/composer-root-update-plugin --no-update
+
+# Update all dependencies
+composer update --no-plugins --with-all-dependencies`}</code></pre>
+
+      <h3 id="step-3-upgrade" class="flex items-center gap-3">
+        <span
+          class="flex-shrink-0 w-8 h-8 bg-green-500 text-white rounded-full flex items-center justify-center text-sm font-bold"
+          >3</span
+        >
+        Run Upgrade
+      </h3>
+
+      <pre><code>{`# Run setup upgrade
+bin/magento setup:upgrade
+
+# Compile DI
+bin/magento setup:di:compile
+
+# Deploy static content
+bin/magento setup:static-content:deploy -f
+
+# Reindex
+bin/magento indexer:reindex
+
+# Flush cache
+bin/magento cache:flush`}</code></pre>
+
+      <h3 id="step-4-verify" class="flex items-center gap-3">
+        <span
+          class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
+          >4</span
+        >
+        Verify Installation
+      </h3>
+
+      <pre><code>{`# Check version
+bin/magento --version
+
+# Should output: Mage-OS 2.x.x`}</code></pre>
+    </div>
+
+    <!-- One-Line Migration -->
+    <div class="mt-12 bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6">
+      <div class="flex items-center gap-3 mb-4">
+        <Icon name="tabler:terminal" class="w-6 h-6 text-primary" />
+        <h3 class="text-lg font-bold dark:text-white">One-Line Migration</h3>
+        <span
+          class="text-xs bg-yellow-100 dark:bg-yellow-900/50 text-yellow-800 dark:text-yellow-300 px-2 py-0.5 rounded"
+          >Experienced Users</span
+        >
+      </div>
+      <p class="text-muted mb-4 text-sm">For experienced users, the entire process can be condensed:</p>
+      <pre
+        class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code>{`composer config repositories.0 composer https://repo.mage-os.org/ && \\
+composer require mage-os/product-community-edition --no-update && \\
+composer remove magento/product-community-edition \\
+  magento/composer-dependency-version-audit-plugin \\
+  magento/composer-root-update-plugin --no-update && \\
+composer update --no-plugins --with-all-dependencies && \\
+bin/magento setup:upgrade && \\
+bin/magento setup:di:compile && \\
+bin/magento setup:static-content:deploy -f && \\
+bin/magento cache:flush`}</code></pre>
+    </div>
+  </section>
+
+  <!-- Compatibility Section -->
+  <section class="bg-gray-50 dark:bg-slate-800/50 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+      <Headline
+        title="Compatibility"
+        subtitle="Mage-OS is designed for seamless migration. Your existing Magento ecosystem remains fully functional."
+        tagline="Full Compatibility"
+      />
+
+      <ItemGrid
+        columns={3}
+        items={[
+          {
+            title: 'Extensions',
+            description:
+              'Marketplace extensions, third-party payment gateways, shipping providers, custom modules, and API integrations all continue to work.',
+            icon: 'tabler:puzzle',
+          },
+          {
+            title: 'Themes',
+            description:
+              'Luma, Blank, custom themes, third-party themes like Hyva and Porto, and headless PWA frontends are fully compatible.',
+            icon: 'tabler:palette',
+          },
+          {
+            title: 'Customizations',
+            description:
+              'Custom API integrations, event observers, plugins, layout/template overrides, and CLI commands work without changes.',
+            icon: 'tabler:code',
+          },
+        ]}
+        classes={{
+          panel: 'bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm',
+        }}
+      />
+
+      <Callout type="info" title="Same Codebase Structure" class="mt-8">
+        Mage-OS uses the same codebase structure as Magento Open Source. Your existing Magento extensions, themes, and
+        customizations will work with little or no changes.
+      </Callout>
+    </div>
+  </section>
+
+  <!-- Production Migration Process -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="Production Migration"
+      subtitle="For production environments, use a staged approach"
+      tagline="Best Practices"
+    />
+
+    <div class="grid md:grid-cols-3 gap-6">
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
+            >1</span
+          >
+          <h3 class="font-bold dark:text-white">Clone Environment</h3>
+        </div>
+        <p class="text-muted text-sm mb-4">Clone your production to a staging environment first.</p>
+        <pre
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>rsync -avz production/ staging/</code></pre>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
+            >2</span
+          >
+          <h3 class="font-bold dark:text-white">Test on Staging</h3>
+        </div>
+        <p class="text-muted text-sm">Perform migration on staging and thoroughly test:</p>
+        <ul class="text-sm text-muted mt-2 space-y-1">
+          <li class="flex items-center gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+            Checkout flow
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+            Admin panel functionality
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+            Third-party integrations
+          </li>
+          <li class="flex items-center gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+            Custom functionality
+          </li>
+        </ul>
+      </div>
+
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="flex items-center gap-3 mb-4">
+          <span
+            class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
+            >3</span
+          >
+          <h3 class="font-bold dark:text-white">Schedule Maintenance</h3>
+        </div>
+        <p class="text-muted text-sm">For the final switchover:</p>
+        <ol class="text-sm text-muted mt-2 space-y-1 list-decimal list-inside">
+          <li>Enable maintenance mode</li>
+          <li>Sync any database changes</li>
+          <li>Perform migration</li>
+          <li>Test critical paths</li>
+          <li>Disable maintenance mode</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rollback Procedure -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Callout type="warning" title="Rollback Procedure">
+      <p class="mb-4">If issues arise, you can rollback to your previous Magento installation:</p>
+
+      <div class="grid md:grid-cols-2 gap-4">
+        <div>
+          <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Restore from Backup</h4>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`# Restore database
+mysql -u username -p database_name < backup.sql
+
+# Restore files
+tar -xzvf magento-backup.tar.gz -C /`}</code></pre>
+        </div>
+        <div>
+          <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Switch Back to Magento</h4>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`composer config repositories.0 composer https://repo.magento.com/
+composer require magento/product-community-edition --no-update
+composer remove mage-os/product-community-edition --no-update
+composer update --no-plugins --with-all-dependencies
+bin/magento setup:upgrade`}</code></pre>
+        </div>
+      </div>
+    </Callout>
+  </section>
+
+  <!-- Post-Migration -->
+  <section class="bg-green-50 dark:bg-green-950/30 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+      <div class="flex items-center gap-4 mb-8">
+        <div
+          class="flex-shrink-0 w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center"
+        >
+          <Icon name="tabler:confetti" class="w-8 h-8 text-green-600 dark:text-green-400" />
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-green-800 dark:text-green-200">Post-Migration</h2>
+          <p class="text-green-700 dark:text-green-300">
+            Congratulations on migrating to Mage-OS! Complete these verification steps.
+          </p>
+        </div>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Verify Installation -->
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-bold mb-4 dark:text-white">Verify Your Installation</h3>
+          <pre
+            class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto mb-4"><code>bin/magento --version</code></pre>
+
+          <h4 class="font-bold mb-3 dark:text-white">Test Critical Functionality</h4>
+          <div role="list">
+            <ChecklistItem><strong>Storefront</strong> - Browse products, add to cart, test checkout</ChecklistItem>
+            <ChecklistItem><strong>Admin Panel</strong> - Log in and navigate key sections</ChecklistItem>
+            <ChecklistItem><strong>Payment Methods</strong> - Verify gateway connections</ChecklistItem>
+            <ChecklistItem><strong>Shipping</strong> - Confirm shipping calculations</ChecklistItem>
+            <ChecklistItem><strong>Integrations</strong> - Test external system connections</ChecklistItem>
+          </div>
+        </div>
+
+        <!-- Explore New Features -->
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <h3 class="text-lg font-bold mb-4 dark:text-white">Explore New Mage-OS Features</h3>
+          <p class="text-muted mb-4 text-sm">Mage-OS 2.0 includes powerful new capabilities:</p>
+
+          <div class="space-y-3">
+            <div class="flex items-start gap-3">
+              <Icon name="tabler:shield-lock" class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <span class="font-medium dark:text-white">PCI DSS 4.0 Compliance</span>
+                <p class="text-xs text-muted">Admin &gt; Stores &gt; Configuration &gt; Security</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <Icon name="tabler:language" class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <span class="font-medium dark:text-white">AI-Powered Translation</span>
+                <p class="text-xs text-muted">Admin &gt; Stores &gt; Configuration &gt; Services &gt; AI Translation</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <Icon name="tabler:bolt" class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <span class="font-medium dark:text-white">Theme Optimization</span>
+                <p class="text-xs text-muted">Enable bfcache and speculative loading in Advanced settings</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-3">
+              <Icon name="tabler:layout-grid" class="w-5 h-5 text-green-600 dark:text-green-400 flex-shrink-0 mt-0.5" />
+              <div>
+                <span class="font-medium dark:text-white">Enhanced Page Builder</span>
+                <p class="text-xs text-muted">CMS Widget support with live previews</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Troubleshooting -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+    <Headline title="Troubleshooting" subtitle="Solutions for common migration issues" />
+
+    <div class="space-y-4">
+      <Callout type="tip" title="Composer Conflicts">
+        <p class="mb-2">If you encounter dependency conflicts:</p>
+        <pre
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>composer update --with-all-dependencies</code></pre>
+      </Callout>
+
+      <Callout type="tip" title="Module Version Mismatches">
+        <pre
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`bin/magento setup:upgrade
+bin/magento module:status`}</code></pre>
+      </Callout>
+
+      <Callout type="tip" title="Static Content Issues">
+        <pre
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`rm -rf pub/static/* var/view_preprocessed/*
+bin/magento setup:static-content:deploy -f`}</code></pre>
+      </Callout>
+    </div>
+  </section>
+
+  <!-- Need Help Section -->
+  <section class="bg-gray-50 dark:bg-slate-800/50 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+      <Headline title="Need Help?" subtitle="The Mage-OS community is here to support your migration journey" />
+
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Community Support -->
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="tabler:users-group" class="w-6 h-6 text-primary" />
+            <h3 class="text-lg font-bold dark:text-white">Community Support (Free)</h3>
+          </div>
+          <ul class="space-y-3">
+            <li>
+              <a href="/discord-channel" class="flex items-center gap-2 text-primary hover:underline font-medium">
+                <Icon name="tabler:brand-discord" class="w-5 h-5" />
+                Discord - Real-time help
+              </a>
+              <p class="text-sm text-muted ml-7">chat.mage-os.org</p>
+            </li>
+            <li>
+              <a
+                href="https://github.com/mage-os"
+                target="_blank"
+                class="flex items-center gap-2 text-primary hover:underline font-medium"
+              >
+                <Icon name="tabler:brand-github" class="w-5 h-5" />
+                GitHub Discussions
+              </a>
+              <p class="text-sm text-muted ml-7">Ask questions and share solutions</p>
+            </li>
+            <li>
+              <a
+                href="https://devdocs.mage-os.org"
+                target="_blank"
+                class="flex items-center gap-2 text-primary hover:underline font-medium"
+              >
+                <Icon name="tabler:book" class="w-5 h-5" />
+                Developer Documentation
+              </a>
+              <p class="text-sm text-muted ml-7">Comprehensive technical guides</p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Professional Support -->
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="tabler:building" class="w-6 h-6 text-primary" />
+            <h3 class="text-lg font-bold dark:text-white">Professional Support</h3>
+          </div>
+          <p class="text-muted mb-4">For enterprise migrations or complex environments, our partner network offers:</p>
+          <ul class="space-y-2 text-muted">
+            <li class="flex items-center gap-2">
+              <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+              Dedicated migration assistance
+            </li>
+            <li class="flex items-center gap-2">
+              <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+              Custom development and integration
+            </li>
+            <li class="flex items-center gap-2">
+              <Icon name="tabler:check" class="w-4 h-4 text-green-500" />
+              Ongoing support and maintenance
+            </li>
+          </ul>
+          <a
+            href="/community/partners"
+            class="inline-flex items-center gap-2 mt-4 text-primary hover:underline font-medium"
+          >
+            Find a Mage-OS Partner
+            <Icon name="tabler:arrow-right" class="w-4 h-4" />
+          </a>
+        </div>
+      </div>
+
+      <Callout type="tip" title="Pro Tip" class="mt-8">
+        Most migration issues can be resolved quickly on Discord. The community is active and eager to help new members.
+      </Callout>
+    </div>
+  </section>
+
+  <!-- Next Steps -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline title="Next Steps" subtitle="Continue your Mage-OS journey" />
+
+    <ItemGrid
+      columns={3}
+      items={[
+        {
+          title: 'Quick Start Guide',
+          description: 'New installation guide for fresh setups',
+          icon: 'tabler:rocket',
+          callToAction: {
+            text: 'View Guide',
+            href: '/get-started/quick-start',
+          },
+        },
+        {
+          title: 'System Requirements',
+          description: 'Complete technical specifications',
+          icon: 'tabler:checklist',
+          callToAction: {
+            text: 'View Requirements',
+            href: '/get-started/system-requirements',
+          },
+        },
+        {
+          title: 'Features',
+          description: 'Explore all Mage-OS features',
+          icon: 'tabler:sparkles',
+          callToAction: {
+            text: 'View Features',
+            href: '/product/features',
+          },
+        },
+      ]}
+    />
+  </section>
+</Layout>
