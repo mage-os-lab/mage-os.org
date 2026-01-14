@@ -1,0 +1,150 @@
+---
+import { Icon } from 'astro-icon/components';
+import { twMerge } from 'tailwind-merge';
+
+export interface Tab {
+  id: string;
+  label: string;
+  icon?: string;
+}
+
+export interface Props {
+  tabs: Tab[];
+  defaultTab?: string;
+  class?: string;
+}
+
+const { tabs, defaultTab, class: className } = Astro.props;
+const activeTab = defaultTab || tabs[0]?.id;
+const uniqueId = `tabs-${Math.random().toString(36).slice(2, 9)}`;
+---
+
+<div class={twMerge('not-prose', className)} data-tabs={uniqueId}>
+  <!-- Tab List -->
+  <div
+    role="tablist"
+    aria-label="Content tabs"
+    class="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto"
+  >
+    {tabs.map((tab) => (
+      <button
+        type="button"
+        role="tab"
+        id={`${uniqueId}-tab-${tab.id}`}
+        aria-selected={tab.id === activeTab ? 'true' : 'false'}
+        aria-controls={`${uniqueId}-panel-${tab.id}`}
+        tabindex={tab.id === activeTab ? 0 : -1}
+        data-tab-id={tab.id}
+        class={twMerge(
+          'flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap',
+          'border-b-2 -mb-px transition-colors duration-200',
+          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset',
+          tab.id === activeTab
+            ? 'border-primary text-primary'
+            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200'
+        )}
+      >
+        {tab.icon && (
+          <Icon name={tab.icon} class="h-4 w-4" aria-hidden="true" />
+        )}
+        {tab.label}
+      </button>
+    ))}
+  </div>
+
+  <!-- Tab Panels -->
+  <div class="mt-4">
+    {tabs.map((tab) => (
+      <div
+        role="tabpanel"
+        id={`${uniqueId}-panel-${tab.id}`}
+        aria-labelledby={`${uniqueId}-tab-${tab.id}`}
+        tabindex="0"
+        data-panel-id={tab.id}
+        class={twMerge(
+          'tab-panel transition-opacity duration-200',
+          tab.id === activeTab ? 'block' : 'hidden'
+        )}
+      >
+        <slot name={tab.id} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  function initTabs() {
+    document.querySelectorAll('[data-tabs]').forEach((container) => {
+      const tabs = container.querySelectorAll('[role="tab"]');
+      const panels = container.querySelectorAll('[role="tabpanel"]');
+
+      function switchTab(newTab: Element) {
+        const tabId = newTab.getAttribute('data-tab-id');
+        if (!tabId) return;
+
+        // Update tabs
+        tabs.forEach((tab) => {
+          const isSelected = tab.getAttribute('data-tab-id') === tabId;
+          tab.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          tab.setAttribute('tabindex', isSelected ? '0' : '-1');
+
+          // Update styling
+          if (isSelected) {
+            tab.classList.remove('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            tab.classList.add('border-primary', 'text-primary');
+          } else {
+            tab.classList.add('border-transparent', 'text-gray-500', 'dark:text-gray-400');
+            tab.classList.remove('border-primary', 'text-primary');
+          }
+        });
+
+        // Update panels
+        panels.forEach((panel) => {
+          const isActive = panel.getAttribute('data-panel-id') === tabId;
+          panel.classList.toggle('hidden', !isActive);
+          panel.classList.toggle('block', isActive);
+        });
+      }
+
+      // Click handler
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => switchTab(tab));
+      });
+
+      // Keyboard navigation
+      tabs.forEach((tab) => {
+        tab.addEventListener('keydown', (e: KeyboardEvent) => {
+          const tabsArray = Array.from(tabs);
+          const currentIndex = tabsArray.indexOf(tab);
+          let newIndex = currentIndex;
+
+          switch (e.key) {
+            case 'ArrowLeft':
+              newIndex = currentIndex > 0 ? currentIndex - 1 : tabsArray.length - 1;
+              break;
+            case 'ArrowRight':
+              newIndex = currentIndex < tabsArray.length - 1 ? currentIndex + 1 : 0;
+              break;
+            case 'Home':
+              newIndex = 0;
+              break;
+            case 'End':
+              newIndex = tabsArray.length - 1;
+              break;
+            default:
+              return;
+          }
+
+          e.preventDefault();
+          const newTab = tabsArray[newIndex];
+          (newTab as HTMLElement).focus();
+          switchTab(newTab);
+        });
+      });
+    });
+  }
+
+  // Initialize on load and after Astro page transitions
+  initTabs();
+  document.addEventListener('astro:after-swap', initTabs);
+</script>
