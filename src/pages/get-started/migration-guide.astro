@@ -8,6 +8,7 @@ import Features from '~/components/widgets/Features.astro';
 import Callout from '~/components/ui/Callout.astro';
 import ChecklistItem from '~/components/ui/ChecklistItem.astro';
 import { Icon } from 'astro-icon/components';
+import CodeBlock from '~/components/ui/CodeBlock.astro';
 
 const metadata = {
   title: 'Migration Guide',
@@ -171,7 +172,7 @@ const metadata = {
   <!-- Detailed Migration Commands -->
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
     <div
-      class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900"
+      class="prose prose-lg max-w-none dark:prose-invert prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
     >
       <h3 id="step-1-backup" class="flex items-center gap-3">
         <span
@@ -181,11 +182,11 @@ const metadata = {
         Create Backup
       </h3>
 
-      <pre><code>{`# Backup database
+      <CodeBlock code={`# Backup database
 mysqldump -u username -p database_name > backup.sql
 
 # Backup files
-tar -czvf magento-backup.tar.gz /path/to/magento`}</code></pre>
+tar -czvf magento-backup.tar.gz /path/to/magento`} lang="bash" />
 
       <h3 id="step-2-switch" class="flex items-center gap-3">
         <span
@@ -195,7 +196,7 @@ tar -czvf magento-backup.tar.gz /path/to/magento`}</code></pre>
         Switch to Mage-OS Repository
       </h3>
 
-      <pre><code>{`cd /path/to/your/magento
+      <CodeBlock code={`cd /path/to/your/magento
 
 # Add Mage-OS repository
 composer config repositories.0 composer https://repo.mage-os.org/
@@ -209,7 +210,7 @@ composer remove magento/product-community-edition \\
   magento/composer-root-update-plugin --no-update
 
 # Update all dependencies
-composer update --no-plugins --with-all-dependencies`}</code></pre>
+composer update --no-plugins --with-all-dependencies`} lang="bash" />
 
       <h3 id="step-3-upgrade" class="flex items-center gap-3">
         <span
@@ -219,7 +220,7 @@ composer update --no-plugins --with-all-dependencies`}</code></pre>
         Run Upgrade
       </h3>
 
-      <pre><code>{`# Run setup upgrade
+      <CodeBlock code={`# Run setup upgrade
 bin/magento setup:upgrade
 
 # Compile DI
@@ -232,7 +233,7 @@ bin/magento setup:static-content:deploy -f
 bin/magento indexer:reindex
 
 # Flush cache
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`} lang="bash" />
 
       <h3 id="step-4-verify" class="flex items-center gap-3">
         <span
@@ -242,10 +243,10 @@ bin/magento cache:flush`}</code></pre>
         Verify Installation
       </h3>
 
-      <pre><code>{`# Check version
+      <CodeBlock code={`# Check version
 bin/magento --version
 
-# Should output: Mage-OS 2.x.x`}</code></pre>
+# Should output: Mage-OS 2.x.x`} lang="bash" />
     </div>
 
     <!-- One-Line Migration -->
@@ -260,7 +261,7 @@ bin/magento --version
       </div>
       <p class="text-muted mb-4 text-sm">For experienced users, the entire process can be condensed:</p>
       <pre
-        class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code>{`composer config repositories.0 composer https://repo.mage-os.org/ && \\
+        class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">composer config repositories.0 composer https://repo.mage-os.org/ && \\
 composer require mage-os/product-community-edition --no-update && \\
 composer remove magento/product-community-edition \\
   magento/composer-dependency-version-audit-plugin \\
@@ -269,7 +270,7 @@ composer update --no-plugins --with-all-dependencies && \\
 bin/magento setup:upgrade && \\
 bin/magento setup:di:compile && \\
 bin/magento setup:static-content:deploy -f && \\
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush</code></pre>
     </div>
   </section>
 
@@ -396,20 +397,20 @@ bin/magento cache:flush`}</code></pre>
         <div>
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Restore from Backup</h4>
           <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`# Restore database
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash"># Restore database
 mysql -u username -p database_name < backup.sql
 
 # Restore files
-tar -xzvf magento-backup.tar.gz -C /`}</code></pre>
+tar -xzvf magento-backup.tar.gz -C /</code></pre>
         </div>
         <div>
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Switch Back to Magento</h4>
           <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`composer config repositories.0 composer https://repo.magento.com/
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">composer config repositories.0 composer https://repo.magento.com/
 composer require magento/product-community-edition --no-update
 composer remove mage-os/product-community-edition --no-update
 composer update --no-plugins --with-all-dependencies
-bin/magento setup:upgrade`}</code></pre>
+bin/magento setup:upgrade</code></pre>
         </div>
       </div>
     </Callout>
@@ -502,14 +503,14 @@ bin/magento setup:upgrade`}</code></pre>
 
       <Callout type="tip" title="Module Version Mismatches">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`bin/magento setup:upgrade
-bin/magento module:status`}</code></pre>
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">bin/magento setup:upgrade
+bin/magento module:status</code></pre>
       </Callout>
 
       <Callout type="tip" title="Static Content Issues">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`rm -rf pub/static/* var/view_preprocessed/*
-bin/magento setup:static-content:deploy -f`}</code></pre>
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">rm -rf pub/static/* var/view_preprocessed/*
+bin/magento setup:static-content:deploy -f</code></pre>
       </Callout>
     </div>
   </section>

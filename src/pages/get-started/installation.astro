@@ -7,6 +7,7 @@ import TabbedContent from '~/components/ui/TabbedContent.astro';
 import Callout from '~/components/ui/Callout.astro';
 import VersionBadge from '~/components/ui/VersionBadge.astro';
 import { Icon } from 'astro-icon/components';
+import CodeBlock from '~/components/ui/CodeBlock.astro';
 
 const metadata = {
   title: 'Installation Guide',
@@ -108,7 +109,7 @@ const installationTabs = [
             </Callout>
 
             <div
-              class="prose prose-lg max-w-none dark:prose-invert mt-8 prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900"
+              class="prose prose-lg max-w-none dark:prose-invert mt-8 prose-headings:font-heading prose-headings:font-bold prose-a:text-primary prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
             >
               <h4 id="composer-step-1" class="flex items-center gap-2">
                 <span
@@ -118,8 +119,8 @@ const installationTabs = [
                 Create Project
               </h4>
 
-              <pre><code>{`composer create-project --repository-url=https://repo.mage-os.org/ \\
-  mage-os/project-community-edition <install-directory>`}</code></pre>
+              <CodeBlock code={`composer create-project --repository-url=https://repo.mage-os.org/ \\
+  mage-os/project-community-edition <install-directory>`} lang="bash" />
 
               <p class="text-sm text-muted">
                 Replace <code>&lt;install-directory&gt;</code> with your desired path or <code>.</code> for current directory.
@@ -133,11 +134,11 @@ const installationTabs = [
                 Set File Permissions
               </h4>
 
-              <pre><code>{`cd <install-directory>
+              <CodeBlock code={`cd <install-directory>
 find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +
 find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
 chown -R :www-data .
-chmod u+x bin/magento`}</code></pre>
+chmod u+x bin/magento`} lang="bash" />
 
               <h4 id="composer-step-3" class="flex items-center gap-2">
                 <span
@@ -147,13 +148,13 @@ chmod u+x bin/magento`}</code></pre>
                 Create Database
               </h4>
 
-              <pre><code>{`mysql -u root -p`}</code></pre>
+              <CodeBlock code="mysql -u root -p" lang="bash" />
 
-              <pre><code>{`CREATE DATABASE mageos;
+              <CodeBlock code={`CREATE DATABASE mageos;
 CREATE USER 'mageos'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL ON mageos.* TO 'mageos'@'localhost';
 FLUSH PRIVILEGES;
-EXIT;`}</code></pre>
+EXIT;`} lang="sql" />
 
               <h4 id="composer-step-4" class="flex items-center gap-2">
                 <span
@@ -163,7 +164,7 @@ EXIT;`}</code></pre>
                 Run Installer
               </h4>
 
-              <pre><code>{`bin/magento setup:install \\
+              <CodeBlock code={`bin/magento setup:install \\
   --base-url="http://your-domain.com/" \\
   --db-host="localhost" \\
   --db-name="mageos" \\
@@ -182,7 +183,7 @@ EXIT;`}</code></pre>
   --opensearch-host="localhost" \\
   --opensearch-port="9200" \\
   --opensearch-index-prefix="mageos" \\
-  --opensearch-timeout="15"`}</code></pre>
+  --opensearch-timeout="15"`} lang="bash" />
 
               <h4 id="composer-step-5" class="flex items-center gap-2">
                 <span
@@ -192,10 +193,10 @@ EXIT;`}</code></pre>
                 Post-Installation
               </h4>
 
-              <pre><code>{`bin/magento setup:di:compile
+              <CodeBlock code={`bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
 bin/magento indexer:reindex
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`} lang="bash" />
             </div>
 
             <Callout type="tip" title="Next Steps" class="mt-6">
@@ -299,13 +300,13 @@ bin/magento cache:flush`}</code></pre>
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   DDEV is the easiest way to get started with Mage-OS development. It handles all service configuration
                   automatically.
                 </p>
-                <pre><code>{`# Install DDEV
+                <CodeBlock code={`# Install DDEV
 curl -fsSL https://ddev.com/install.sh | bash
 
 # Create project directory
@@ -340,7 +341,7 @@ ddev magento setup:install \\
 # Deploy
 ddev magento setup:di:compile
 ddev magento setup:static-content:deploy -f
-ddev magento cache:flush`}</code></pre>
+ddev magento cache:flush`} lang="bash" />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://mageos.ddev.site/</code>
@@ -363,7 +364,7 @@ ddev magento cache:flush`}</code></pre>
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   <a
@@ -372,7 +373,7 @@ ddev magento cache:flush`}</code></pre>
                     class="text-primary hover:underline">docker-magento</a
                   > by Mark Shust is a production-like Docker environment with excellent documentation.
                 </p>
-                <pre><code>{`# Download the setup script
+                <CodeBlock code={`# Download the setup script
 curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- mageos.test
 
 # Navigate to project directory
@@ -391,7 +392,7 @@ bin/magento admin:user:create \\
   --admin-password="Admin123!" \\
   --admin-email="admin@example.com" \\
   --admin-firstname="Admin" \\
-  --admin-lastname="User"`}</code></pre>
+  --admin-lastname="User"`} lang="bash" />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://mageos.test/</code>
@@ -422,13 +423,13 @@ bin/magento admin:user:create \\
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   Warden is a Docker-based development environment specifically designed for Magento and Mage-OS
                   projects with advanced features for professional development teams.
                 </p>
-                <pre><code>{`# Install Warden (macOS)
+                <CodeBlock code={`# Install Warden (macOS)
 brew install davidalger/warden/warden
 
 # Initialize Warden (first time only)
@@ -465,7 +466,7 @@ bin/magento setup:install \\
 # Deploy static content
 bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`} lang="bash" />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://app.mageos.test/</code>
@@ -507,12 +508,12 @@ bin/magento cache:flush`}</code></pre>
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   <strong>Recommended instance:</strong> t3.large (minimum) or t3.xlarge for production
                 </p>
-                <pre><code>{`# Connect to your EC2 instance
+                <CodeBlock code={`# Connect to your EC2 instance
 ssh -i your-key.pem ec2-user@your-instance-ip
 
 # Update system packages
@@ -534,7 +535,7 @@ cd /var/www
 sudo composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition mageos
 sudo chown -R nginx:nginx mageos
 
-# Follow Composer installation steps 4-5 above`}</code></pre>
+# Follow Composer installation steps 4-5 above`} lang="bash" />
                 <p><strong>Security group rules:</strong></p>
                 <ul>
                   <li>Port 80 (HTTP) - 0.0.0.0/0</li>
@@ -560,12 +561,12 @@ sudo chown -R nginx:nginx mageos
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   <strong>Recommended instance:</strong> n2-standard-2 (minimum) or n2-standard-4 for production
                 </p>
-                <pre><code>{`# Connect via gcloud
+                <CodeBlock code={`# Connect via gcloud
 gcloud compute ssh your-instance-name
 
 # Update and install packages (Debian/Ubuntu)
@@ -587,7 +588,7 @@ cd /var/www
 sudo composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition mageos
 sudo chown -R www-data:www-data mageos
 
-# Follow Composer installation steps 4-5 above`}</code></pre>
+# Follow Composer installation steps 4-5 above`} lang="bash" />
                 <p><strong>Firewall rules:</strong></p>
                 <ul>
                   <li>Allow HTTP (tcp:80)</li>
@@ -612,12 +613,12 @@ sudo chown -R www-data:www-data mageos
                 />
               </summary>
               <div
-                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-pre:bg-gray-900 prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
+                class="p-4 prose prose-sm max-w-none dark:prose-invert prose-code:bg-gray-100 dark:prose-code:bg-gray-800"
               >
                 <p>
                   <strong>Recommended VM:</strong> Standard_D2s_v3 (minimum) or Standard_D4s_v3 for production
                 </p>
-                <pre><code>{`# Connect via Azure CLI
+                <CodeBlock code={`# Connect via Azure CLI
 az ssh vm -n your-vm-name -g your-resource-group
 
 # Update and install packages (Ubuntu)
@@ -625,7 +626,7 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y php8.3 php8.3-{bcmath,cli,common,curl,fpm,gd,intl,mbstring,mysql,opcache,soap,xml,zip}
 sudo apt install -y nginx mysql-server composer
 
-# Follow same steps as GCP above`}</code></pre>
+# Follow same steps as GCP above`} lang="bash" />
                 <p><strong>Network security group rules:</strong></p>
                 <ul>
                   <li>Allow inbound TCP 80, 443 from Any</li>
@@ -651,7 +652,7 @@ sudo apt install -y nginx mysql-server composer
         </div>
         <div class="p-4">
           <pre
-            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code>{`<VirtualHost *:80>
+            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">{`<VirtualHost *:80>
     ServerName your-domain.com
     DocumentRoot /var/www/mageos/pub
 
@@ -675,7 +676,7 @@ sudo apt install -y nginx mysql-server composer
         </div>
         <div class="p-4">
           <pre
-            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code>{`upstream fastcgi_backend {
+            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">{`upstream fastcgi_backend {
     server unix:/var/run/php/php8.3-fpm.sock;
 }
 
@@ -713,7 +714,7 @@ server {
             Required for scheduled tasks like indexing, email sending, and cache management.
           </p>
           <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mb-3"><code>{`# Install cron jobs
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mb-3"><code class="language-bash">{`# Install cron jobs
 bin/magento cron:install
 
 # Verify cron status
@@ -742,7 +743,7 @@ bin/magento cron:status`}</code></pre>
           </div>
           <p class="text-muted mb-4">Ensure all caches are enabled for optimal performance.</p>
           <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`bin/magento cache:enable
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`bin/magento cache:enable
 bin/magento cache:status`}</code></pre>
         </div>
 
@@ -755,7 +756,7 @@ bin/magento cache:status`}</code></pre>
           </div>
           <p class="text-muted mb-4">For testing or demonstration purposes.</p>
           <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`bin/magento sampledata:deploy
+            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`bin/magento sampledata:deploy
 bin/magento setup:upgrade
 bin/magento cache:flush`}</code></pre>
         </div>
@@ -777,7 +778,7 @@ bin/magento cache:flush`}</code></pre>
           <div>
             <h4 class="font-medium mb-2 dark:text-white">Install Redis</h4>
             <pre
-              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`# Ubuntu/Debian
+              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`# Ubuntu/Debian
 sudo apt install redis-server
 sudo systemctl enable --now redis-server
 
@@ -788,7 +789,7 @@ redis-cli ping
           <div>
             <h4 class="font-medium mb-2 dark:text-white">Configure env.php</h4>
             <pre
-              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`'cache' => [
+              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`'cache' => [
     'frontend' => [
         'default' => [
             'backend' => 'Magento\\Framework\\Cache\\Backend\\Redis',
@@ -813,7 +814,7 @@ redis-cli ping
     <div class="space-y-4">
       <Callout type="tip" title="Permission denied errors">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`sudo chown -R www-data:www-data /var/www/mageos
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`sudo chown -R www-data:www-data /var/www/mageos
 sudo chmod -R 755 /var/www/mageos
 sudo chmod -R 775 var generated pub/static pub/media`}</code></pre>
       </Callout>
@@ -829,7 +830,7 @@ sudo chmod -R 775 var generated pub/static pub/media`}</code></pre>
 
       <Callout type="tip" title="Static content deployment fails">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`# Use parallel jobs and force mode
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Use parallel jobs and force mode
 bin/magento setup:static-content:deploy -f --jobs=4
 
 # For specific locales
@@ -838,7 +839,7 @@ bin/magento setup:static-content:deploy -f en_US en_GB --jobs=4`}</code></pre>
 
       <Callout type="tip" title="OpenSearch/Elasticsearch connection failed">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`# Check if OpenSearch is running
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Check if OpenSearch is running
 curl http://localhost:9200
 
 # Check service status
@@ -850,7 +851,7 @@ sudo systemctl restart opensearch`}</code></pre>
 
       <Callout type="tip" title="Admin URL forgotten">
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code>{`# Get current admin URI
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Get current admin URI
 bin/magento info:adminuri
 
 # Or check env.php
@@ -860,7 +861,7 @@ grep -A2 "backend" app/etc/env.php`}</code></pre>
       <Callout type="warning" title="Clear all caches and regenerate">
         <p class="mb-2">Nuclear option for persistent issues:</p>
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>{`rm -rf var/cache/* var/page_cache/* var/view_preprocessed/* generated/*
+          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`rm -rf var/cache/* var/page_cache/* var/view_preprocessed/* generated/*
 bin/magento setup:upgrade
 bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f

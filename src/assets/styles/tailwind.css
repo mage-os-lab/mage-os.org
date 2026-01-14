@@ -114,6 +114,14 @@
   @apply rotate-45 translate-y-[-8px] translate-x-[14px];
 }
 
+/* Shiki dual theme support - light mode */
+pre.astro-code,
+pre.astro-code span {
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
+}
+
+/* Shiki dual theme support - dark mode */
 .dark pre.astro-code,
 .dark pre.astro-code span {
   color: var(--shiki-dark) !important;

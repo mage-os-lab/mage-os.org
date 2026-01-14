@@ -1,0 +1,25 @@
+---
+/**
+ * CodeBlock - A wrapper around Astro's Code component with dual theme support.
+ *
+ * Uses the same themes as markdown code blocks (configured in astro.config.ts):
+ * - Light mode: one-light
+ * - Dark mode: dracula
+ */
+import { Code } from 'astro:components';
+import type { ComponentProps } from 'astro/types';
+
+type CodeProps = ComponentProps<typeof Code>;
+
+interface Props extends Omit<CodeProps, 'themes' | 'theme'> {}
+
+const props = Astro.props;
+---
+
+<Code
+  {...props}
+  themes={{
+    light: 'one-light',
+    dark: 'dracula',
+  }}
+/>

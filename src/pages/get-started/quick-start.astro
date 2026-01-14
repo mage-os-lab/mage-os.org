@@ -5,6 +5,7 @@ import Steps from '~/components/widgets/Steps.astro';
 import Callout from '~/components/ui/Callout.astro';
 import ItemGrid from '~/components/ui/ItemGrid.astro';
 import { Icon } from 'astro-icon/components';
+import CodeBlock from '~/components/ui/CodeBlock.astro';
 
 const metadata = {
   title: 'Quick Start Guide',
@@ -33,7 +34,7 @@ const metadata = {
 
     <!-- Before You Begin Section -->
     <div
-      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900"
+      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
     >
       <h2>Before You Begin</h2>
 
@@ -167,7 +168,7 @@ const metadata = {
   <!-- Detailed Step Instructions -->
   <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl">
     <div
-      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900"
+      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded"
     >
       <h2 id="step-1" class="flex items-center gap-3">
         <Icon name="tabler:package" class="w-8 h-8 text-primary" />
@@ -180,7 +181,7 @@ const metadata = {
 
       <p>Navigate to your web server's document root and create a new project:</p>
 
-      <pre><code>composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition .</code></pre>
+      <CodeBlock code="composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition ." lang="bash" />
 
       <p><strong>What this does:</strong></p>
 
@@ -203,10 +204,10 @@ const metadata = {
 
       <p>Create an empty database for your Mage-OS installation:</p>
 
-      <pre><code>{`mysql -u root -p -e "CREATE DATABASE mage_os;"
+      <CodeBlock code={`mysql -u root -p -e "CREATE DATABASE mage_os;"
 mysql -u root -p -e "CREATE USER 'mage_os_user'@'localhost' IDENTIFIED BY 'secure_password';"
 mysql -u root -p -e "GRANT ALL PRIVILEGES ON mage_os.* TO 'mage_os_user'@'localhost';"
-mysql -u root -p -e "FLUSH PRIVILEGES;"`}</code></pre>
+mysql -u root -p -e "FLUSH PRIVILEGES;"`} lang="bash" />
     </div>
 
     <Callout type="warning" title="Security Note">
@@ -215,7 +216,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"`}</code></pre>
     </Callout>
 
     <div
-      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded prose-pre:bg-gray-900 mt-8"
+      class="prose prose-lg max-w-none dark:prose-invert dark:prose-headings:text-slate-300 prose-headings:font-heading prose-headings:leading-tighter prose-headings:tracking-tighter prose-headings:font-bold prose-a:text-indigo-600 dark:prose-a:text-indigo-400 prose-code:bg-gray-100 dark:prose-code:bg-gray-800 prose-code:px-1 prose-code:py-0.5 prose-code:rounded mt-8"
     >
       <hr class="my-8" />
 
@@ -230,7 +231,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"`}</code></pre>
 
       <p>Run the setup installer with your configuration:</p>
 
-      <pre><code>{`bin/magento setup:install \\
+      <CodeBlock code={`bin/magento setup:install \\
   --base-url=http://yourdomain.local/ \\
   --db-host=localhost \\
   --db-name=mage_os \\
@@ -247,7 +248,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"`}</code></pre>
   --use-rewrites=1 \\
   --search-engine=opensearch \\
   --opensearch-host=localhost \\
-  --opensearch-port=9200`}</code></pre>
+  --opensearch-port=9200`} lang="bash" />
 
       <p><strong>Customize these values:</strong></p>
 
@@ -311,7 +312,7 @@ mysql -u root -p -e "FLUSH PRIVILEGES;"`}</code></pre>
 
       <p>After installation completes, set permissions and deploy assets:</p>
 
-      <pre><code>{`# Set file permissions
+      <CodeBlock code={`# Set file permissions
 find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +
 find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
 chmod u+x bin/magento
@@ -323,7 +324,7 @@ bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
 
 # Flush cache
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`} lang="bash" />
 
       <hr class="my-8" />
 
@@ -338,13 +339,13 @@ bin/magento cache:flush`}</code></pre>
 
       <p><strong>For local development:</strong></p>
 
-      <pre><code>bin/magento deploy:mode:set developer</code></pre>
+      <CodeBlock code="bin/magento deploy:mode:set developer" lang="bash" />
 
       <p>Developer mode provides detailed error messages and disables static file caching for easier debugging.</p>
 
       <p><strong>For production:</strong></p>
 
-      <pre><code>bin/magento deploy:mode:set production</code></pre>
+      <CodeBlock code="bin/magento deploy:mode:set production" lang="bash" />
 
       <p>Production mode enables full caching and optimizations for performance.</p>
 
@@ -363,7 +364,7 @@ bin/magento cache:flush`}</code></pre>
 
       <p>Open your browser and navigate to:</p>
 
-      <pre><code>http://yourdomain.local/</code></pre>
+      <CodeBlock code="http://yourdomain.local/" lang="text" />
 
       <p>You should see the default Mage-OS/Magento storefront with the Luma theme.</p>
 
@@ -371,7 +372,7 @@ bin/magento cache:flush`}</code></pre>
 
       <p>Navigate to:</p>
 
-      <pre><code>http://yourdomain.local/admin</code></pre>
+      <CodeBlock code="http://yourdomain.local/admin" lang="text" />
 
       <p><strong>Login with:</strong></p>
 
@@ -458,11 +459,11 @@ bin/magento cache:flush`}</code></pre>
           automatically:
         </p>
 
-        <pre class="bg-gray-900"><code>bin/magento cron:install</code></pre>
+        <CodeBlock code="bin/magento cron:install" lang="bash" />
 
         <p>Verify the installation:</p>
 
-        <pre class="bg-gray-900"><code>bin/magento cron:status</code></pre>
+        <CodeBlock code="bin/magento cron:status" lang="bash" />
       </div>
     </div>
   </section>
@@ -475,16 +476,16 @@ bin/magento cache:flush`}</code></pre>
       <Callout type="tip" title="Blank Page After Installation">
         <p class="mb-2"><strong>Cause:</strong> Usually a cache or compilation issue.</p>
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code>{`rm -rf var/cache/* var/page_cache/* generated/*
+          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code class="language-bash">rm -rf var/cache/* var/page_cache/* generated/*
 bin/magento setup:upgrade
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush</code></pre>
       </Callout>
 
       <Callout type="tip" title="404 Errors on Storefront Pages">
         <p class="mb-2"><strong>Cause:</strong> Apache mod_rewrite not enabled.</p>
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code>{`sudo a2enmod rewrite
-sudo systemctl restart apache2`}</code></pre>
+          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code class="language-bash">sudo a2enmod rewrite
+sudo systemctl restart apache2</code></pre>
         <p class="mt-2">
           For Nginx, ensure your configuration includes the rewrite rules. See the <a
             href="/get-started/installation#nginx-configuration"
@@ -517,16 +518,16 @@ sudo systemctl restart apache2`}</code></pre>
           > which automatically disables 2FA in developer mode while keeping it enabled in production:
         </p>
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code>{`composer require --dev markshust/magento2-module-disabletwofactorauth
+          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code class="language-bash">composer require --dev markshust/magento2-module-disabletwofactorauth
 bin/magento module:enable MarkShust_DisableTwoFactorAuth
-bin/magento setup:upgrade`}</code></pre>
+bin/magento setup:upgrade</code></pre>
       </Callout>
 
       <Callout type="tip" title="Static Content Not Loading (CSS/JS Missing)">
         <p class="mb-2"><strong>Cause:</strong> Static content not deployed or permissions issue.</p>
         <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code>{`bin/magento setup:static-content:deploy -f
-bin/magento cache:clean`}</code></pre>
+          class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto"><code class="language-bash">bin/magento setup:static-content:deploy -f
+bin/magento cache:clean</code></pre>
       </Callout>
     </div>
   </section>

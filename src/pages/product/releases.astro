@@ -6,6 +6,7 @@ import { findReleasePosts } from '~/utils/blog';
 import { getPermalink } from '~/utils/permalinks';
 import { getFormattedDate } from '~/utils/utils';
 import { Icon } from 'astro-icon/components';
+import CodeBlock from '~/components/ui/CodeBlock.astro';
 
 const releasePosts = await findReleasePosts();
 const latestRelease = releasePosts.length > 0 ? releasePosts[0] : null;
@@ -57,7 +58,7 @@ const metadata = {
       <!-- Quick Install Section -->
       <h2>Quick Install (New Project)</h2>
       <p>Create a fresh Mage-OS installation with a single command:</p>
-      <pre><code class="language-bash">composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition .</code></pre>
+      <CodeBlock code="composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition ." lang="bash" />
       <p>
         After Composer finishes, run the installer to complete setup. See the{' '}
         <a href="/get-started/installation">Full Installation Guide</a> for detailed steps.
@@ -65,10 +66,10 @@ const metadata = {
 
       <h2>Migrate from Magento Open Source</h2>
       <p>Switch your existing Magento store to Mage-OS:</p>
-      <pre><code class="language-bash">composer config repositories.0 composer https://repo.mage-os.org/ && \
-composer require mage-os/product-community-edition --no-update && \
-composer remove magento/product-community-edition magento/composer-dependency-version-audit-plugin magento/composer-root-update-plugin --no-update && \
-composer update --no-plugins --with-all-dependencies</code></pre>
+      <CodeBlock code={`composer config repositories.0 composer https://repo.mage-os.org/ && \\
+composer require mage-os/product-community-edition --no-update && \\
+composer remove magento/product-community-edition magento/composer-dependency-version-audit-plugin magento/composer-root-update-plugin --no-update && \\
+composer update --no-plugins --with-all-dependencies`} lang="bash" />
       <blockquote>
         <p>
           <strong>Tip:</strong> We recommend updating to the latest Magento version before migrating to minimize compatibility
@@ -112,7 +113,7 @@ composer update --no-plugins --with-all-dependencies</code></pre>
 
       <h3>From a Previous Mage-OS Version</h3>
       <p>Upgrade your existing Mage-OS installation to the latest version:</p>
-      <pre><code class="language-bash"># Step 1: Update packages
+      <CodeBlock code={`# Step 1: Update packages
 composer update mage-os/product-community-edition --with-all-dependencies
 
 # Step 2: Run database migrations
@@ -125,7 +126,7 @@ bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
 
 # Step 5: Clear cache
-bin/magento cache:flush</code></pre>
+bin/magento cache:flush`} lang="bash" />
       <blockquote>
         <p>
           <strong>Before upgrading:</strong> Always back up your database and files before performing any upgrade. Test the
@@ -261,7 +262,7 @@ bin/magento cache:flush</code></pre>
       </ul>
       <p>
         <a href="/community">View all contributors</a> |{' '}
-        <a href="/community/get-involved">Become a contributor</a>
+        <a href="/community#get-involved">Become a contributor</a>
       </p>
 
       <hr />
