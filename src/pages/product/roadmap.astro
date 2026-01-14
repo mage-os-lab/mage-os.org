@@ -1,0 +1,617 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/widgets/PageHero.astro';
+import Headline from '~/components/ui/Headline.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Features from '~/components/widgets/Features.astro';
+import Callout from '~/components/ui/Callout.astro';
+import VersionBadge from '~/components/ui/VersionBadge.astro';
+import { Icon } from 'astro-icon/components';
+
+const metadata = {
+  title: 'Roadmap',
+  description:
+    "See what's coming next for Mage-OS. Our transparent development roadmap shows upcoming features and community priorities.",
+  openGraph: {
+    images: [{ url: '/og/page/roadmap.png', width: 1200, height: 630 }],
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero tagline="Product" variant="default">
+    <Fragment slot="title">Roadmap</Fragment>
+    <Fragment slot="subtitle">
+      Our roadmap is <strong>community-driven and transparent</strong>. See what we're working on, what's planned, and
+      how you can influence the direction of Mage-OS.
+    </Fragment>
+  </PageHero>
+
+  <!-- Version & Support Policy Section -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="Version & Support Policy"
+      subtitle="Since July 2025, we've adopted a predictable versioning strategy for upgrades"
+      tagline="Versioning"
+    />
+
+    <div class="grid md:grid-cols-3 gap-6 mt-8">
+      <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6 border-2 border-indigo-200 dark:border-indigo-800">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-indigo-100 dark:bg-indigo-900 rounded-full p-2">
+            <Icon name="tabler:rocket" class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold dark:text-white">Major</h3>
+            <span class="text-sm text-muted">#.0.0</span>
+          </div>
+        </div>
+        <p class="text-muted mb-3">New features, dependency changes, system requirement updates.</p>
+        <div class="flex items-center gap-2 text-sm">
+          <Icon name="tabler:calendar" class="w-4 h-4 text-muted" />
+          <span class="text-muted">~2x per year (April, October)</span>
+        </div>
+      </div>
+
+      <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-6 border-2 border-blue-200 dark:border-blue-800">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-2">
+            <Icon name="tabler:shield-check" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold dark:text-white">Minor</h3>
+            <span class="text-sm text-muted">2.#.0</span>
+          </div>
+        </div>
+        <p class="text-muted mb-3">Security patches, compatibility updates.</p>
+        <div class="flex items-center gap-2 text-sm">
+          <Icon name="tabler:calendar" class="w-4 h-4 text-muted" />
+          <span class="text-muted">Following security patches</span>
+        </div>
+      </div>
+
+      <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-6 border-2 border-gray-200 dark:border-gray-700">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-gray-100 dark:bg-gray-700 rounded-full p-2">
+            <Icon name="tabler:bandage" class="w-6 h-6 text-gray-600 dark:text-gray-400" />
+          </div>
+          <div>
+            <h3 class="text-lg font-bold dark:text-white">Patch</h3>
+            <span class="text-sm text-muted">2.0.#</span>
+          </div>
+        </div>
+        <p class="text-muted mb-3">Critical off-schedule fixes.</p>
+        <div class="flex items-center gap-2 text-sm">
+          <Icon name="tabler:calendar" class="w-4 h-4 text-muted" />
+          <span class="text-muted">As needed</span>
+        </div>
+      </div>
+    </div>
+
+    <Callout type="info" title="Support Policy" class="mt-8">
+      Only the <strong>latest Mage-OS release</strong> is supported. Stay up to date to receive security patches and community
+      support.
+    </Callout>
+  </section>
+
+  <!-- Current Release Section -->
+  <section class="bg-green-50 dark:bg-green-950/30 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+      <div class="flex items-center gap-4 mb-8">
+        <div
+          class="flex-shrink-0 w-16 h-16 bg-green-100 dark:bg-green-900 rounded-full flex items-center justify-center"
+        >
+          <Icon name="tabler:star" class="w-8 h-8 text-green-600 dark:text-green-400" />
+        </div>
+        <div>
+          <h2 class="text-3xl font-bold font-heading text-green-800 dark:text-green-200">Current Release: Mage-OS 2</h2>
+          <p class="text-green-700 dark:text-green-300">
+            Released in late 2025, our most feature-rich release to date.
+          </p>
+        </div>
+      </div>
+
+      <ItemGrid
+        columns={2}
+        items={[
+          {
+            title: 'PCI DSS 4.0 Compliance',
+            description:
+              'Enhanced security policies including automatic account deactivation and strengthened authentication.',
+            icon: 'tabler:shield-lock',
+          },
+          {
+            title: 'AI-Powered Translation',
+            description:
+              'Automatic translation via DeepL, OpenAI, or Google Gemini for products, categories, and CMS content.',
+            icon: 'tabler:language',
+          },
+          {
+            title: 'Inventory Reservations Grid',
+            description: 'Direct visibility and management of stock reservations in the admin panel.',
+            icon: 'tabler:box',
+          },
+          {
+            title: 'Meta Robots Control',
+            description: 'Fine-grained NOINDEX, NOFOLLOW, and NOARCHIVE settings per page for better SEO.',
+            icon: 'tabler:robot',
+          },
+          {
+            title: 'PageBuilder Enhancements',
+            description: 'CMS Widget support with live previews and import/export capabilities.',
+            icon: 'tabler:layout-grid',
+          },
+          {
+            title: 'Theme Optimization',
+            description: 'Back/forward cache support, speculative preloading, and smooth page transitions.',
+            icon: 'tabler:bolt',
+          },
+          {
+            title: 'PHP 8.4 Support',
+            description: 'Full compatibility with the latest PHP version for improved performance and features.',
+            icon: 'tabler:brand-php',
+          },
+        ]}
+        classes={{
+          panel: 'bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm',
+          icon: 'text-green-600 dark:text-green-400',
+        }}
+      />
+
+      <div class="mt-8 text-center">
+        <a
+          href="/get-started/quick-start"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium"
+        >
+          <Icon name="tabler:download" class="w-5 h-5" />
+          Get Started with Mage-OS 2
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2026 Roadmap Timeline -->
+  <Steps
+    id="roadmap-2026"
+    title="2026 Roadmap"
+    tagline="What's Coming"
+    subtitle="Our development priorities are shaped by community input through weekly tech meetings, GitHub discussions, and member voting."
+    items={[
+      {
+        title: 'Q1 2026 <span class="text-sm font-normal text-muted ml-2">(January - March)</span>',
+        description:
+          '<strong>Mage-OS 2.1-2.4</strong> - Minor releases incorporating upstream security patches. Plus continued Lab module evaluations, developer experience improvements, and documentation expansion.',
+        icon: 'tabler:calendar-event',
+      },
+      {
+        title: 'Q2 2026 <span class="text-sm font-normal text-muted ml-2">(April - June)</span>',
+        description:
+          '<strong>Mage-OS 3.0</strong> - Next major release aligned with Magento feature release. New community-driven features from the Mage-OS Lab and system requirement updates as needed.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Q3-Q4 2026 <span class="text-sm font-normal text-muted ml-2">(July - December)</span>',
+        description:
+          'Ongoing security patch releases, additional Lab module graduations, ecosystem integrations and partner tooling, and community growth initiatives.',
+        icon: 'tabler:trending-up',
+      },
+    ]}
+  />
+
+  <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-4xl -mt-8 mb-16">
+    <Callout type="tip" title="Roadmap Flexibility">
+      Roadmap timing may adjust based on upstream Magento release schedules and community priorities.
+    </Callout>
+  </div>
+
+  <!-- Security Patch Schedule Section -->
+  <section class="bg-gray-50 dark:bg-slate-800/50 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-4xl">
+      <Headline
+        title="Security Patch Schedule"
+        subtitle="Starting in 2026, Adobe releases security patches on the second Tuesday of each month"
+      />
+
+      <div class="grid md:grid-cols-3 gap-6 mt-8">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="tabler:calendar-time" class="w-8 h-8 text-blue-600 dark:text-blue-400" />
+            <h3 class="text-lg font-bold dark:text-white">Monthly Adobe Patch</h3>
+          </div>
+          <p class="text-muted">
+            <strong>Mage-OS Response:</strong> Minor version release within days
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="tabler:alert-triangle" class="w-8 h-8 text-orange-600 dark:text-orange-400" />
+            <h3 class="text-lg font-bold dark:text-white">Critical Vulnerability</h3>
+          </div>
+          <p class="text-muted">
+            <strong>Mage-OS Response:</strong> Emergency patch as needed
+          </p>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+          <div class="flex items-center gap-3 mb-4">
+            <Icon name="tabler:clock-off" class="w-8 h-8 text-gray-600 dark:text-gray-400" />
+            <h3 class="text-lg font-bold dark:text-white">End-of-Life Version</h3>
+          </div>
+          <p class="text-muted">
+            <strong>Mage-OS Response:</strong> Assessment for extended support
+          </p>
+        </div>
+      </div>
+
+      <Callout type="warning" title="Volunteer-Run Nonprofit" class="mt-8">
+        As a volunteer-run nonprofit, we support only the latest release branch. Staying current ensures you receive all
+        security updates.
+      </Callout>
+    </div>
+  </section>
+
+  <!-- Mage-OS Lab Section -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline
+      title="The Mage-OS Lab"
+      subtitle="Our innovation incubator where community members experiment with new features before they graduate to the core distribution"
+      tagline="Innovation"
+    />
+
+    <div class="text-center mb-8">
+      <a
+        href="https://github.com/mage-os-lab"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 text-primary hover:underline font-medium"
+      >
+        <Icon name="tabler:brand-github" class="w-5 h-5" />
+        github.com/mage-os-lab
+        <Icon name="tabler:external-link" class="w-4 h-4" />
+      </a>
+    </div>
+
+    <!-- Feature Graduation Stages -->
+    <h3 class="text-xl font-bold mb-6 text-center dark:text-white">How Features Graduate</h3>
+
+    <div class="grid md:grid-cols-4 gap-4 mb-12">
+      <div class="bg-gray-50 dark:bg-gray-800/50 rounded-lg p-4 text-center relative">
+        <div class="absolute -right-2 top-1/2 -translate-y-1/2 hidden md:block text-gray-300 dark:text-gray-600 z-10">
+          <Icon name="tabler:chevron-right" class="w-6 h-6" />
+        </div>
+        <VersionBadge status="minimum" text="1. Proposal" class="mb-3" />
+        <p class="text-sm text-muted">Community members submit ideas via GitHub or Discord</p>
+        <span class="text-xs text-muted block mt-2">1-2 weeks</span>
+      </div>
+
+      <div class="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-4 text-center relative">
+        <div class="absolute -right-2 top-1/2 -translate-y-1/2 hidden md:block text-gray-300 dark:text-gray-600 z-10">
+          <Icon name="tabler:chevron-right" class="w-6 h-6" />
+        </div>
+        <VersionBadge status="supported" text="2. Development" class="mb-3" />
+        <p class="text-sm text-muted">Collaborative coding in the Lab repository</p>
+        <span class="text-xs text-muted block mt-2">Varies by scope</span>
+      </div>
+
+      <div class="bg-yellow-50 dark:bg-yellow-900/20 rounded-lg p-4 text-center relative">
+        <div class="absolute -right-2 top-1/2 -translate-y-1/2 hidden md:block text-gray-300 dark:text-gray-600 z-10">
+          <Icon name="tabler:chevron-right" class="w-6 h-6" />
+        </div>
+        <span
+          class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium bg-yellow-100 text-yellow-800 dark:bg-yellow-900/50 dark:text-yellow-300 mb-3"
+        >
+          3. Testing
+        </span>
+        <p class="text-sm text-muted">Community testing, feedback collection, iteration</p>
+        <span class="text-xs text-muted block mt-2">2-4 weeks minimum</span>
+      </div>
+
+      <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-4 text-center">
+        <VersionBadge status="recommended" text="4. Graduation" class="mb-3" />
+        <p class="text-sm text-muted">Successful projects merge into the Mage-OS Distribution</p>
+        <span class="text-xs text-muted block mt-2">Next major release</span>
+      </div>
+    </div>
+
+    <!-- Recent Graduates -->
+    <div class="bg-green-50 dark:bg-green-900/20 rounded-lg p-6 mb-8">
+      <h4 class="text-lg font-bold mb-4 flex items-center gap-2 text-green-800 dark:text-green-200">
+        <Icon name="tabler:trophy" class="w-6 h-6" />
+        Recent Graduates (Now in Mage-OS 2.0)
+      </h4>
+      <div class="grid sm:grid-cols-2 gap-3">
+        <div class="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Icon name="tabler:check" class="w-5 h-5" />
+          <span>AI-Powered Translation module</span>
+        </div>
+        <div class="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Icon name="tabler:check" class="w-5 h-5" />
+          <span>PCI DSS 4.0 Compliance enhancements</span>
+        </div>
+        <div class="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Icon name="tabler:check" class="w-5 h-5" />
+          <span>Meta Robots Control for SEO</span>
+        </div>
+        <div class="flex items-center gap-2 text-green-700 dark:text-green-300">
+          <Icon name="tabler:check" class="w-5 h-5" />
+          <span>PageBuilder Widget support</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Contribute to the Lab -->
+    <h4 class="text-lg font-bold mb-4 dark:text-white">Contribute to the Lab</h4>
+    <div class="grid md:grid-cols-3 gap-4">
+      <a
+        href="https://github.com/mage-os-lab"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg shadow-sm hover:shadow-md transition-shadow group"
+      >
+        <Icon name="tabler:search" class="w-6 h-6 text-primary flex-shrink-0" />
+        <div>
+          <h5 class="font-bold group-hover:text-primary transition-colors dark:text-white">Explore active projects</h5>
+          <p class="text-sm text-muted">Browse ongoing experiments</p>
+        </div>
+      </a>
+
+      <a
+        href="https://github.com/mage-os/mageos-magento2/discussions"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg shadow-sm hover:shadow-md transition-shadow group"
+      >
+        <Icon name="tabler:bulb" class="w-6 h-6 text-primary flex-shrink-0" />
+        <div>
+          <h5 class="font-bold group-hover:text-primary transition-colors dark:text-white">Propose a new feature</h5>
+          <p class="text-sm text-muted">Open a GitHub discussion</p>
+        </div>
+      </a>
+
+      <a
+        href="/discord-channel"
+        class="flex items-start gap-3 p-4 bg-white dark:bg-slate-900 rounded-lg shadow-sm hover:shadow-md transition-shadow group"
+      >
+        <Icon name="tabler:package" class="w-6 h-6 text-primary flex-shrink-0" />
+        <div>
+          <h5 class="font-bold group-hover:text-primary transition-colors dark:text-white">Graduate your module</h5>
+          <p class="text-sm text-muted">Have an open-source module? Join Discord to discuss!</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- How to Influence the Roadmap -->
+  <Features
+    id="influence"
+    tagline="Get Involved"
+    title="How to Influence the Roadmap"
+    subtitle="Your voice shapes the future of Mage-OS. Here are the ways to get involved:"
+    items={[
+      {
+        title: 'Weekly Tech Meetings',
+        description:
+          'Join every <strong>Tuesday at 3 PM CET</strong> on <a href="/discord-channel" class="text-primary hover:underline">Discord</a> for direct input on technical decisions.',
+        icon: 'tabler:users-group',
+      },
+      {
+        title: 'GitHub Discussions',
+        description:
+          'Propose and vote on features in <a href="https://github.com/mage-os/mageos-magento2/discussions" target="_blank" class="text-primary hover:underline">GitHub discussions</a> to shape feature priorities.',
+        icon: 'tabler:message-circle',
+      },
+      {
+        title: 'Become a Member',
+        description:
+          '<a href="/about/membership" class="text-primary hover:underline">Join the Mage-OS Association</a> for voting rights on governance and roadmap decisions.',
+        icon: 'tabler:id-badge',
+      },
+      {
+        title: 'Contribute Code',
+        description: 'Submit pull requests or develop Lab projects for direct contribution to features.',
+        icon: 'tabler:git-pull-request',
+      },
+    ]}
+    columns={2}
+    classes={{
+      container: 'bg-gray-50 dark:bg-slate-800/50',
+    }}
+  />
+
+  <!-- Long-Term Vision Section -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+    <Headline title="Long-Term Vision" subtitle="Our journey from foundation to maturity" />
+
+    <div class="grid md:grid-cols-3 gap-8">
+      <!-- Foundation (Completed) -->
+      <div class="relative">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-green-100 dark:bg-green-900 rounded-full p-2">
+            <Icon name="tabler:check" class="w-6 h-6 text-green-600 dark:text-green-400" />
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">Foundation</h3>
+          <VersionBadge status="recommended" text="Completed" />
+        </div>
+        <ul class="space-y-2 text-muted">
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <span>Magento mirror distribution established</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <span>Association governance and legal structure</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <span>Mage-OS Distribution 1.0 and 2.0 releases</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:check" class="w-4 h-4 text-green-500 mt-1 flex-shrink-0" />
+            <span>Growing partner and contributor ecosystem</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Growth (2026) -->
+      <div class="relative">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-blue-100 dark:bg-blue-900 rounded-full p-2">
+            <Icon name="tabler:trending-up" class="w-6 h-6 text-blue-600 dark:text-blue-400" />
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">Growth</h3>
+          <VersionBadge status="supported" text="2026" />
+        </div>
+        <ul class="space-y-2 text-muted">
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle" class="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+            <span>Comprehensive developer and merchant documentation</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle" class="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+            <span>Expanded Mage-OS Lab with more community modules</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle" class="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+            <span>Global community expansion and regional events</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle" class="w-4 h-4 text-blue-500 mt-1 flex-shrink-0" />
+            <span>Strengthened partner ecosystem with certified integrators</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Maturity (2027+) -->
+      <div class="relative">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="bg-gray-100 dark:bg-gray-700 rounded-full p-2">
+            <Icon name="tabler:star" class="w-6 h-6 text-gray-600 dark:text-gray-400" />
+          </div>
+          <h3 class="text-xl font-bold dark:text-white">Maturity</h3>
+          <VersionBadge status="minimum" text="2027+" />
+        </div>
+        <ul class="space-y-2 text-muted">
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle-dashed" class="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+            <span><strong>Grant program</strong> for sponsored feature development</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle-dashed" class="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+            <span><strong>Merchant support services</strong> through partner network</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle-dashed" class="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+            <span><strong>Certification and training programs</strong> for developers and agencies</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <Icon name="tabler:circle-dashed" class="w-4 h-4 text-gray-400 mt-1 flex-shrink-0" />
+            <span><strong>Sustainable funding model</strong> through memberships and partnerships</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stay Updated Section -->
+  <section class="bg-gray-50 dark:bg-slate-800/50 py-16">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-5xl">
+      <Headline title="Stay Updated" subtitle="Keep up with Mage-OS development and community news" />
+
+      <ItemGrid
+        columns={4}
+        items={[
+          {
+            title: 'Blog',
+            description: 'Release announcements and community updates',
+            icon: 'tabler:news',
+            callToAction: {
+              text: 'Read Blog',
+              href: '/blog',
+            },
+          },
+          {
+            title: 'Discord',
+            description: 'Real-time discussions, support, weekly meetings',
+            icon: 'tabler:brand-discord',
+            callToAction: {
+              text: 'Join Discord',
+              href: '/discord-channel',
+            },
+          },
+          {
+            title: 'GitHub',
+            description: 'Code, issues, discussions, contributions',
+            icon: 'tabler:brand-github',
+            callToAction: {
+              text: 'View GitHub',
+              href: 'https://github.com/mage-os',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Releases',
+            description: 'Download the latest Mage-OS Distribution',
+            icon: 'tabler:download',
+            callToAction: {
+              text: 'View Releases',
+              href: '/product/releases',
+            },
+          },
+        ]}
+      />
+    </div>
+  </section>
+
+  <!-- Questions Section -->
+  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl text-center">
+    <h2 class="text-3xl font-bold font-heading mb-4 dark:text-white">Questions?</h2>
+    <p class="text-xl text-muted mb-8">
+      Have questions about the roadmap or want to discuss priorities? We'd love to hear from you.
+    </p>
+
+    <div class="flex flex-wrap justify-center gap-4">
+      <a
+        href="/discord-channel"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
+      >
+        <Icon name="tabler:brand-discord" class="w-5 h-5" />
+        Real-time chat on Discord
+      </a>
+      <a
+        href="https://github.com/mage-os/mageos-magento2/discussions"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
+      >
+        <Icon name="tabler:brand-github" class="w-5 h-5" />
+        GitHub Discussions
+      </a>
+      <a
+        href="mailto:info@mage-os.org"
+        class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
+      >
+        <Icon name="tabler:mail" class="w-5 h-5" />
+        info@mage-os.org
+      </a>
+    </div>
+  </section>
+
+  <!-- Final CTA -->
+  <section class="bg-primary py-12">
+    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-4xl text-center">
+      <p class="text-xl text-white mb-6">
+        <strong>Ready to get started?</strong> Download Mage-OS 2.0 and join the community building the future of open-source
+        commerce.
+      </p>
+      <a
+        href="/get-started/quick-start"
+        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg hover:bg-gray-100 transition-colors font-bold"
+      >
+        <Icon name="tabler:download" class="w-5 h-5" />
+        Get Started with Mage-OS
+      </a>
+    </div>
+  </section>
+</Layout>
