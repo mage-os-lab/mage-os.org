@@ -26,49 +26,48 @@ const uniqueId = `tabs-${Math.random().toString(36).slice(2, 9)}`;
     aria-label="Content tabs"
     class="flex border-b border-gray-200 dark:border-gray-700 overflow-x-auto"
   >
-    {tabs.map((tab) => (
-      <button
-        type="button"
-        role="tab"
-        id={`${uniqueId}-tab-${tab.id}`}
-        aria-selected={tab.id === activeTab ? 'true' : 'false'}
-        aria-controls={`${uniqueId}-panel-${tab.id}`}
-        tabindex={tab.id === activeTab ? 0 : -1}
-        data-tab-id={tab.id}
-        class={twMerge(
-          'flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap',
-          'border-b-2 -mb-px transition-colors duration-200',
-          'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset',
-          tab.id === activeTab
-            ? 'border-primary text-primary'
-            : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200'
-        )}
-      >
-        {tab.icon && (
-          <Icon name={tab.icon} class="h-4 w-4" aria-hidden="true" />
-        )}
-        {tab.label}
-      </button>
-    ))}
+    {
+      tabs.map((tab) => (
+        <button
+          type="button"
+          role="tab"
+          id={`${uniqueId}-tab-${tab.id}`}
+          aria-selected={tab.id === activeTab ? 'true' : 'false'}
+          aria-controls={`${uniqueId}-panel-${tab.id}`}
+          tabindex={tab.id === activeTab ? 0 : -1}
+          data-tab-id={tab.id}
+          class={twMerge(
+            'flex items-center gap-2 px-4 py-3 text-sm font-medium whitespace-nowrap',
+            'border-b-2 -mb-px transition-colors duration-200',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-inset',
+            tab.id === activeTab
+              ? 'border-primary text-primary'
+              : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-200'
+          )}
+        >
+          {tab.icon && <Icon name={tab.icon} class="h-4 w-4" aria-hidden="true" />}
+          {tab.label}
+        </button>
+      ))
+    }
   </div>
 
   <!-- Tab Panels -->
   <div class="mt-4">
-    {tabs.map((tab) => (
-      <div
-        role="tabpanel"
-        id={`${uniqueId}-panel-${tab.id}`}
-        aria-labelledby={`${uniqueId}-tab-${tab.id}`}
-        tabindex="0"
-        data-panel-id={tab.id}
-        class={twMerge(
-          'tab-panel transition-opacity duration-200',
-          tab.id === activeTab ? 'block' : 'hidden'
-        )}
-      >
-        <slot name={tab.id} />
-      </div>
-    ))}
+    {
+      tabs.map((tab) => (
+        <div
+          role="tabpanel"
+          id={`${uniqueId}-panel-${tab.id}`}
+          aria-labelledby={`${uniqueId}-tab-${tab.id}`}
+          tabindex="0"
+          data-panel-id={tab.id}
+          class={twMerge('tab-panel transition-opacity duration-200', tab.id === activeTab ? 'block' : 'hidden')}
+        >
+          <slot name={tab.id} />
+        </div>
+      ))
+    }
   </div>
 </div>
 
