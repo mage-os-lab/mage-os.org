@@ -21,7 +21,7 @@ We believe that by providing the opportunity and resources for people to get sta
 
 Mage-OS is an independent, community-driven initiative, but we look forward to collaborating with Adobe and the Magento Association wherever possible to make this dream a reality.
 
-We look forward to getting to know you, too! Individuals like you getting involved is the most important of all. If you are interested, look at the [Get Involved](https://mage-os.org/get-involved) page to learn more.
+We look forward to getting to know you, too! Individuals like you getting involved is the most important of all. If you are interested, look at the [Get Involved](/community#get-involved) page to learn more.
 
 The founding board of Mage-OS consists of:
 

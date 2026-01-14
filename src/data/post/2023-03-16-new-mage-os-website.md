@@ -100,6 +100,6 @@ Our new site and its content could not have been made possible without the time,
 
 If our new site, values or mission have inspired you to join our cause and ensure a brighter future for the Magento Open Source ecosystem, then please get involved in one of our committees or get in touch!
 
-[Get Involved](https://mage-os.org/about/get-involved/)
+[Get Involved](/community#get-involved)
 
 [Get In Touch](https://mage-os.org/contact-us/)

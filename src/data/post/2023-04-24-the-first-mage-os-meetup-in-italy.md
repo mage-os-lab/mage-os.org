@@ -64,7 +64,7 @@ Sandwiches
 
 </figure>
 
-I want to thank PUG Romagna and Extera for the opportunity (and the buffet) and all those who participated. I invite everyone who believes in our project to join us: you can find all the useful references on the [Get Involved page.](https://mage-os.org/about/get-involved/)
+I want to thank PUG Romagna and Extera for the opportunity (and the buffet) and all those who participated. I invite everyone who believes in our project to join us: you can find all the useful references on the [Get Involved page.](/community#get-involved)
 
 Alessandro Ronchi  
 Board Member - Mage-OS Association
