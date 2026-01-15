@@ -68,18 +68,15 @@ const metadata = {
       </p>
 
       <h2>Migrate from Magento Open Source</h2>
-      <p>Switch your existing Magento store to Mage-OS:</p>
+      <p>Switch your existing Magento 2.4.8+ store to Mage-OS with our automated migration script:</p>
       <CodeBlock
-        code={`composer config repositories.0 composer https://repo.mage-os.org/ && \\
-composer require mage-os/product-community-edition --no-update && \\
-composer remove magento/product-community-edition magento/composer-dependency-version-audit-plugin magento/composer-root-update-plugin --no-update && \\
-composer update --no-plugins --with-all-dependencies`}
+        code="bash <(curl -s https://raw.githubusercontent.com/mage-os-lab/migrate-m2-to-mageos/refs/heads/main/migrate-to-mage-os.sh)"
         lang="bash"
       />
       <blockquote>
         <p>
-          <strong>Tip:</strong> We recommend updating to the latest Magento version before migrating to minimize compatibility
-          issues.
+          <strong>Important:</strong> Run in developer mode on a local or staging environment only. See the{' '}
+          <a href="/get-started/migration-guide">Migration Guide</a> for full requirements and manual migration steps.
         </p>
       </blockquote>
       <p>

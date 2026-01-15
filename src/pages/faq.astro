@@ -305,7 +305,9 @@ const ecosystemFAQ = [
 const usageFAQ = [
   {
     question: "Can I switch to Mage-OS if I'm already running Magento?",
-    answer: `<p><strong>Yes!</strong> You will need to make some changes to your <code class="bg-gray-100 dark:bg-gray-800 px-1 py-0.5 rounded">composer.json</code> file and then update. The Mage-OS mirror is compatible with all your existing Magento code, but please <strong>test in a development environment</strong> before switching on a live site.</p>`,
+    answer: `<p class="mb-4"><strong>Yes!</strong> For Magento 2.4.8+, use our automated migration script:</p>
+<pre class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto mb-4"><code>bash &lt;(curl -s https://raw.githubusercontent.com/mage-os-lab/migrate-m2-to-mageos/refs/heads/main/migrate-to-mage-os.sh)</code></pre>
+<p>Run in developer mode on a local or staging environment. See our <a href="/get-started/migration-guide" class="text-primary hover:underline">Migration Guide</a> for full requirements and manual migration steps.</p>`,
   },
   {
     question: 'Can I switch back to Magento after using Mage-OS?',
