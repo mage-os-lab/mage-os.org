@@ -119,8 +119,11 @@ const installationTabs = [
                 Create Project
               </h4>
 
-              <CodeBlock code={`composer create-project --repository-url=https://repo.mage-os.org/ \\
-  mage-os/project-community-edition <install-directory>`} lang="bash" />
+              <CodeBlock
+                code={`composer create-project --repository-url=https://repo.mage-os.org/ \\
+  mage-os/project-community-edition <install-directory>`}
+                lang="bash"
+              />
 
               <p class="text-sm text-muted">
                 Replace <code>&lt;install-directory&gt;</code> with your desired path or <code>.</code> for current directory.
@@ -134,11 +137,14 @@ const installationTabs = [
                 Set File Permissions
               </h4>
 
-              <CodeBlock code={`cd <install-directory>
+              <CodeBlock
+                code={`cd <install-directory>
 find var generated vendor pub/static pub/media app/etc -type f -exec chmod g+w {} +
 find var generated vendor pub/static pub/media app/etc -type d -exec chmod g+ws {} +
 chown -R :www-data .
-chmod u+x bin/magento`} lang="bash" />
+chmod u+x bin/magento`}
+                lang="bash"
+              />
 
               <h4 id="composer-step-3" class="flex items-center gap-2">
                 <span
@@ -150,11 +156,14 @@ chmod u+x bin/magento`} lang="bash" />
 
               <CodeBlock code="mysql -u root -p" lang="bash" />
 
-              <CodeBlock code={`CREATE DATABASE mageos;
+              <CodeBlock
+                code={`CREATE DATABASE mageos;
 CREATE USER 'mageos'@'localhost' IDENTIFIED BY 'your_password';
 GRANT ALL ON mageos.* TO 'mageos'@'localhost';
 FLUSH PRIVILEGES;
-EXIT;`} lang="sql" />
+EXIT;`}
+                lang="sql"
+              />
 
               <h4 id="composer-step-4" class="flex items-center gap-2">
                 <span
@@ -164,7 +173,8 @@ EXIT;`} lang="sql" />
                 Run Installer
               </h4>
 
-              <CodeBlock code={`bin/magento setup:install \\
+              <CodeBlock
+                code={`bin/magento setup:install \\
   --base-url="http://your-domain.com/" \\
   --db-host="localhost" \\
   --db-name="mageos" \\
@@ -183,7 +193,9 @@ EXIT;`} lang="sql" />
   --opensearch-host="localhost" \\
   --opensearch-port="9200" \\
   --opensearch-index-prefix="mageos" \\
-  --opensearch-timeout="15"`} lang="bash" />
+  --opensearch-timeout="15"`}
+                lang="bash"
+              />
 
               <h4 id="composer-step-5" class="flex items-center gap-2">
                 <span
@@ -193,10 +205,13 @@ EXIT;`} lang="sql" />
                 Post-Installation
               </h4>
 
-              <CodeBlock code={`bin/magento setup:di:compile
+              <CodeBlock
+                code={`bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
 bin/magento indexer:reindex
-bin/magento cache:flush`} lang="bash" />
+bin/magento cache:flush`}
+                lang="bash"
+              />
             </div>
 
             <Callout type="tip" title="Next Steps" class="mt-6">
@@ -306,7 +321,8 @@ bin/magento cache:flush`} lang="bash" />
                   DDEV is the easiest way to get started with Mage-OS development. It handles all service configuration
                   automatically.
                 </p>
-                <CodeBlock code={`# Install DDEV
+                <CodeBlock
+                  code={`# Install DDEV
 curl -fsSL https://ddev.com/install.sh | bash
 
 # Create project directory
@@ -341,7 +357,9 @@ ddev magento setup:install \\
 # Deploy
 ddev magento setup:di:compile
 ddev magento setup:static-content:deploy -f
-ddev magento cache:flush`} lang="bash" />
+ddev magento cache:flush`}
+                  lang="bash"
+                />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://mageos.ddev.site/</code>
@@ -373,7 +391,8 @@ ddev magento cache:flush`} lang="bash" />
                     class="text-primary hover:underline">docker-magento</a
                   > by Mark Shust is a production-like Docker environment with excellent documentation.
                 </p>
-                <CodeBlock code={`# Download the setup script
+                <CodeBlock
+                  code={`# Download the setup script
 curl -s https://raw.githubusercontent.com/markshust/docker-magento/master/lib/onelinesetup | bash -s -- mageos.test
 
 # Navigate to project directory
@@ -392,7 +411,9 @@ bin/magento admin:user:create \\
   --admin-password="Admin123!" \\
   --admin-email="admin@example.com" \\
   --admin-firstname="Admin" \\
-  --admin-lastname="User"`} lang="bash" />
+  --admin-lastname="User"`}
+                  lang="bash"
+                />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://mageos.test/</code>
@@ -429,7 +450,8 @@ bin/magento admin:user:create \\
                   Warden is a Docker-based development environment specifically designed for Magento and Mage-OS
                   projects with advanced features for professional development teams.
                 </p>
-                <CodeBlock code={`# Install Warden (macOS)
+                <CodeBlock
+                  code={`# Install Warden (macOS)
 brew install davidalger/warden/warden
 
 # Initialize Warden (first time only)
@@ -466,7 +488,9 @@ bin/magento setup:install \\
 # Deploy static content
 bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
-bin/magento cache:flush`} lang="bash" />
+bin/magento cache:flush`}
+                  lang="bash"
+                />
                 <p>
                   <strong>Access your store:</strong>
                   <code>https://app.mageos.test/</code>
@@ -513,7 +537,8 @@ bin/magento cache:flush`} lang="bash" />
                 <p>
                   <strong>Recommended instance:</strong> t3.large (minimum) or t3.xlarge for production
                 </p>
-                <CodeBlock code={`# Connect to your EC2 instance
+                <CodeBlock
+                  code={`# Connect to your EC2 instance
 ssh -i your-key.pem ec2-user@your-instance-ip
 
 # Update system packages
@@ -535,7 +560,9 @@ cd /var/www
 sudo composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition mageos
 sudo chown -R nginx:nginx mageos
 
-# Follow Composer installation steps 4-5 above`} lang="bash" />
+# Follow Composer installation steps 4-5 above`}
+                  lang="bash"
+                />
                 <p><strong>Security group rules:</strong></p>
                 <ul>
                   <li>Port 80 (HTTP) - 0.0.0.0/0</li>
@@ -566,7 +593,8 @@ sudo chown -R nginx:nginx mageos
                 <p>
                   <strong>Recommended instance:</strong> n2-standard-2 (minimum) or n2-standard-4 for production
                 </p>
-                <CodeBlock code={`# Connect via gcloud
+                <CodeBlock
+                  code={`# Connect via gcloud
 gcloud compute ssh your-instance-name
 
 # Update and install packages (Debian/Ubuntu)
@@ -588,7 +616,9 @@ cd /var/www
 sudo composer create-project --repository-url=https://repo.mage-os.org/ mage-os/project-community-edition mageos
 sudo chown -R www-data:www-data mageos
 
-# Follow Composer installation steps 4-5 above`} lang="bash" />
+# Follow Composer installation steps 4-5 above`}
+                  lang="bash"
+                />
                 <p><strong>Firewall rules:</strong></p>
                 <ul>
                   <li>Allow HTTP (tcp:80)</li>
@@ -618,7 +648,8 @@ sudo chown -R www-data:www-data mageos
                 <p>
                   <strong>Recommended VM:</strong> Standard_D2s_v3 (minimum) or Standard_D4s_v3 for production
                 </p>
-                <CodeBlock code={`# Connect via Azure CLI
+                <CodeBlock
+                  code={`# Connect via Azure CLI
 az ssh vm -n your-vm-name -g your-resource-group
 
 # Update and install packages (Ubuntu)
@@ -626,7 +657,9 @@ sudo apt update && sudo apt upgrade -y
 sudo apt install -y php8.3 php8.3-{bcmath,cli,common,curl,fpm,gd,intl,mbstring,mysql,opcache,soap,xml,zip}
 sudo apt install -y nginx mysql-server composer
 
-# Follow same steps as GCP above`} lang="bash" />
+# Follow same steps as GCP above`}
+                  lang="bash"
+                />
                 <p><strong>Network security group rules:</strong></p>
                 <ul>
                   <li>Allow inbound TCP 80, 443 from Any</li>

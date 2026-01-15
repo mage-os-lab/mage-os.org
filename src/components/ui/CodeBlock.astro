@@ -11,7 +11,7 @@ import type { ComponentProps } from 'astro/types';
 
 type CodeProps = ComponentProps<typeof Code>;
 
-interface Props extends Omit<CodeProps, 'themes' | 'theme'> {}
+type Props = Omit<CodeProps, 'themes' | 'theme'>;
 
 const props = Astro.props;
 ---

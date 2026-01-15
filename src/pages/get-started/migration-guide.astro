@@ -182,11 +182,14 @@ const metadata = {
         Create Backup
       </h3>
 
-      <CodeBlock code={`# Backup database
+      <CodeBlock
+        code={`# Backup database
 mysqldump -u username -p database_name > backup.sql
 
 # Backup files
-tar -czvf magento-backup.tar.gz /path/to/magento`} lang="bash" />
+tar -czvf magento-backup.tar.gz /path/to/magento`}
+        lang="bash"
+      />
 
       <h3 id="step-2-switch" class="flex items-center gap-3">
         <span
@@ -196,7 +199,8 @@ tar -czvf magento-backup.tar.gz /path/to/magento`} lang="bash" />
         Switch to Mage-OS Repository
       </h3>
 
-      <CodeBlock code={`cd /path/to/your/magento
+      <CodeBlock
+        code={`cd /path/to/your/magento
 
 # Add Mage-OS repository
 composer config repositories.0 composer https://repo.mage-os.org/
@@ -210,7 +214,9 @@ composer remove magento/product-community-edition \\
   magento/composer-root-update-plugin --no-update
 
 # Update all dependencies
-composer update --no-plugins --with-all-dependencies`} lang="bash" />
+composer update --no-plugins --with-all-dependencies`}
+        lang="bash"
+      />
 
       <h3 id="step-3-upgrade" class="flex items-center gap-3">
         <span
@@ -220,7 +226,8 @@ composer update --no-plugins --with-all-dependencies`} lang="bash" />
         Run Upgrade
       </h3>
 
-      <CodeBlock code={`# Run setup upgrade
+      <CodeBlock
+        code={`# Run setup upgrade
 bin/magento setup:upgrade
 
 # Compile DI
@@ -233,7 +240,9 @@ bin/magento setup:static-content:deploy -f
 bin/magento indexer:reindex
 
 # Flush cache
-bin/magento cache:flush`} lang="bash" />
+bin/magento cache:flush`}
+        lang="bash"
+      />
 
       <h3 id="step-4-verify" class="flex items-center gap-3">
         <span
@@ -243,10 +252,13 @@ bin/magento cache:flush`} lang="bash" />
         Verify Installation
       </h3>
 
-      <CodeBlock code={`# Check version
+      <CodeBlock
+        code={`# Check version
 bin/magento --version
 
-# Should output: Mage-OS 2.x.x`} lang="bash" />
+# Should output: Mage-OS 2.x.x`}
+        lang="bash"
+      />
     </div>
 
     <!-- Automated Migration Script -->
@@ -254,8 +266,7 @@ bin/magento --version
       <div class="flex items-center gap-3 mb-4">
         <Icon name="tabler:terminal" class="w-6 h-6 text-primary" />
         <h3 class="text-lg font-bold dark:text-white">Automated Migration Script</h3>
-        <span
-          class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded"
+        <span class="text-xs bg-blue-100 dark:bg-blue-900/50 text-blue-800 dark:text-blue-300 px-2 py-0.5 rounded"
           >Recommended</span
         >
       </div>
@@ -264,9 +275,14 @@ bin/magento --version
       </p>
       <pre
         class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">bash &lt;(curl -s https://raw.githubusercontent.com/mage-os-lab/migrate-m2-to-mageos/refs/heads/main/migrate-to-mage-os.sh)</code></pre>
-      <div class="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded text-sm">
+      <div
+        class="mt-4 p-3 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-800 rounded text-sm"
+      >
         <div class="flex items-start gap-2">
-          <Icon name="tabler:alert-triangle" class="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5" />
+          <Icon
+            name="tabler:alert-triangle"
+            class="w-5 h-5 text-yellow-600 dark:text-yellow-400 flex-shrink-0 mt-0.5"
+          />
           <div>
             <p class="font-medium text-yellow-800 dark:text-yellow-200">Requirements</p>
             <ul class="text-yellow-700 dark:text-yellow-300 text-xs mt-1 space-y-1">
@@ -278,7 +294,11 @@ bin/magento --version
         </div>
       </div>
       <p class="text-muted mt-4 text-xs">
-        <a href="https://github.com/mage-os-lab/migrate-m2-to-mageos" target="_blank" class="text-primary hover:underline">
+        <a
+          href="https://github.com/mage-os-lab/migrate-m2-to-mageos"
+          target="_blank"
+          class="text-primary hover:underline"
+        >
           View script documentation on GitHub →
         </a>
       </p>
@@ -407,21 +427,25 @@ bin/magento --version
       <div class="grid md:grid-cols-2 gap-4">
         <div>
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Restore from Backup</h4>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash"># Restore database
+          <CodeBlock
+            code={`# Restore database
 mysql -u username -p database_name < backup.sql
 
 # Restore files
-tar -xzvf magento-backup.tar.gz -C /</code></pre>
+tar -xzvf magento-backup.tar.gz -C /`}
+            lang="bash"
+          />
         </div>
         <div>
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Switch Back to Magento</h4>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">composer config repositories.0 composer https://repo.magento.com/
+          <CodeBlock
+            code={`composer config repositories.0 composer https://repo.magento.com/
 composer require magento/product-community-edition --no-update
 composer remove mage-os/product-community-edition --no-update
 composer update --no-plugins --with-all-dependencies
-bin/magento setup:upgrade</code></pre>
+bin/magento setup:upgrade`}
+            lang="bash"
+          />
         </div>
       </div>
     </Callout>
