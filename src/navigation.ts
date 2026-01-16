@@ -48,9 +48,9 @@ export const headerData = {
       text: 'About',
       href: getPermalink('/about'),
       links: [
-        { text: 'Leadership', href: getPermalink('/about/leadership') },
-        { text: 'Ambassadors', href: getPermalink('/about/brand-ambassadors') },
         { text: 'Contributors', href: getPermalink('/about/contributors') },
+        { text: 'Ambassadors', href: getPermalink('/about/brand-ambassadors') },
+        { text: 'Leadership', href: getPermalink('/about/leadership') },
         { text: 'FAQ', href: getPermalink('/faq') },
         { text: 'Contact', href: getPermalink('/contact') },
       ],
