@@ -63,6 +63,10 @@
   }
 }
 
+@view-transition {
+  navigation: auto;
+}
+
 #header.scroll > div:first-child {
   @apply bg-page lg:bg-white/90 lg:backdrop-blur-md;
   box-shadow: 0 0.375rem 1.5rem 0 rgb(140 152 164 / 13%);
