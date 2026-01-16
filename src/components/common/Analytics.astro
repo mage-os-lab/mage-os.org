@@ -4,12 +4,16 @@
  *
  * GTM container ID: GTM-MQFTJCL
  * Manages Google Analytics and other marketing/analytics tags
+ *
+ * Performance: GTM is deferred until browser idle time to avoid
+ * impacting Core Web Vitals. Consent defaults are set inline to
+ * ensure they're in place before GTM initializes.
  */
 
 const GTM_ID = 'GTM-MQFTJCL';
 ---
 
-{/* Google Consent Mode v2 - Set defaults before GTM loads */}
+{/* Google Consent Mode v2 - Set defaults immediately (small, critical) */}
 <script is:inline>
   window.dataLayer = window.dataLayer || [];
   function gtag(...args) {
@@ -26,16 +30,28 @@ const GTM_ID = 'GTM-MQFTJCL';
   });
 </script>
 
-{/* Google Tag Manager */}
+{/* Google Tag Manager - Deferred loading */}
 <script is:inline define:vars={{ GTM_ID }}>
-  (function (w, d, s, l, i) {
-    w[l] = w[l] || [];
-    w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
-    const f = d.getElementsByTagName(s)[0],
-      j = d.createElement(s),
-      dl = l != 'dataLayer' ? '&l=' + l : '';
-    j.async = true;
-    j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i + dl;
-    f.parentNode.insertBefore(j, f);
-  })(window, document, 'script', 'dataLayer', GTM_ID);
+  (function () {
+    function loadGTM() {
+      if (window.__gtm_loaded) return;
+      window.__gtm_loaded = true;
+
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+
+      const script = document.createElement('script');
+      script.async = true;
+      script.src = `https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`;
+      document.head.appendChild(script);
+    }
+
+    // Load during browser idle time, after CookieYes has loaded
+    // Using a slightly longer delay to ensure consent banner is ready
+    if ('requestIdleCallback' in window) {
+      requestIdleCallback(loadGTM, { timeout: 3000 });
+    } else {
+      setTimeout(loadGTM, 2000);
+    }
+  })();
 </script>
