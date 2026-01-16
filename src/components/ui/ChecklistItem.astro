@@ -10,7 +10,7 @@ export interface Props {
 const { checked = false, class: className } = Astro.props;
 
 const iconName = checked ? 'tabler:square-check' : 'tabler:square';
-const iconClass = checked ? 'text-primary dark:text-primary' : 'text-gray-400 dark:text-gray-500';
+const iconClass = checked ? 'text-icon dark:text-icon' : 'text-gray-400 dark:text-gray-500';
 const textClass = checked ? 'text-gray-900 dark:text-white' : 'text-gray-500 dark:text-gray-400';
 ---
 
