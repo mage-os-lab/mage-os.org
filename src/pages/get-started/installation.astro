@@ -678,7 +678,7 @@ sudo apt install -y nginx mysql-server composer
 
     <div class="grid md:grid-cols-2 gap-8">
       <!-- Apache -->
-      <div class="border dark:border-gray-700 rounded-lg overflow-hidden">
+      <div class="border dark:border-gray-700 rounded-lg overflow-hidden min-w-0">
         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 flex items-center gap-3">
           <Icon name="tabler:feather" class="w-6 h-6 text-red-600 dark:text-red-400" />
           <h3 class="font-bold dark:text-white">Apache Virtual Host</h3>
@@ -702,7 +702,7 @@ sudo apt install -y nginx mysql-server composer
       </div>
 
       <!-- Nginx -->
-      <div class="border dark:border-gray-700 rounded-lg overflow-hidden">
+      <div class="border dark:border-gray-700 rounded-lg overflow-hidden min-w-0">
         <div class="bg-gray-50 dark:bg-gray-800/50 p-4 flex items-center gap-3">
           <Icon name="tabler:brand-docker" class="w-6 h-6 text-green-600 dark:text-green-400" />
           <h3 class="font-bold dark:text-white">Nginx Configuration</h3>
@@ -738,7 +738,7 @@ server {
 
       <div class="grid md:grid-cols-2 gap-6">
         <!-- Cron Jobs -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <div class="flex items-center gap-3 mb-4">
             <Icon name="tabler:clock" class="w-6 h-6 text-icon" />
             <h3 class="text-lg font-bold dark:text-white">Configure Cron Jobs</h3>
@@ -755,7 +755,7 @@ bin/magento cron:status`}</code></pre>
         </div>
 
         <!-- Production Mode -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <div class="flex items-center gap-3 mb-4">
             <Icon name="tabler:rocket" class="w-6 h-6 text-icon" />
             <h3 class="text-lg font-bold dark:text-white">Set Production Mode</h3>
@@ -769,7 +769,7 @@ bin/magento cron:status`}</code></pre>
         </div>
 
         <!-- Enable Caches -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <div class="flex items-center gap-3 mb-4">
             <Icon name="tabler:database" class="w-6 h-6 text-icon" />
             <h3 class="text-lg font-bold dark:text-white">Enable Caches</h3>
@@ -781,7 +781,7 @@ bin/magento cache:status`}</code></pre>
         </div>
 
         <!-- Sample Data -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <div class="flex items-center gap-3 mb-4">
             <Icon name="tabler:box" class="w-6 h-6 text-icon" />
             <h3 class="text-lg font-bold dark:text-white">Install Sample Data</h3>
@@ -808,7 +808,7 @@ bin/magento cache:flush`}</code></pre>
         </p>
 
         <div class="grid md:grid-cols-2 gap-4">
-          <div>
+          <div class="min-w-0">
             <h4 class="font-medium mb-2 dark:text-white">Install Redis</h4>
             <pre
               class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`# Ubuntu/Debian
@@ -819,7 +819,7 @@ sudo systemctl enable --now redis-server
 redis-cli ping
 # Should return: PONG`}</code></pre>
           </div>
-          <div>
+          <div class="min-w-0">
             <h4 class="font-medium mb-2 dark:text-white">Configure env.php</h4>
             <pre
               class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`'cache' => [

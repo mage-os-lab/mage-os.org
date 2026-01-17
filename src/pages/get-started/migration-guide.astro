@@ -323,7 +323,7 @@ bin/magento --version
     />
 
     <div class="grid md:grid-cols-3 gap-6">
-      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
         <div class="flex items-center gap-3 mb-4">
           <span
             class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
@@ -336,7 +336,7 @@ bin/magento --version
           class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>rsync -avz production/ staging/</code></pre>
       </div>
 
-      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
         <div class="flex items-center gap-3 mb-4">
           <span
             class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
@@ -365,7 +365,7 @@ bin/magento --version
         </ul>
       </div>
 
-      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+      <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
         <div class="flex items-center gap-3 mb-4">
           <span
             class="flex-shrink-0 w-8 h-8 bg-primary text-white rounded-full flex items-center justify-center text-sm font-bold"
@@ -391,7 +391,7 @@ bin/magento --version
       <p class="mb-4">If issues arise, you can rollback to your previous Magento installation:</p>
 
       <div class="grid md:grid-cols-2 gap-4">
-        <div>
+        <div class="min-w-0">
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Restore from Backup</h4>
           <CodeBlock
             code={`# Restore database
@@ -402,7 +402,7 @@ tar -xzvf magento-backup.tar.gz -C /`}
             lang="bash"
           />
         </div>
-        <div>
+        <div class="min-w-0">
           <h4 class="font-bold text-yellow-800 dark:text-yellow-200 mb-2">Switch Back to Magento</h4>
           <CodeBlock
             code={`composer config repositories.0 composer https://repo.magento.com/
@@ -436,7 +436,7 @@ bin/magento setup:upgrade`}
 
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Verify Installation -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <h3 class="text-lg font-bold mb-4 dark:text-white">Verify Your Installation</h3>
           <pre
             class="bg-gray-900 text-gray-100 p-3 rounded text-sm overflow-x-auto mb-4"><code>bin/magento --version</code></pre>
@@ -452,7 +452,7 @@ bin/magento setup:upgrade`}
         </div>
 
         <!-- Explore New Features -->
-        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm">
+        <div class="bg-white dark:bg-slate-900 rounded-lg p-6 shadow-sm min-w-0">
           <h3 class="text-lg font-bold mb-4 dark:text-white">Explore New Mage-OS Features</h3>
           <p class="text-muted mb-4 text-sm">Mage-OS 2.0 includes powerful new capabilities:</p>
 
