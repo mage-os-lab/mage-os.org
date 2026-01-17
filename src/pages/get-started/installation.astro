@@ -684,8 +684,8 @@ sudo apt install -y nginx mysql-server composer
           <h3 class="font-bold dark:text-white">Apache Virtual Host</h3>
         </div>
         <div class="p-4">
-          <pre
-            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">{`<VirtualHost *:80>
+          <CodeBlock
+            code={`<VirtualHost *:80>
     ServerName your-domain.com
     DocumentRoot /var/www/mageos/pub
 
@@ -697,7 +697,9 @@ sudo apt install -y nginx mysql-server composer
 
     ErrorLog \${APACHE_LOG_DIR}/mageos-error.log
     CustomLog \${APACHE_LOG_DIR}/mageos-access.log combined
-</VirtualHost>`}</code></pre>
+</VirtualHost>`}
+            lang="apache"
+          />
         </div>
       </div>
 
@@ -708,8 +710,8 @@ sudo apt install -y nginx mysql-server composer
           <h3 class="font-bold dark:text-white">Nginx Configuration</h3>
         </div>
         <div class="p-4">
-          <pre
-            class="bg-gray-900 text-gray-100 p-4 rounded text-xs overflow-x-auto"><code class="language-bash">{`upstream fastcgi_backend {
+          <CodeBlock
+            code={`upstream fastcgi_backend {
     server unix:/var/run/php/php8.3-fpm.sock;
 }
 
@@ -721,7 +723,9 @@ server {
     set $MAGE_MODE production;
 
     include /var/www/mageos/nginx.conf.sample;
-}`}</code></pre>
+}`}
+            lang="nginx"
+          />
         </div>
       </div>
     </div>
@@ -746,12 +750,14 @@ server {
           <p class="text-muted mb-4">
             Required for scheduled tasks like indexing, email sending, and cache management.
           </p>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mb-3"><code class="language-bash">{`# Install cron jobs
+          <CodeBlock
+            code={`# Install cron jobs
 bin/magento cron:install
 
 # Verify cron status
-bin/magento cron:status`}</code></pre>
+bin/magento cron:status`}
+            lang="bash"
+          />
         </div>
 
         <!-- Production Mode -->
@@ -761,8 +767,7 @@ bin/magento cron:status`}</code></pre>
             <h3 class="text-lg font-bold dark:text-white">Set Production Mode</h3>
           </div>
           <p class="text-muted mb-4">Enable production mode for best performance on live stores.</p>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mb-3"><code>bin/magento deploy:mode:set production</code></pre>
+          <CodeBlock code="bin/magento deploy:mode:set production" lang="bash" />
           <div class="text-sm text-muted">
             <strong>Modes:</strong> default (initial), developer (debugging), production (optimized)
           </div>
@@ -775,9 +780,11 @@ bin/magento cron:status`}</code></pre>
             <h3 class="text-lg font-bold dark:text-white">Enable Caches</h3>
           </div>
           <p class="text-muted mb-4">Ensure all caches are enabled for optimal performance.</p>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`bin/magento cache:enable
-bin/magento cache:status`}</code></pre>
+          <CodeBlock
+            code={`bin/magento cache:enable
+bin/magento cache:status`}
+            lang="bash"
+          />
         </div>
 
         <!-- Sample Data -->
@@ -788,10 +795,12 @@ bin/magento cache:status`}</code></pre>
             <span class="text-xs text-muted">(Optional)</span>
           </div>
           <p class="text-muted mb-4">For testing or demonstration purposes.</p>
-          <pre
-            class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`bin/magento sampledata:deploy
+          <CodeBlock
+            code={`bin/magento sampledata:deploy
 bin/magento setup:upgrade
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`}
+            lang="bash"
+          />
         </div>
       </div>
 
@@ -810,19 +819,21 @@ bin/magento cache:flush`}</code></pre>
         <div class="grid md:grid-cols-2 gap-4">
           <div class="min-w-0">
             <h4 class="font-medium mb-2 dark:text-white">Install Redis</h4>
-            <pre
-              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`# Ubuntu/Debian
+            <CodeBlock
+              code={`# Ubuntu/Debian
 sudo apt install redis-server
 sudo systemctl enable --now redis-server
 
 # Verify Redis is running
 redis-cli ping
-# Should return: PONG`}</code></pre>
+# Should return: PONG`}
+              lang="bash"
+            />
           </div>
           <div class="min-w-0">
             <h4 class="font-medium mb-2 dark:text-white">Configure env.php</h4>
-            <pre
-              class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`'cache' => [
+            <CodeBlock
+              code={`'cache' => [
     'frontend' => [
         'default' => [
             'backend' => 'Magento\\Framework\\Cache\\Backend\\Redis',
@@ -833,7 +844,9 @@ redis-cli ping
             ]
         ]
     ]
-]`}</code></pre>
+]`}
+              lang="php"
+            />
           </div>
         </div>
       </div>
@@ -846,59 +859,68 @@ redis-cli ping
 
     <div class="space-y-4">
       <Callout type="tip" title="Permission denied errors">
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`sudo chown -R www-data:www-data /var/www/mageos
+        <CodeBlock
+          code={`sudo chown -R www-data:www-data /var/www/mageos
 sudo chmod -R 755 /var/www/mageos
-sudo chmod -R 775 var generated pub/static pub/media`}</code></pre>
+sudo chmod -R 775 var generated pub/static pub/media`}
+          lang="bash"
+        />
       </Callout>
 
       <Callout type="tip" title="Memory limit exceeded">
         <p class="mb-2">Run with increased memory limit:</p>
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code>php -d memory_limit=4G bin/magento setup:di:compile</code></pre>
+        <CodeBlock code="php -d memory_limit=4G bin/magento setup:di:compile" lang="bash" />
         <p class="mt-2 text-sm">
           Or add <code class="bg-yellow-100 dark:bg-yellow-900 px-1 rounded">memory_limit = 4G</code> to php.ini
         </p>
       </Callout>
 
       <Callout type="tip" title="Static content deployment fails">
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Use parallel jobs and force mode
+        <CodeBlock
+          code={`# Use parallel jobs and force mode
 bin/magento setup:static-content:deploy -f --jobs=4
 
 # For specific locales
-bin/magento setup:static-content:deploy -f en_US en_GB --jobs=4`}</code></pre>
+bin/magento setup:static-content:deploy -f en_US en_GB --jobs=4`}
+          lang="bash"
+        />
       </Callout>
 
       <Callout type="tip" title="OpenSearch/Elasticsearch connection failed">
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Check if OpenSearch is running
+        <CodeBlock
+          code={`# Check if OpenSearch is running
 curl http://localhost:9200
 
 # Check service status
 sudo systemctl status opensearch
 
 # Restart if needed
-sudo systemctl restart opensearch`}</code></pre>
+sudo systemctl restart opensearch`}
+          lang="bash"
+        />
       </Callout>
 
       <Callout type="tip" title="Admin URL forgotten">
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto mt-2"><code class="language-bash">{`# Get current admin URI
+        <CodeBlock
+          code={`# Get current admin URI
 bin/magento info:adminuri
 
 # Or check env.php
-grep -A2 "backend" app/etc/env.php`}</code></pre>
+grep -A2 "backend" app/etc/env.php`}
+          lang="bash"
+        />
       </Callout>
 
       <Callout type="warning" title="Clear all caches and regenerate">
         <p class="mb-2">Nuclear option for persistent issues:</p>
-        <pre
-          class="bg-gray-900 text-gray-100 p-3 rounded text-xs overflow-x-auto"><code class="language-bash">{`rm -rf var/cache/* var/page_cache/* var/view_preprocessed/* generated/*
+        <CodeBlock
+          code={`rm -rf var/cache/* var/page_cache/* var/view_preprocessed/* generated/*
 bin/magento setup:upgrade
 bin/magento setup:di:compile
 bin/magento setup:static-content:deploy -f
-bin/magento cache:flush`}</code></pre>
+bin/magento cache:flush`}
+          lang="bash"
+        />
       </Callout>
     </div>
   </section>
