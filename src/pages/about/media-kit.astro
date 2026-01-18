@@ -23,8 +23,8 @@ const metadata = {
   <PageHero tagline="Press Resources" variant="default">
     <Fragment slot="title">Media Kit</Fragment>
     <Fragment slot="subtitle">
-      Resources for press, bloggers, and content creators. Find logos, key facts, and boilerplate text for your
-      coverage of Mage-OS.
+      Resources for press, bloggers, and content creators. Find logos, key facts, and boilerplate text for your coverage
+      of Mage-OS.
     </Fragment>
   </PageHero>
 
@@ -69,19 +69,27 @@ const metadata = {
       <Headline title="Live Community Statistics" subtitle="Updated from Open Collective" tagline="Current Numbers" />
 
       <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
-        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+        <div
+          class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center"
+        >
           <p class="text-3xl font-bold text-primary mb-1">{stats.totalContributors}+</p>
           <p class="text-sm text-muted">Financial Contributors</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+        <div
+          class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center"
+        >
           <p class="text-3xl font-bold text-primary mb-1">{formatContributions(stats.totalContributions)}</p>
           <p class="text-sm text-muted">Total Contributions</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+        <div
+          class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center"
+        >
           <p class="text-3xl font-bold text-primary mb-1">{stats.communityMembers}+</p>
           <p class="text-sm text-muted">Community Members</p>
         </div>
-        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+        <div
+          class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center"
+        >
           <p class="text-3xl font-bold text-primary mb-1">{stats.professionalMembers}+</p>
           <p class="text-sm text-muted">Professional Members</p>
         </div>
@@ -192,7 +200,11 @@ const metadata = {
   <!-- Boilerplate Text -->
   <section class="px-4 py-12 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
-      <Headline title="Boilerplate Text" subtitle="Ready-to-use descriptions for your content" tagline="About Mage-OS" />
+      <Headline
+        title="Boilerplate Text"
+        subtitle="Ready-to-use descriptions for your content"
+        tagline="About Mage-OS"
+      />
 
       <div class="space-y-8 mt-8">
         <!-- Short Version -->
@@ -306,7 +318,9 @@ const metadata = {
   <!-- Press Contact -->
   <section class="px-4 py-12 sm:px-6 lg:px-8">
     <div class="max-w-4xl mx-auto">
-      <div class="bg-gradient-to-br from-primary/5 to-primary/10 dark:from-slate-800 dark:to-slate-800/80 rounded-xl p-8 border border-primary/20 dark:border-slate-700 text-center">
+      <div
+        class="bg-gradient-to-br from-primary/5 to-primary/10 dark:from-slate-800 dark:to-slate-800/80 rounded-xl p-8 border border-primary/20 dark:border-slate-700 text-center"
+      >
         <Icon name="tabler:mail" class="w-12 h-12 text-primary mx-auto mb-4" />
         <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Press & Media Inquiries</h2>
         <p class="text-muted mb-6 max-w-xl mx-auto">
