@@ -1,0 +1,347 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/widgets/PageHero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Headline from '~/components/ui/Headline.astro';
+import Callout from '~/components/ui/Callout.astro';
+import { Icon } from 'astro-icon/components';
+import { getCommunityStats, formatContributions } from '~/utils/openCollective';
+
+const stats = await getCommunityStats();
+
+const metadata = {
+  title: 'Media Kit | Press Resources for Mage-OS',
+  description:
+    'Press resources, brand assets, key facts, and boilerplate text for journalists, bloggers, and content creators covering Mage-OS.',
+  openGraph: {
+    images: [{ url: '/og/page/media-kit.png', width: 1200, height: 630 }],
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero tagline="Press Resources" variant="default">
+    <Fragment slot="title">Media Kit</Fragment>
+    <Fragment slot="subtitle">
+      Resources for press, bloggers, and content creators. Find logos, key facts, and boilerplate text for your
+      coverage of Mage-OS.
+    </Fragment>
+  </PageHero>
+
+  <!-- Key Facts -->
+  <Features
+    id="key-facts"
+    tagline="At a Glance"
+    title="Key Facts"
+    subtitle="Quick reference information for your coverage"
+    columns={4}
+    items={[
+      {
+        title: 'Founded',
+        description: '2022 (Poland)',
+        icon: 'tabler:calendar',
+      },
+      {
+        title: 'Open Letter Signatories',
+        description: '1,641',
+        icon: 'tabler:signature',
+      },
+      {
+        title: 'Countries Represented',
+        description: '30+',
+        icon: 'tabler:world',
+      },
+      {
+        title: 'License',
+        description: 'OSL 3.0 / AFL 3.0',
+        icon: 'tabler:license',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
+
+  <!-- Live Stats -->
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <Headline title="Live Community Statistics" subtitle="Updated from Open Collective" tagline="Current Numbers" />
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mt-8">
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+          <p class="text-3xl font-bold text-primary mb-1">{stats.totalContributors}+</p>
+          <p class="text-sm text-muted">Financial Contributors</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+          <p class="text-3xl font-bold text-primary mb-1">{formatContributions(stats.totalContributions)}</p>
+          <p class="text-sm text-muted">Total Contributions</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+          <p class="text-3xl font-bold text-primary mb-1">{stats.communityMembers}+</p>
+          <p class="text-sm text-muted">Community Members</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 text-center">
+          <p class="text-3xl font-bold text-primary mb-1">{stats.professionalMembers}+</p>
+          <p class="text-sm text-muted">Professional Members</p>
+        </div>
+      </div>
+
+      <p class="text-center text-sm text-muted mt-4">
+        Data sourced from <a
+          href="https://opencollective.com/mage-os"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:underline">Open Collective</a
+        >
+      </p>
+    </div>
+  </section>
+
+  <!-- Brand Assets -->
+  <section class="px-4 py-12 sm:px-6 lg:px-8 bg-indigo-50 dark:bg-slate-800/50">
+    <div class="max-w-5xl mx-auto">
+      <Headline title="Brand Assets" subtitle="Logos and visual assets for your content" tagline="Downloads" />
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+        <!-- Logo Package -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Icon name="tabler:photo" class="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 dark:text-white">Logo Package</h3>
+              <p class="text-sm text-muted">SVG, PNG formats</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Official Mage-OS logos in various formats and color variants (full color, white, black).
+          </p>
+          <a
+            href="https://github.com/mage-os/brand-assets"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm"
+          >
+            <Icon name="tabler:brand-github" class="w-4 h-4" />
+            View on GitHub
+          </a>
+        </div>
+
+        <!-- Brand Colors -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Icon name="tabler:palette" class="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 dark:text-white">Brand Colors</h3>
+              <p class="text-sm text-muted">Primary palette</p>
+            </div>
+          </div>
+          <div class="space-y-2 mb-4">
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded bg-[#F26322]"></div>
+              <span class="text-sm font-mono">#F26322</span>
+              <span class="text-sm text-muted">Primary Orange</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-8 h-8 rounded bg-[#1E293B]"></div>
+              <span class="text-sm font-mono">#1E293B</span>
+              <span class="text-sm text-muted">Dark Slate</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Screenshots -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
+              <Icon name="tabler:screenshot" class="w-6 h-6 text-primary" />
+            </div>
+            <div>
+              <h3 class="font-bold text-gray-900 dark:text-white">Product Screenshots</h3>
+              <p class="text-sm text-muted">Admin & storefront</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-4">
+            Screenshots of the Mage-OS admin panel and sample storefronts for editorial use.
+          </p>
+          <a
+            href="https://github.com/mage-os/brand-assets"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 text-primary hover:underline font-medium text-sm"
+          >
+            <Icon name="tabler:brand-github" class="w-4 h-4" />
+            View on GitHub
+          </a>
+        </div>
+      </div>
+
+      <Callout type="info" title="Logo Usage Guidelines" class="mt-8">
+        <p>
+          Please maintain the logo's aspect ratio and ensure adequate clear space around it. Do not modify the logo
+          colors or combine it with other marks. For questions, contact us at <strong>info@mage-os.org</strong>.
+        </p>
+      </Callout>
+    </div>
+  </section>
+
+  <!-- Boilerplate Text -->
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <Headline title="Boilerplate Text" subtitle="Ready-to-use descriptions for your content" tagline="About Mage-OS" />
+
+      <div class="space-y-8 mt-8">
+        <!-- Short Version -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-gray-900 dark:text-white">Short (1 sentence)</h3>
+            <span class="text-xs text-muted bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">~30 words</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 italic">
+            "Mage-OS is a community-owned, open-source e-commerce platform built on Magento Open Source, delivering
+            faster security patches, performance improvements, and innovative features through transparent, democratic
+            governance."
+          </p>
+        </div>
+
+        <!-- Medium Version -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-gray-900 dark:text-white">Medium (1 paragraph)</h3>
+            <span class="text-xs text-muted bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">~75 words</span>
+          </div>
+          <p class="text-gray-600 dark:text-gray-400 italic">
+            "Mage-OS is a community-driven e-commerce platform that evolved from Magento Open Source to meet the needs
+            of merchants, developers, and agencies worldwide. Founded in 2022 as a non-profit association following an
+            Open Letter signed by 1,641 community members, Mage-OS delivers faster security patches, performance
+            optimizations, and community-developed features while maintaining full compatibility with the Magento
+            ecosystem. All decisions, finances, and development are conducted transparently through democratic
+            governance."
+          </p>
+        </div>
+
+        <!-- Long Version -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <div class="flex items-center justify-between mb-4">
+            <h3 class="font-bold text-gray-900 dark:text-white">Extended (2 paragraphs)</h3>
+            <span class="text-xs text-muted bg-gray-100 dark:bg-gray-800 px-2 py-1 rounded">~150 words</span>
+          </div>
+          <div class="text-gray-600 dark:text-gray-400 italic space-y-4">
+            <p>
+              "Mage-OS is a community-owned e-commerce platform built on top of Magento Open Source, created by and for
+              the Magento community. In 2021, concerns about the future of Magento Open Source led community members to
+              draft an Open Letter that gathered 1,641 signatures from merchants, developers, and agencies worldwide.
+              This movement culminated in the founding of the Mage-OS Association in Poland in 2022."
+            </p>
+            <p>
+              "Today, Mage-OS delivers the reliability of Magento with community-driven enhancements: faster security
+              patches released as soon as they are validated, performance optimizations for better page load times, and
+              innovative features developed through the Mage-OS Lab. The platform maintains full compatibility with
+              existing Magento extensions and integrations. Governed by an elected Board of Directors and overseen by an
+              independent Business Control Committee, Mage-OS operates with complete financial transparency through Open
+              Collective."
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Milestones -->
+  <section class="px-4 py-12 sm:px-6 lg:px-8 bg-orange-50 dark:bg-transparent">
+    <div class="max-w-4xl mx-auto">
+      <Headline title="Key Milestones" subtitle="Timeline of major events" tagline="History" />
+
+      <div class="mt-8 space-y-4">
+        <div class="flex gap-4 items-start">
+          <div class="w-20 flex-shrink-0 text-right">
+            <span class="font-bold text-primary">2021</span>
+          </div>
+          <div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm">
+            <p class="font-medium text-gray-900 dark:text-white">Open Letter Published</p>
+            <p class="text-sm text-muted">
+              Community members publish an open letter about the future of Magento, gathering 1,641 signatures
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-20 flex-shrink-0 text-right">
+            <span class="font-bold text-primary">2022</span>
+          </div>
+          <div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm">
+            <p class="font-medium text-gray-900 dark:text-white">Mage-OS Association Founded</p>
+            <p class="text-sm text-muted">Non-profit association officially incorporated in Poland</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-20 flex-shrink-0 text-right">
+            <span class="font-bold text-primary">2023</span>
+          </div>
+          <div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm">
+            <p class="font-medium text-gray-900 dark:text-white">Mage-OS 1.0 Released</p>
+            <p class="text-sm text-muted">
+              First official distribution released with community enhancements and new admin theme
+            </p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start">
+          <div class="w-20 flex-shrink-0 text-right">
+            <span class="font-bold text-primary">2025</span>
+          </div>
+          <div class="flex-1 bg-white dark:bg-slate-900 rounded-lg p-4 shadow-sm">
+            <p class="font-medium text-gray-900 dark:text-white">Mage-OS 2.0 Released</p>
+            <p class="text-sm text-muted">
+              Major release with enhanced performance, new features, and established twice-yearly release cadence
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Press Contact -->
+  <section class="px-4 py-12 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <div class="bg-gradient-to-br from-primary/5 to-primary/10 dark:from-slate-800 dark:to-slate-800/80 rounded-xl p-8 border border-primary/20 dark:border-slate-700 text-center">
+        <Icon name="tabler:mail" class="w-12 h-12 text-primary mx-auto mb-4" />
+        <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Press & Media Inquiries</h2>
+        <p class="text-muted mb-6 max-w-xl mx-auto">
+          For interviews, additional information, or press inquiries, please contact us. We're happy to connect you with
+          board members or community leaders.
+        </p>
+        <a
+          href="mailto:info@mage-os.org"
+          class="inline-flex items-center gap-2 px-6 py-3 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors font-medium"
+        >
+          <Icon name="tabler:mail" class="w-5 h-5" />
+          info@mage-os.org
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Related Links -->
+  <section class="px-4 py-8 sm:px-6 lg:px-8 bg-gray-50 dark:bg-slate-800/50">
+    <div class="max-w-4xl mx-auto">
+      <h3 class="text-lg font-bold text-gray-900 dark:text-white mb-4 text-center">Additional Resources</h3>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/about" class="text-primary hover:underline font-medium">About the Association</a>
+        <span class="text-gray-300 dark:text-gray-600">|</span>
+        <a href="/about/leadership" class="text-primary hover:underline font-medium">Leadership Team</a>
+        <span class="text-gray-300 dark:text-gray-600">|</span>
+        <a href="/blog" class="text-primary hover:underline font-medium">News & Updates</a>
+        <span class="text-gray-300 dark:text-gray-600">|</span>
+        <a
+          href="https://opencollective.com/mage-os"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-primary hover:underline font-medium">Open Collective</a
+        >
+      </div>
+    </div>
+  </section>
+</Layout>
