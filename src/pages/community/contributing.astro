@@ -1,0 +1,432 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+import PageHero from '~/components/widgets/PageHero.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import Callout from '~/components/ui/Callout.astro';
+import CodeBlock from '~/components/ui/CodeBlock.astro';
+import ItemGrid from '~/components/ui/ItemGrid.astro';
+
+const metadata = {
+  title: 'Contributing to Mage-OS | Developer Guide',
+  description:
+    'Learn how to contribute to Mage-OS. Complete guide to submitting code, documentation, bug reports, and joining the community development process.',
+  openGraph: {
+    images: [{ url: '/og/page/contributing.png', width: 1200, height: 630 }],
+  },
+};
+---
+
+<Layout metadata={metadata}>
+  <PageHero tagline="Get Involved" variant="default">
+    <Fragment slot="title">Contributing to Mage-OS</Fragment>
+    <Fragment slot="subtitle">
+      Mage-OS is built by contributors like you. Whether you write code, improve documentation, report bugs, or help
+      others—every contribution matters.
+    </Fragment>
+  </PageHero>
+
+  <!-- Ways to Contribute -->
+  <Features
+    id="contribution-types"
+    tagline="Choose Your Path"
+    title="Ways to Contribute"
+    subtitle="There are many ways to help, regardless of your experience level"
+    columns={4}
+    items={[
+      {
+        title: 'Code',
+        description: 'Fix bugs, add features, improve performance, or submit security patches to the core distribution.',
+        icon: 'tabler:code',
+      },
+      {
+        title: 'Documentation',
+        description: 'Improve guides, add tutorials, translate content, or clarify technical documentation.',
+        icon: 'tabler:book',
+      },
+      {
+        title: 'Testing',
+        description: 'Test new releases, report bugs, verify fixes, or help with quality assurance.',
+        icon: 'tabler:bug',
+      },
+      {
+        title: 'Community',
+        description: 'Answer questions on Discord, help newcomers, share knowledge, or organize local meetups.',
+        icon: 'tabler:users',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-indigo-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features>
+
+  <!-- Getting Started with Code -->
+  <Steps
+    id="code-contribution"
+    title="Code Contribution Workflow"
+    subtitle="Follow these steps to submit your first pull request"
+    tagline="For Developers"
+    items={[
+      {
+        title: 'Step 1: <span class="font-medium">Fork the Repository</span>',
+        description:
+          'Create your own fork of the Mage-OS repository on GitHub. This gives you a personal copy to work with.',
+        icon: 'tabler:git-fork',
+      },
+      {
+        title: 'Step 2: <span class="font-medium">Set Up Development Environment</span>',
+        description:
+          'Clone your fork locally and set up a development environment with PHP, MySQL, Elasticsearch/OpenSearch, and required dependencies.',
+        icon: 'tabler:settings',
+      },
+      {
+        title: 'Step 3: <span class="font-medium">Create a Feature Branch</span>',
+        description:
+          'Create a descriptive branch name (e.g., fix/cart-calculation-bug or feature/improved-caching).',
+        icon: 'tabler:git-branch',
+      },
+      {
+        title: 'Step 4: <span class="font-medium">Make Your Changes</span>',
+        description:
+          'Write clean, tested code following Magento coding standards. Include unit or integration tests where appropriate.',
+        icon: 'tabler:code-plus',
+      },
+      {
+        title: 'Step 5: <span class="font-medium">Submit a Pull Request</span>',
+        description:
+          'Push to your fork and open a PR against the main repository. Describe your changes clearly and link any related issues.',
+        icon: 'tabler:git-pull-request',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1556075798-4825dfaaf498?ixlib=rb-4.0.3&auto=format&fit=crop&w=2076&q=80',
+      alt: 'Code contribution workflow visualization with git branches',
+    }}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Steps>
+
+  <!-- Quick Commands -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-6">Quick Start Commands</h2>
+
+      <div class="space-y-6">
+        <div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-2">Fork and clone the repository:</h3>
+          <CodeBlock
+            code={`# Clone your fork
+git clone https://github.com/YOUR-USERNAME/mageos-magento2.git
+cd mageos-magento2
+
+# Add upstream remote
+git remote add upstream https://github.com/mage-os/mageos-magento2.git`}
+            lang="bash"
+          />
+        </div>
+
+        <div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-2">Create a feature branch:</h3>
+          <CodeBlock
+            code={`# Update your local main branch
+git checkout main
+git pull upstream main
+
+# Create and switch to a new branch
+git checkout -b fix/your-descriptive-branch-name`}
+            lang="bash"
+          />
+        </div>
+
+        <div>
+          <h3 class="font-medium text-gray-900 dark:text-white mb-2">Submit your changes:</h3>
+          <CodeBlock
+            code={`# Stage and commit your changes
+git add .
+git commit -m "Fix: Brief description of what was fixed"
+
+# Push to your fork
+git push origin fix/your-descriptive-branch-name
+
+# Then open a PR on GitHub`}
+            lang="bash"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Happens After You Submit -->
+  <Content
+    isReversed
+    tagline="Review Process"
+    title="What Happens After You Submit"
+    items={[
+      {
+        title: 'Automated CI Checks',
+        description:
+          'Your PR triggers automated tests including unit tests, integration tests, static analysis, and coding standards checks.',
+      },
+      {
+        title: 'Community Review',
+        description:
+          'Maintainers and community members review your code for quality, compatibility, and adherence to best practices.',
+      },
+      {
+        title: 'Feedback & Iteration',
+        description:
+          'You may receive feedback requesting changes. This is normal—respond to comments and update your PR as needed.',
+      },
+      {
+        title: 'Merge',
+        description:
+          'Once approved, a maintainer merges your PR. Congratulations—you're now a Mage-OS contributor!',
+      },
+    ]}
+    image={{
+      src: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80',
+      alt: 'Team reviewing code together',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Transparent Review Process</h3>
+      Unlike some projects where PRs sit for months, Mage-OS prioritizes timely reviews. Most contributions receive
+      initial feedback within a week.
+    </Fragment>
+
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-800/50"></div>
+    </Fragment>
+  </Content>
+
+  <!-- Contribution Types -->
+  <Features2
+    title="Types of Contributions We Value"
+    subtitle="All backwards-compatible improvements are welcome"
+    tagline="What We Accept"
+    columns={3}
+    items={[
+      {
+        title: 'Bug Fixes',
+        description: 'Patches that fix existing issues without breaking changes',
+        icon: 'tabler:bug-off',
+      },
+      {
+        title: 'Performance Improvements',
+        description: 'Optimizations to queries, caching, rendering, or resource usage',
+        icon: 'tabler:bolt',
+      },
+      {
+        title: 'Developer Experience',
+        description: 'Better error messages, debugging tools, CLI improvements',
+        icon: 'tabler:tools',
+      },
+      {
+        title: 'Security Patches',
+        description: 'Fixes for vulnerabilities (report first to security@mage-os.org)',
+        icon: 'tabler:shield-check',
+      },
+      {
+        title: 'Documentation',
+        description: 'Guides, tutorials, API docs, and inline code comments',
+        icon: 'tabler:file-text',
+      },
+      {
+        title: 'New Modules',
+        description: 'Independent modules that extend functionality without modifying core',
+        icon: 'tabler:puzzle',
+      },
+    ]}
+  >
+    <Fragment slot="bg">
+      <div class="absolute inset-0 bg-indigo-50 dark:bg-transparent"></div>
+    </Fragment>
+  </Features2>
+
+  <!-- Coding Standards -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-2xl font-bold text-gray-900 dark:text-white mb-2">Coding Standards</h2>
+      <p class="text-muted mb-6">
+        All code contributions should follow Magento coding standards and best practices.
+      </p>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">Do</h3>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Follow PSR-12 coding style
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Write unit tests for new functionality
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Use dependency injection
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Type-hint against interfaces
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Keep PRs focused on one change
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-green-500 mt-0.5">✓</span>
+              Write clear commit messages
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700">
+          <h3 class="font-bold text-gray-900 dark:text-white mb-3">Don't</h3>
+          <ul class="space-y-2 text-sm text-gray-600 dark:text-gray-400">
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Make breaking changes to public APIs
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Use the ObjectManager directly
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Skip automated tests
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Combine multiple unrelated changes
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Introduce new external dependencies without discussion
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-red-500 mt-0.5">✗</span>
+              Ignore CI failures
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Weekly Meetings -->
+  <Callout type="info" title="Join Our Weekly Meetings" class="mx-auto max-w-4xl px-4 mb-8">
+    <p class="mb-4">
+      Contributors meet weekly on Discord to discuss progress, review PRs, and coordinate development.
+    </p>
+    <div class="grid md:grid-cols-2 gap-4 text-sm">
+      <div class="bg-white/50 dark:bg-slate-800/50 rounded-lg p-3">
+        <p class="font-semibold">Technical Meeting</p>
+        <p>Tuesday 3:00 PM CET (9am EST)</p>
+      </div>
+      <div class="bg-white/50 dark:bg-slate-800/50 rounded-lg p-3">
+        <p class="font-semibold">Business Meeting</p>
+        <p>Friday 3:00 PM CET (occasional)</p>
+      </div>
+    </div>
+    <p class="mt-4 text-sm">
+      New contributors are welcome! Even if you just want to listen and learn, that's perfectly fine.
+    </p>
+  </Callout>
+
+  <!-- Resources -->
+  <section class="px-4 py-16 sm:px-6 lg:px-8 bg-indigo-50 dark:bg-slate-800/50">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold tracking-tight text-center sm:text-4xl mb-4 dark:text-white">Resources</h2>
+      <p class="text-xl text-muted text-center max-w-3xl mx-auto mb-10">
+        Everything you need to start contributing
+      </p>
+
+      <ItemGrid
+        columns={3}
+        items={[
+          {
+            title: 'GitHub Repository',
+            description: 'Main codebase, issues, and pull requests',
+            icon: 'tabler:brand-github',
+            callToAction: {
+              text: 'View Repository',
+              href: 'https://github.com/mage-os/mageos-magento2',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Mage-OS Lab',
+            description: 'Experimental features and community modules',
+            icon: 'tabler:flask',
+            callToAction: {
+              text: 'Explore Lab',
+              href: 'https://github.com/mage-os-lab',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Developer Documentation',
+            description: 'Technical guides and API references',
+            icon: 'tabler:book',
+            callToAction: {
+              text: 'View DevDocs',
+              href: 'https://devdocs.mage-os.org',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Discord Community',
+            description: 'Real-time help and discussion',
+            icon: 'tabler:brand-discord',
+            callToAction: {
+              text: 'Join Discord',
+              href: '/discord-channel',
+            },
+          },
+          {
+            title: 'Documentation Repo',
+            description: 'Contribute to guides and tutorials',
+            icon: 'tabler:file-text',
+            callToAction: {
+              text: 'View Docs Repo',
+              href: 'https://github.com/mage-os/devdocs',
+              target: '_blank',
+            },
+          },
+          {
+            title: 'Code of Conduct',
+            description: 'Community standards and expectations',
+            icon: 'tabler:heart-handshake',
+            callToAction: {
+              text: 'Read CoC',
+              href: '/code-of-conduct',
+            },
+          },
+        ]}
+        classes={{
+          container: 'gap-6',
+          panel:
+            'bg-white dark:bg-slate-900 rounded-xl p-6 shadow-md border border-gray-100 dark:border-gray-700 hover:shadow-lg transition-shadow',
+          title: 'text-lg font-bold',
+          description: 'text-sm text-muted',
+          icon: 'text-primary',
+        }}
+      />
+    </div>
+  </section>
+
+  <!-- Code of Conduct Reminder -->
+  <Callout type="warning" title="Code of Conduct" class="mx-auto max-w-4xl px-4 my-8">
+    <p>
+      All contributors must follow our <a href="/code-of-conduct" class="underline font-medium">Code of Conduct</a>.
+      We're committed to providing a welcoming and respectful environment for everyone, regardless of experience level.
+    </p>
+  </Callout>
+</Layout>
