@@ -9,7 +9,6 @@ export const headerData = {
         { text: 'Features', href: getPermalink('/product/features') },
         { text: 'Roadmap', href: getPermalink('/product/roadmap') },
         { text: 'Releases', href: getPermalink('/product/releases') },
-        { text: 'GitHub', href: 'https://github.com/mage-os' },
       ],
     },
     {
@@ -24,7 +23,7 @@ export const headerData = {
       ],
     },
     {
-      text: 'Learn',
+      text: 'Resources',
       href: getBlogPermalink(),
       links: [
         { text: 'Blog', href: getBlogPermalink() },
@@ -41,8 +40,8 @@ export const headerData = {
         { text: 'Get Involved', href: getPermalink('/community#get-involved') },
         { text: 'Partners', href: getPermalink('/community/partners') },
         { text: 'Events', href: getPermalink('/events') },
-        { text: 'Apparel', href: getPermalink('/community/apparel') },
         { text: 'Public Chatroom', href: getPermalink('/discord-channel') },
+        { text: 'GitHub', href: 'https://github.com/mage-os' },
       ],
     },
     {
@@ -50,9 +49,7 @@ export const headerData = {
       href: getPermalink('/about'),
       links: [
         { text: 'Contributors', href: getPermalink('/about/contributors') },
-        { text: 'Ambassadors', href: getPermalink('/about/brand-ambassadors') },
         { text: 'Leadership', href: getPermalink('/about/leadership') },
-        { text: 'FAQ', href: getPermalink('/faq') },
         { text: 'Contact', href: getPermalink('/contact') },
       ],
     },
@@ -89,6 +86,7 @@ export const footerData = {
         { text: 'Blog', href: getBlogPermalink() },
         { text: 'GitHub', href: 'https://github.com/mage-os' },
         { text: 'Discord', href: getPermalink('/discord-channel') },
+        { text: 'Apparel', href: getPermalink('/community/apparel') },
       ],
     },
     {

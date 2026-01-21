@@ -8,6 +8,7 @@ Reference these guides when appropriate:
 
 - **[docs/CONTENT-MANAGEMENT.md](docs/CONTENT-MANAGEMENT.md)** - How to manage blog posts, events, and page content
 - **[docs/DEVELOPMENT-GUIDE.md](docs/DEVELOPMENT-GUIDE.md)** - Component patterns, styling conventions, and implementation details
+- **[docs/PERSONAS.md](docs/PERSONAS.md)** - User personas and their goals for use of the site
 - **[docs/WEBSITE-STRATEGY.md](docs/WEBSITE-STRATEGY.md)** - High-level strategy for website messaging and structure
 - **[README.md](README.md)** - Project overview, setup, and commands
 
