@@ -48,7 +48,7 @@ const {
               {...wrapperProps}
               class={twMerge(
                 'flex flex-row max-w-md h-full',
-                hasLink && 'group cursor-pointer transition-transform duration-200 hover:scale-[1.02]',
+                hasLink && 'group cursor-pointer transition-all duration-300 hover:scale-[1.02]',
                 panelClass,
                 itemClasses?.panel
               )}
@@ -57,7 +57,11 @@ const {
                 {(icon || defaultIcon) && (
                   <Icon
                     name={icon || defaultIcon}
-                    class={twMerge('w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2', defaultIconClass, itemClasses?.icon)}
+                    class={twMerge(
+                      'w-7 h-7 mr-2 rtl:mr-0 rtl:ml-2 transition-transform duration-300 group-hover:scale-110',
+                      defaultIconClass,
+                      itemClasses?.icon
+                    )}
                     aria-hidden="true"
                   />
                 )}

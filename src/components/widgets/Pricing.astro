@@ -26,11 +26,11 @@ const {
             <div class="relative flex">
               {price !== undefined && period && (
                 <div
-                  class={`w-full flex flex-col p-6 bg-white dark:bg-gray-800 rounded-lg border-2 ${
+                  class={`w-full flex flex-col p-6 md:p-8 bg-white dark:bg-slate-800/50 rounded-xl border ${
                     hasRibbon
                       ? 'border-primary shadow-lg shadow-primary/10 dark:shadow-primary/20 scale-[1.02]'
-                      : 'border-gray-200 dark:border-gray-700 shadow-sm'
-                  } hover:shadow-md transition-shadow`}
+                      : 'border-gray-100 dark:border-slate-700/50 shadow-sm'
+                  } hover:shadow-xl hover:scale-[1.02] transition-all duration-300`}
                 >
                   {/* Ribbon */}
                   {hasRibbon && ribbonTitle && (

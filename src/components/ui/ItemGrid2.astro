@@ -46,14 +46,22 @@ const {
           <CardWrapper
             {...wrapperProps}
             class={twMerge(
-              'relative flex flex-col h-full',
-              hasLink && 'group cursor-pointer transition-transform duration-200 hover:scale-[1.02]',
+              'relative flex flex-col h-full transition-all duration-300',
+              hasLink && 'group cursor-pointer hover:shadow-xl hover:scale-[1.02]',
+              !hasLink && 'hover:shadow-lg hover:scale-[1.01]',
               panelClass,
               itemClasses?.panel
             )}
           >
             {(icon || defaultIcon) && (
-              <Icon name={icon || defaultIcon} class={twMerge('mb-2 w-10 h-10', defaultIconClass, itemClasses?.icon)} />
+              <Icon
+                name={icon || defaultIcon}
+                class={twMerge(
+                  'mb-2 w-10 h-10 transition-transform duration-300 group-hover:scale-110',
+                  defaultIconClass,
+                  itemClasses?.icon
+                )}
+              />
             )}
             <div
               class={twMerge(

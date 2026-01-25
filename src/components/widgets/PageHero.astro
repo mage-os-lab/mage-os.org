@@ -33,7 +33,7 @@ const containerClasses = {
   default: 'bg-white dark:bg-gray-900',
   split: 'bg-gray-50 dark:bg-gray-800',
   gradient:
-    'bg-gradient-to-br from-primary/10 via-white to-indigo-50 dark:from-primary/20 dark:via-gray-900 dark:to-gray-800',
+    'bg-gradient-to-br from-orange-50 via-white to-amber-50/50 dark:from-slate-800/50 dark:via-gray-900 dark:to-slate-800/30',
 };
 ---
 
@@ -60,7 +60,7 @@ const containerClasses = {
           <div class="text-center max-w-4xl mx-auto">
             {tagline && (
               <span
-                class="inline-flex items-center mb-4 px-3 py-1 text-sm font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
+                class="inline-flex items-center mb-4 px-4 py-1.5 text-sm font-semibold rounded-full bg-gradient-to-r from-orange-100 to-amber-100 text-primary dark:from-orange-900/30 dark:to-amber-900/30 dark:text-orange-300"
                 set:html={tagline}
               />
             )}
@@ -99,7 +99,7 @@ const containerClasses = {
           <div class="text-center lg:text-left">
             {tagline && (
               <span
-                class="inline-flex items-center mb-4 px-3 py-1 text-sm font-medium rounded-full bg-amber-100 text-amber-800 dark:bg-amber-900/30 dark:text-amber-200"
+                class="inline-flex items-center mb-4 px-4 py-1.5 text-sm font-semibold rounded-full bg-gradient-to-r from-orange-100 to-amber-100 text-primary dark:from-orange-900/30 dark:to-amber-900/30 dark:text-orange-300"
                 set:html={tagline}
               />
             )}

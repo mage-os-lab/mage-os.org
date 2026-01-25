@@ -17,14 +17,21 @@ const {
 } = Astro.props;
 ---
 
-<section class="bg-orange-50 dark:bg-slate-800 not-prose">
-  <div class="max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
-    <Icon name={icon} class="w-5 h-5 inline-block align-text-bottom font-bold" />
-    <span class="font-bold" set:html={title} />
-    <Fragment set:html={description} />
+<section
+  class="relative overflow-hidden bg-gradient-to-r from-orange-50 via-amber-50 to-orange-50 dark:from-slate-800 dark:via-slate-800/80 dark:to-slate-800 not-prose"
+>
+  <!-- Subtle decorative gradient overlay -->
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-transparent via-orange-100/30 to-transparent dark:via-orange-900/10"
+  >
+  </div>
+  <div class="relative max-w-6xl mx-auto px-4 sm:px-6 py-4 text-md text-center font-medium">
+    <Icon name={icon} class="w-5 h-5 inline-block align-text-bottom text-primary" />
+    <span class="font-bold text-gray-900 dark:text-white" set:html={title} />
+    <span class="text-muted dark:text-slate-300"><Fragment set:html={description} /></span>
     {
       callToAction && (
-        <a href={callToAction.href} class="ml-2 text-primary hover:underline">
+        <a href={callToAction.href} class="ml-2 text-primary font-semibold hover:underline">
           {callToAction.text}
         </a>
       )
