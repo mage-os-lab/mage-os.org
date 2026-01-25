@@ -6,6 +6,7 @@ import ItemGrid from '~/components/ui/ItemGrid.astro';
 import Steps from '~/components/widgets/Steps.astro';
 import Features from '~/components/widgets/Features.astro';
 import Callout from '~/components/ui/Callout.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
 import VersionBadge from '~/components/ui/VersionBadge.astro';
 import { Icon } from 'astro-icon/components';
 
@@ -37,10 +38,12 @@ const metadata = {
     />
 
     <div class="grid md:grid-cols-3 gap-6 mt-8">
-      <div class="bg-indigo-50 dark:bg-indigo-900/20 rounded-lg p-6 border-2 border-indigo-200 dark:border-indigo-800">
+      <div
+        class="bg-gradient-to-br from-orange-50 to-amber-50/50 dark:from-orange-900/20 dark:to-amber-900/20 rounded-lg p-6 border-2 border-orange-200 dark:border-orange-800/50"
+      >
         <div class="flex items-center gap-3 mb-4">
-          <div class="bg-indigo-100 dark:bg-indigo-900 rounded-full p-2">
-            <Icon name="tabler:rocket" class="w-6 h-6 text-indigo-600 dark:text-indigo-400" />
+          <div class="bg-orange-100 dark:bg-orange-900/50 rounded-full p-2">
+            <Icon name="tabler:rocket" class="w-6 h-6 text-primary dark:text-orange-400" />
           </div>
           <div>
             <h3 class="text-lg font-bold dark:text-white">Major</h3>
@@ -408,6 +411,10 @@ const metadata = {
         title: 'Contribute Code',
         description: 'Submit pull requests or develop Lab projects for direct contribution to features.',
         icon: 'tabler:git-pull-request',
+        callToAction: {
+          text: 'Contributing Guide',
+          href: '/community/contributing',
+        },
       },
     ]}
     columns={2}
@@ -560,54 +567,57 @@ const metadata = {
     </div>
   </section>
 
+  <!-- Ready to Get Started Section -->
+  <section class="py-16 px-4 sm:px-6 lg:px-8">
+    <div
+      class="max-w-4xl mx-auto relative overflow-hidden rounded-xl border-2 border-dashed border-orange-300 dark:border-orange-700 bg-gradient-to-r from-orange-50 via-amber-50/50 to-orange-50 dark:from-orange-950/30 dark:via-amber-950/20 dark:to-orange-950/30"
+    >
+      <div class="px-8 py-10 md:py-12 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div class="text-center md:text-left">
+          <h2 class="text-2xl md:text-3xl font-bold font-heading text-gray-900 dark:text-white mb-2">
+            Ready to get started?
+          </h2>
+          <p class="text-muted text-lg">
+            Download Mage-OS and join the community building the future of open-source commerce.
+          </p>
+        </div>
+        <a
+          href="/get-started/quick-start"
+          class="inline-flex items-center gap-2 px-8 py-4 bg-primary hover:bg-secondary text-white rounded-lg transition-all duration-200 font-semibold text-lg shadow-lg hover:shadow-xl hover:-translate-y-0.5 whitespace-nowrap"
+        >
+          <Icon name="tabler:rocket" class="w-5 h-5" />
+          Get Started
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- Questions Section -->
-  <section class="px-4 py-16 sm:px-6 mx-auto lg:px-8 max-w-4xl text-center">
-    <h2 class="text-3xl font-bold font-heading mb-4 dark:text-white">Questions?</h2>
-    <p class="text-xl text-muted mb-8">
+  <CallToAction
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Chat on Discord',
+        href: '/discord-channel',
+        icon: 'tabler:brand-discord',
+      },
+      {
+        text: 'GitHub Discussions',
+        href: 'https://github.com/mage-os/mageos-magento2/discussions',
+        target: '_blank',
+        icon: 'tabler:brand-github',
+      },
+      {
+        text: 'Contact Us',
+        href: '/contact',
+        icon: 'tabler:mail',
+      },
+    ]}
+  >
+    <Fragment slot="title">Questions?</Fragment>
+
+    <Fragment slot="subtitle">
       Have questions about the roadmap or want to discuss priorities? We'd love to hear from you.
-    </p>
-
-    <div class="flex flex-wrap justify-center gap-4">
-      <a
-        href="/discord-channel"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors"
-      >
-        <Icon name="tabler:brand-discord" class="w-5 h-5" />
-        Real-time chat on Discord
-      </a>
-      <a
-        href="https://github.com/mage-os/mageos-magento2/discussions"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
-      >
-        <Icon name="tabler:brand-github" class="w-5 h-5" />
-        GitHub Discussions
-      </a>
-      <a
-        href="/contact"
-        class="inline-flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors"
-      >
-        <Icon name="tabler:mail" class="w-5 h-5" />
-        Contact Us
-      </a>
-    </div>
-  </section>
-
-  <!-- Final CTA -->
-  <section class="bg-primary py-12">
-    <div class="px-4 sm:px-6 mx-auto lg:px-8 max-w-4xl text-center">
-      <p class="text-xl text-white mb-6">
-        <strong>Ready to get started?</strong> Download Mage-OS and join the community building the future of open-source
-        commerce.
-      </p>
-      <a
-        href="/get-started/quick-start"
-        class="inline-flex items-center gap-2 px-6 py-3 bg-white text-primary rounded-lg hover:bg-gray-100 transition-colors font-bold"
-      >
-        <Icon name="tabler:download" class="w-5 h-5" />
-        Get Started with Mage-OS
-      </a>
-    </div>
-  </section>
+    </Fragment>
+  </CallToAction>
 </Layout>
