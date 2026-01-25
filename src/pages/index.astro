@@ -74,8 +74,8 @@ const metadata = {
     </Fragment>
 
     <Fragment slot="subtitle">
-      <span class="font-semibold">Mage-OS</span> is a community-owned e-commerce platform that grows with your business.
-      Fully open source, backed by a global network of developers and agencies ready to help.
+      <span class="font-semibold">Mage-OS</span> is a community-owned e-commerce platform that grows with your business. Fully
+      open source, backed by a global network of developers and agencies ready to help.
       <span class="block mt-3 text-sm">
         New to e-commerce platforms?
         <a href="/product/is-it-right-for-you" class="text-primary hover:underline font-medium"
@@ -105,7 +105,10 @@ const metadata = {
   <UpcomingEvents title="Upcoming Events" count={3}>
     <Fragment slot="subtitle"> Meet the Mage-OS community at conferences and meetups around the world. </Fragment>
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-indigo-50 dark:bg-slate-800/50"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-orange-50 to-amber-50/50 dark:from-slate-800/50 dark:to-slate-800/30"
+      >
+      </div>
     </Fragment>
   </UpcomingEvents>
 
@@ -143,10 +146,6 @@ const metadata = {
         Open Source Commerce, Reimagined
       </h3>
       The Mage-OS Distribution delivers everything you need to run a successful online store.
-    </Fragment>
-
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-transparent"></div>
     </Fragment>
   </Content>
 
@@ -214,11 +213,7 @@ const metadata = {
       { title: 'Community Members', amount: `${stats.communityMembers}+` },
       { title: 'Professional Members', amount: `${stats.professionalMembers}+` },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-indigo-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Stats>
+  />
 
   <!-- Testimonials Widget *********** -->
 
@@ -282,7 +277,10 @@ const metadata = {
     }}
   >
     <Fragment slot="bg">
-      <div class="absolute inset-0 bg-slate-50 dark:bg-slate-800/50"></div>
+      <div
+        class="absolute inset-0 bg-gradient-to-br from-orange-50 to-amber-50/50 dark:from-slate-800/50 dark:to-slate-800/30"
+      >
+      </div>
     </Fragment>
   </Features2>
 
@@ -299,9 +297,8 @@ const metadata = {
         description: 'Submit pull requests for bug fixes, new features, or performance improvements on GitHub.',
         icon: 'tabler:code',
         callToAction: {
-          text: 'View GitHub',
-          href: 'https://github.com/mage-os',
-          target: '_blank',
+          text: 'Contributing Guide',
+          href: '/community/contributing',
         },
       },
       {
@@ -334,11 +331,7 @@ const metadata = {
         },
       },
     ]}
-  >
-    <Fragment slot="bg">
-      <div class="absolute inset-0 bg-orange-50 dark:bg-transparent"></div>
-    </Fragment>
-  </Features2>
+  />
 
   <!-- CallToAction Widget *********** -->
 
