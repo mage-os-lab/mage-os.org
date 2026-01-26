@@ -1,0 +1,43 @@
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    # Group non-security updates to reduce noise and allow batch review
+    groups:
+      # Production dependencies - review carefully
+      production:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      # Dev dependencies - lower risk
+      development:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+    # Limit open PRs to avoid overwhelming reviewers
+    open-pull-requests-limit: 5
+    # Security updates bypass grouping and limits (intentional - they're vetted)
+    # Major version updates are not grouped (require individual review)
+    commit-message:
+      prefix: "chore(deps)"
+    labels:
+      - "dependencies"
+    # Ignore packages with known problematic release patterns if needed
+    # ignore:
+    #   - dependency-name: "example-package"
+    #     update-types: ["version-update:semver-major"]
+
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "monthly"
+    commit-message:
+      prefix: "chore(ci)"
+    labels:
+      - "dependencies"
+      - "ci"
