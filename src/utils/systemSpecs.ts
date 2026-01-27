@@ -103,25 +103,6 @@ function loadConfig(): ConfigData | null {
 }
 
 /**
- * Load fallback data from YAML file
- */
-function loadFallbackData(): SystemSpecs | null {
-  try {
-    const fallbackPath = path.join(process.cwd(), 'src/data/system-specs-fallback.yaml');
-    if (!fs.existsSync(fallbackPath)) {
-      console.warn('[SystemSpecs] Fallback file not found');
-      return null;
-    }
-    const content = fs.readFileSync(fallbackPath, 'utf-8');
-    const data = yaml.load(content) as SystemSpecs;
-    return data;
-  } catch (error) {
-    console.error('[SystemSpecs] Failed to load fallback:', error);
-    return null;
-  }
-}
-
-/**
  * Extract version number from Docker image string
  * e.g., "mysql:8.4" -> "8.4", "opensearchproject/opensearch:2.19.1" -> "2.19"
  */
@@ -327,7 +308,7 @@ async function fetchSystemSpecs(): Promise<SystemSpecs> {
 }
 
 /**
- * Get system specifications with caching and fallback
+ * Get system specifications with caching
  */
 export async function getSystemSpecs(options?: { skipCache?: boolean }): Promise<SystemSpecs> {
   const isDev = import.meta.env.DEV;
@@ -351,23 +332,16 @@ export async function getSystemSpecs(options?: { skipCache?: boolean }): Promise
 
     return specs;
   } catch (error) {
-    console.error('[SystemSpecs] GitHub fetch failed, using fallback:', error);
+    console.error('[SystemSpecs] GitHub fetch failed:', error);
 
-    // Try cache first (even if expired)
+    // Try cache (even if expired) as last resort
     const cached = readCache();
     if (cached) {
       console.log('[SystemSpecs] Using expired cache');
       return cached.specs;
     }
 
-    // Fall back to YAML file
-    const fallback = loadFallbackData();
-    if (fallback) {
-      console.log('[SystemSpecs] Using YAML fallback');
-      return fallback;
-    }
-
-    throw new Error('Failed to load system specs from any source');
+    throw new Error('Failed to load system specs: GitHub unavailable and no cache');
   }
 }
 

@@ -508,10 +508,6 @@ components:
   # ... other components
 ```
 
-**Fallback file:** `src/data/system-specs-fallback.yaml`
-
-This file is used when GitHub is unreachable. Update it periodically to keep offline data current.
-
 ### Adding a New Event
 
 1. Create: `astro/src/data/events/YYYY-MM-DD-event-slug.md`
@@ -685,7 +681,6 @@ When modifying content:
 | New event | `src/data/events/YYYY-MM-DD-slug.md` |
 | Update navigation | `src/navigation.ts` |
 | Update system requirements | `src/data/system-specs-config.yaml` (for min/recommended overrides) |
-| Update system requirements fallback | `src/data/system-specs-fallback.yaml` (for offline data) |
 | New release announcement | `src/data/post/` + `src/pages/product/releases.md` |
 | Update leadership | `src/pages/about/leadership.astro` |
 | Update FAQ | `src/pages/faq.mdx` |
