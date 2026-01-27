@@ -1,0 +1,254 @@
+# System Specifications Fallback Data
+#
+# This file provides offline fallback data when GitHub is unreachable.
+# It should be updated periodically to reflect current Mage-OS releases.
+# Last updated: 2026-01-26
+
+fetchedAt: '2026-01-26T00:00:00.000Z'
+
+latest:
+  mageosVersion: '2.1'
+  magentoBase: '2.4.8-p3'
+  releaseDate: '2026-01-20T00:00:00+0000'
+  eolDate: '2029-01-20T00:00:00+0000'
+  isLatest: true
+  php:
+    minimum: '8.3'
+    recommended: '8.4'
+  composer:
+    minimum: '2.7'
+    recommended: '2.9'
+  mysql:
+    minimum: '8.0'
+    recommended: '8.4'
+  mariadb:
+    minimum: '10.6'
+    recommended: '11.4'
+  opensearch:
+    minimum: '2.5'
+    recommended: '2.19'
+  elasticsearch:
+    minimum: '7.17'
+    recommended: '8.x'
+  redis:
+    minimum: '7.0'
+    recommended: '7.2'
+  valkey:
+    minimum: '7.0'
+    recommended: '8.0'
+  varnish:
+    minimum: '7.0'
+    recommended: '7.6'
+  nginx:
+    minimum: '1.24'
+    recommended: '1.26'
+  apache:
+    minimum: '2.4'
+    recommended: '2.4'
+  rabbitmq:
+    minimum: '3.12'
+    recommended: '4.0'
+
+versions:
+  '2.1.0':
+    mageosVersion: '2.1.0'
+    magentoBase: '2.4.8-p3'
+    releaseDate: '2026-01-20T00:00:00+0000'
+    eolDate: '2029-01-20T00:00:00+0000'
+    isLatest: true
+    php:
+      minimum: '8.3'
+      recommended: '8.4'
+    composer:
+      minimum: '2.7'
+      recommended: '2.9'
+    mysql:
+      minimum: '8.0'
+      recommended: '8.4'
+    mariadb:
+      minimum: '10.6'
+      recommended: '11.4'
+    opensearch:
+      minimum: '2.5'
+      recommended: '2.19'
+    elasticsearch:
+      minimum: '7.17'
+      recommended: '8.x'
+    redis:
+      minimum: '7.0'
+      recommended: '7.2'
+    valkey:
+      minimum: '7.0'
+      recommended: '8.0'
+    varnish:
+      minimum: '7.0'
+      recommended: '7.6'
+    nginx:
+      minimum: '1.24'
+      recommended: '1.26'
+    apache:
+      minimum: '2.4'
+      recommended: '2.4'
+    rabbitmq:
+      minimum: '3.12'
+      recommended: '4.0'
+
+  '2.0.0':
+    mageosVersion: '2.0.0'
+    magentoBase: '2.4.8-p3'
+    releaseDate: '2025-10-16T00:00:00+0000'
+    eolDate: '2026-01-20T00:00:00+0000'
+    isLatest: false
+    php:
+      minimum: '8.3'
+      recommended: '8.4'
+    composer:
+      minimum: '2.7'
+      recommended: '2.9'
+    mysql:
+      minimum: '8.0'
+      recommended: '8.4'
+    mariadb:
+      minimum: '10.6'
+      recommended: '11.4'
+    opensearch:
+      minimum: '2.5'
+      recommended: '2.19'
+    redis:
+      minimum: '7.0'
+      recommended: '7.2'
+    valkey:
+      minimum: '7.0'
+      recommended: '8.0'
+    varnish:
+      minimum: '7.0'
+      recommended: '7.6'
+    nginx:
+      minimum: '1.24'
+      recommended: '1.26'
+    apache:
+      minimum: '2.4'
+      recommended: '2.4'
+    rabbitmq:
+      minimum: '3.12'
+      recommended: '4.0'
+
+  '1.3.1':
+    mageosVersion: '1.3.1'
+    magentoBase: '2.4.8-p2'
+    releaseDate: '2025-09-09T00:00:00+0000'
+    eolDate: '2025-10-16T00:00:00+0000'
+    isLatest: false
+    php:
+      minimum: '8.3'
+      recommended: '8.4'
+    composer:
+      minimum: '2.7'
+      recommended: '2.9'
+    mysql:
+      minimum: '8.0'
+      recommended: '8.4'
+    mariadb:
+      minimum: '10.6'
+      recommended: '11.4'
+    opensearch:
+      minimum: '2.5'
+      recommended: '2.19'
+    redis:
+      minimum: '7.0'
+      recommended: '7.2'
+    valkey:
+      minimum: '7.0'
+      recommended: '8.0'
+    varnish:
+      minimum: '7.0'
+      recommended: '7.6'
+    nginx:
+      minimum: '1.24'
+      recommended: '1.26'
+    apache:
+      minimum: '2.4'
+      recommended: '2.4'
+    rabbitmq:
+      minimum: '3.12'
+      recommended: '4.0'
+
+  '1.2.0':
+    mageosVersion: '1.2.0'
+    magentoBase: '2.4.8-p1'
+    releaseDate: '2025-06-17T00:00:00+0000'
+    eolDate: '2025-08-12T00:00:00+0000'
+    isLatest: false
+    php:
+      minimum: '8.3'
+      recommended: '8.4'
+    composer:
+      minimum: '2.7'
+      recommended: '2.9'
+    mysql:
+      minimum: '8.0'
+      recommended: '8.4'
+    mariadb:
+      minimum: '10.6'
+      recommended: '11.4'
+    opensearch:
+      minimum: '2.5'
+      recommended: '2.19'
+    redis:
+      minimum: '7.0'
+      recommended: '7.2'
+    valkey:
+      minimum: '7.0'
+      recommended: '8.0'
+    varnish:
+      minimum: '7.0'
+      recommended: '7.6'
+    nginx:
+      minimum: '1.24'
+      recommended: '1.26'
+    apache:
+      minimum: '2.4'
+      recommended: '2.4'
+    rabbitmq:
+      minimum: '3.12'
+      recommended: '4.0'
+
+  '1.1.1':
+    mageosVersion: '1.1.1'
+    magentoBase: '2.4.8'
+    releaseDate: '2025-04-22T00:00:00+0000'
+    eolDate: '2025-06-16T00:00:00+0000'
+    isLatest: false
+    php:
+      minimum: '8.3'
+      recommended: '8.4'
+    composer:
+      minimum: '2.7'
+      recommended: '2.9'
+    mysql:
+      minimum: '8.0'
+      recommended: '8.4'
+    mariadb:
+      minimum: '10.6'
+      recommended: '11.4'
+    opensearch:
+      minimum: '2.5'
+      recommended: '2.19'
+    redis:
+      minimum: '7.0'
+      recommended: '7.2'
+    valkey:
+      minimum: '7.0'
+      recommended: '8.0'
+    varnish:
+      minimum: '7.0'
+      recommended: '7.6'
+    nginx:
+      minimum: '1.24'
+      recommended: '1.26'
+    apache:
+      minimum: '2.4'
+      recommended: '2.4'
+    rabbitmq:
+      minimum: '3.12'
+      recommended: '4.0'

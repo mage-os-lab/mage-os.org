@@ -1,0 +1,54 @@
+# System Specifications Configuration
+#
+# This file defines minimum and recommended versions for Mage-OS components.
+# Values here override those derived from the GitHub source data.
+# Update these values when Mage-OS officially supports new versions.
+
+components:
+  php:
+    minimum: '8.3'
+    recommended: '8.4'
+
+  composer:
+    minimum: '2.7'
+    recommended: '2.9'
+
+  mysql:
+    minimum: '8.0'
+    recommended: '8.4'
+
+  mariadb:
+    minimum: '10.6'
+    recommended: '11.4'
+
+  opensearch:
+    minimum: '2.5'
+    recommended: '2.19'
+
+  elasticsearch:
+    minimum: '7.17'
+    supported: '8.x'
+
+  redis:
+    minimum: '7.0'
+    recommended: '7.2'
+
+  valkey:
+    minimum: '7.0'
+    recommended: '8.0'
+
+  varnish:
+    minimum: '7.0'
+    recommended: '7.6'
+
+  nginx:
+    minimum: '1.24'
+    recommended: '1.26'
+
+  apache:
+    minimum: '2.4'
+    recommended: '2.4'
+
+  rabbitmq:
+    minimum: '3.12'
+    recommended: '4.0'
