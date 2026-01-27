@@ -6,12 +6,12 @@
 
 components:
   php:
-    minimum: '8.3'
+    minimum: '8.2'
     recommended: '8.4'
 
   composer:
     minimum: '2.7'
-    recommended: '2.9'
+    recommended: '2.9.3'
 
   mysql:
     minimum: '8.0'
@@ -22,11 +22,11 @@ components:
     recommended: '11.4'
 
   opensearch:
-    minimum: '2.5'
-    recommended: '2.19'
+    minimum: '2'
+    recommended: '3'
 
   elasticsearch:
-    minimum: '7.17'
+    minimum: '8.x'
     supported: '8.x'
 
   redis:
@@ -39,16 +39,16 @@ components:
 
   varnish:
     minimum: '7.0'
-    recommended: '7.6'
+    recommended: '7.7'
 
   nginx:
-    minimum: '1.24'
-    recommended: '1.26'
+    minimum: '1.26'
+    recommended: '1.28'
 
   apache:
     minimum: '2.4'
     recommended: '2.4'
 
   rabbitmq:
-    minimum: '3.12'
-    recommended: '4.0'
+    minimum: '3.13'
+    recommended: '4.1'
